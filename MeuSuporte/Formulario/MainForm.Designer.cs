@@ -251,9 +251,9 @@
             this.checkBox_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_Usuario.Location = new System.Drawing.Point(43, 385);
             this.checkBox_Usuario.Name = "checkBox_Usuario";
-            this.checkBox_Usuario.Size = new System.Drawing.Size(144, 24);
+            this.checkBox_Usuario.Size = new System.Drawing.Size(121, 24);
             this.checkBox_Usuario.TabIndex = 12;
-            this.checkBox_Usuario.Text = "Usuario Suporte";
+            this.checkBox_Usuario.Text = "Usuario User";
             this.checkBox_Usuario.UseVisualStyleBackColor = true;
             // 
             // checkBox_CleanPrefetch

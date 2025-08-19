@@ -201,12 +201,12 @@
     <Compile Include="Class\WinService\WinService_List.cs" />
     <Compile Include="Class\WinTask\WinTask_State.cs" />
     <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />
-    <Compile Include="Class\WinUser\Password_Public.cs" />
+    <Compile Include="Class\WinUser\Credential_Public.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Mananger.cs" />
     <Compile Include="Class\WinApp\WinApp_ExecutionPath.cs" />
     <Compile Include="Class\WinGlobal\WinGlobal_CreateNameFolde.cs" />
     <Compile Include="Class\WinApp\WinApp_Log.cs" />
-    <Compile Include="Class\WinUser\Password_Private.cs" />
+    <Compile Include="Class\WinUser\Credential_Private.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_Mananger.cs" />
     <Compile Include="Class\WinService\WinService_Disabled.cs" />
     <Compile Include="Class\WinService\WinService_Stop.cs" />

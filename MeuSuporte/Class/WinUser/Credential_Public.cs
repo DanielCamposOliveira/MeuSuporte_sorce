@@ -1,8 +1,6 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-
-namespace MeuSuporte
+﻿namespace MeuSuporte
 {
-    internal class Password_Public
+    internal class Credential_Public
     {
         private string user = "Suporte";
         private string password = "r46W6h8#";
