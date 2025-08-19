@@ -17,7 +17,7 @@ namespace MeuSuporte
 {
     public partial class MainForm : System.Windows.Forms.Form
     {
-       
+      //  private bool SaveLog = false;
         public int ValueUniProgressBar = 100;
         public int Sucesso = 0;
         public int Erro = 0;
@@ -110,10 +110,12 @@ namespace MeuSuporte
         }
 
         //Evento Closing do Formulario
+        private bool SaveLog = false;
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) // evento antes de fechar o Programa
-        {
-            GravaLog();
-            DeletaApp();
+        {      
+            SaveLog = MessageBox.Show("Deseja Salvar Log?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            GravaLog();           
         }
 
         
@@ -323,6 +325,9 @@ namespace MeuSuporte
         // Grava Log em um arquivo de Texto
         private async Task GravaLog()
         {
+            if(SaveLog == false)         
+                return;        
+
             WinApp_Log class_Log = new WinApp_Log();
             await Task.Run(async () =>
             {
@@ -352,11 +357,11 @@ namespace MeuSuporte
                 };
 
                 Process.Start(info); // Inicia o processo de exclusão
-                Application.Exit(); // Fecha o aplicativo
+               // Application.Exit(); // Fecha o aplicativo
             }
             catch (Exception ex)
             {
-                Application.Exit();
+               // Application.Exit();
             }
         }
 
@@ -469,5 +474,10 @@ namespace MeuSuporte
         }
 
         #endregion
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DeletaApp();
+        }
     }
 }

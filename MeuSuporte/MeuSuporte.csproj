@@ -199,6 +199,7 @@
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Registry.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Service.cs" />
     <Compile Include="Class\WinService\WinService_List.cs" />
+    <Compile Include="Class\WinTask\WinTask_State.cs" />
     <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />
     <Compile Include="Class\WinUser\Password_Public.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Mananger.cs" />

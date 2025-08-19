@@ -714,6 +714,7 @@
             // 
             this.checkBox_Bloatware.AutoSize = true;
             this.checkBox_Bloatware.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_Bloatware.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.checkBox_Bloatware.Location = new System.Drawing.Point(43, 535);
             this.checkBox_Bloatware.Name = "checkBox_Bloatware";
             this.checkBox_Bloatware.Size = new System.Drawing.Size(167, 24);
@@ -782,6 +783,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MeuSuporte";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.FormPreventiva_Load);
             this.panelBoton.ResumeLayout(false);
             this.panelBoton.PerformLayout();

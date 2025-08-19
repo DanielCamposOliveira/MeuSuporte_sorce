@@ -14,7 +14,7 @@ namespace MeuSuporte
 
         public string Folder(string NameFolder)
         {
-            string _Directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + $@"Backup-{DateTime.Now.ToString("dd-MM-yyyy")}");
+            string _Directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + $@"Preventiva {DateTime.Now.ToString("dd-MM-yyyy")}");
 
             string Nome = Environment.MachineName;
             if (!ValidNameFolde.Valid(Nome))

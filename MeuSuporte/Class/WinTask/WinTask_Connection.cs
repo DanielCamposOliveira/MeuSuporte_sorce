@@ -17,5 +17,14 @@ namespace MeuSuporte
             rootFolder = taskService.GetFolder(@"\"); // passa o diretório raiz
             tasks = rootFolder.GetTasks(0);
         }
+
+        public async Task Connect2()
+        {
+            taskService = new TaskScheduler.TaskScheduler();// cria uma instância
+            taskService.Connect(); // conecta
+
+            rootFolder = taskService.GetFolder(@"\Microsoft\Windows\WindowsUpdate"); // passa o diretório raiz
+            tasks = rootFolder.GetTasks(0);
+        }
     }
 }

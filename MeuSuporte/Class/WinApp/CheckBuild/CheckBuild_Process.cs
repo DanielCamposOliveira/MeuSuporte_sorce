@@ -30,7 +30,7 @@ namespace MeuSuporte
                 // Usando Invoke para atualizar a interface do usuário a partir da thread de segundo plano
                 WinGlobal_UIService.Instance.InterfaceGUI.Invoke(new Action(() =>
                 {
-                    WinGlobal_UIService.Instance.InterfaceGUI.Text = $"MeuSuporte Build {BuildVersion} - Beta"; // Versão local maior que a do GitHub
+                    WinGlobal_UIService.Instance.InterfaceGUI.Text = $"MeuSuporte Build {BuildLocal} - Beta"; // Versão local maior que a do GitHub
                     WinGlobal_UIService.Instance.InterfaceGUI.PainelInfoDescricao(Resources.Code_Black, $"Verão Beta\r\nEssa é uma versão de desenvolvimento. Que ainda se encontra em desenvolvimento e não trata de uma versão final !");
                 }));
             }
@@ -40,7 +40,7 @@ namespace MeuSuporte
                 WinGlobal_UIService.Instance.InterfaceGUI.Invoke(new Action(() =>
                 {
                     WinGlobal_UIService.Instance.InterfaceGUI.checkBoxAllState(false);
-                    WinGlobal_UIService.Instance.InterfaceGUI.Text = $"MeuSuporte Build {BuildVersion} - Legacy"; // Versão local inferior à do GitHub                       
+                    WinGlobal_UIService.Instance.InterfaceGUI.Text = $"MeuSuporte Build {BuildLocal} - Legacy"; // Versão local inferior à do GitHub                       
                     WinGlobal_UIService.Instance.InterfaceGUI.PainelInfoDescricao(Resources.Dawnload_Black, $"Atualização Disponível!:\r\nPara garantir o melhor eficiência baixe últimas versão. https://github.com/{GitHubRepo}/releases/latest");
                 }));
             }
@@ -49,7 +49,7 @@ namespace MeuSuporte
                 // Usando Invoke para atualizar a interface do usuário a partir da thread de segundo plano
                 WinGlobal_UIService.Instance.InterfaceGUI.Invoke(new Action(() =>
                 {
-                    WinGlobal_UIService.Instance.InterfaceGUI.Text = $"MeuSuporte Build {BuildVersion} - Stable"; // Versão local igual à do GitHub
+                    WinGlobal_UIService.Instance.InterfaceGUI.Text = $"MeuSuporte Build {BuildLocal} - Stable"; // Versão local igual à do GitHub
                     WinGlobal_UIService.Instance.InterfaceGUI.PainelInfoDescricao(Resources.Security_Black, $"Estável:\r\nSua verão se encontrar na mesma versão do repositório. https://github.com/{GitHubRepo}/releases/latest");
                 }));
             }

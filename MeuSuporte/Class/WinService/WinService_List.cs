@@ -17,7 +17,9 @@
         {
             "InstallService", // Serviço de Instalação da Microsoft Store
             "wuauserv",  // Serviço de Windows Update
-            "WSearch"        // Se não usa a pesquisa do Windows com frequência, pode desativar para reduzir o uso do disco.
+            "WSearch",        // Se não usa a pesquisa do Windows com frequência, pode desativar para reduzir o uso do disco.
+            "WaaSMedicSvc",   // Permite a correção e a proteção dos componentes do Windows Update.
+            "UsoSvc"
 
         };
 
