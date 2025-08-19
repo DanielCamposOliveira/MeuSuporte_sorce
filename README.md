@@ -24,7 +24,7 @@
 - [x] Limpar Prefetch
 - [x] Backup do BootBCD
 - [x] Criar Ponto de Restauração
-- [ ] Remover Bloatware
+- [x] Remover Bloatware
 - [x] Salva Log dos processos executados 
 
 ### Requisitos
