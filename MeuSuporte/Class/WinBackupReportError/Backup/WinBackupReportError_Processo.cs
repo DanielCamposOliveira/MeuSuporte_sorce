@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
@@ -36,7 +37,8 @@ namespace MeuSuporte
                 return;
             }
 
-            string FullDestinationPath = DirectoryManange.GetDirectory(NameFolder) +"\\"+ NameFile + ".zip";
+           // string FullDestinationPath = DirectoryManange.GetDirectory(NameFolder) +"\\"+ NameFile + " - " + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".zip";
+            string FullDestinationPath = DirectoryManange.GetDirectory(NameFolder) +"\\"+ NameFile + " - " + DateTime.Now.ToString("yyyy-MM-dd_HH.mmssff") + ".zip";
 
             // Compacta todos os arquivos do diretorio do relatorio
             await BackupReportError_Zip.Zip(Path, FullDestinationPath, TypeReport);

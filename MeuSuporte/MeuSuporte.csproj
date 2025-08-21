@@ -168,6 +168,8 @@
     <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Mananger.cs" />
     <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Processo.cs" />
     <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Zip.cs" />
+    <Compile Include="Class\WinBackupReportError\Delete\WinDeleteReportError_Mananger.cs" />
+    <Compile Include="Class\WinBackupReportError\Delete\WinDeleteReportError_Recycle.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_CheckInstallation.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_Format.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_List.cs" />
@@ -321,6 +323,9 @@
     <None Include="Resources\abort_White.png" />
     <None Include="Resources\BackupReportError_Black.png" />
     <None Include="Resources\BackupReportError_White.png" />
+    <None Include="Resources\CleanReportError_Black.png" />
+    <None Include="Resources\DeleteReportError_White.png" />
+    <None Include="Resources\CleanReportError_White.png" />
     <Content Include="windows-2.ico" />
     <Content Include="wine-winecfg.ico" />
   </ItemGroup>

@@ -83,10 +83,12 @@
             this.radioButtonConnectionRDP_Desativar = new System.Windows.Forms.RadioButton();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.checkBox_Bloatware = new System.Windows.Forms.CheckBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.checkBox_BackupReportError = new System.Windows.Forms.CheckBox();
+            this.checkBox_CleanReportError = new System.Windows.Forms.CheckBox();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.panelBoton.SuspendLayout();
             this.panelLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoDescricao)).BeginInit();
@@ -111,6 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Log
@@ -125,7 +128,7 @@
             this.txt_Log.Multiline = true;
             this.txt_Log.Name = "txt_Log";
             this.txt_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_Log.Size = new System.Drawing.Size(651, 462);
+            this.txt_Log.Size = new System.Drawing.Size(651, 496);
             this.txt_Log.TabIndex = 55;
             this.txt_Log.WordWrap = false;
             // 
@@ -312,7 +315,7 @@
             this.panelBoton.Controls.Add(this.Btn_Canselar);
             this.panelBoton.Controls.Add(this.checkBoxAll);
             this.panelBoton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBoton.Location = new System.Drawing.Point(0, 670);
+            this.panelBoton.Location = new System.Drawing.Point(0, 678);
             this.panelBoton.Name = "panelBoton";
             this.panelBoton.Size = new System.Drawing.Size(988, 37);
             this.panelBoton.TabIndex = 52;
@@ -364,7 +367,7 @@
             // 
             this.labelInfoDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInfoDescricao.ForeColor = System.Drawing.Color.Black;
-            this.labelInfoDescricao.Location = new System.Drawing.Point(366, 559);
+            this.labelInfoDescricao.Location = new System.Drawing.Point(366, 590);
             this.labelInfoDescricao.Name = "labelInfoDescricao";
             this.labelInfoDescricao.Size = new System.Drawing.Size(610, 52);
             this.labelInfoDescricao.TabIndex = 58;
@@ -389,7 +392,7 @@
             this.panelLog.Margin = new System.Windows.Forms.Padding(2);
             this.panelLog.Name = "panelLog";
             this.panelLog.Padding = new System.Windows.Forms.Padding(1);
-            this.panelLog.Size = new System.Drawing.Size(653, 464);
+            this.panelLog.Size = new System.Drawing.Size(653, 498);
             this.panelLog.TabIndex = 61;
             // 
             // Label_NameMachine
@@ -406,7 +409,7 @@
             // pictureBoxInfoDescricao
             // 
             this.pictureBoxInfoDescricao.Image = global::MeuSuporte.Properties.Resources.Info_Black;
-            this.pictureBoxInfoDescricao.Location = new System.Drawing.Point(326, 559);
+            this.pictureBoxInfoDescricao.Location = new System.Drawing.Point(326, 590);
             this.pictureBoxInfoDescricao.Name = "pictureBoxInfoDescricao";
             this.pictureBoxInfoDescricao.Size = new System.Drawing.Size(38, 35);
             this.pictureBoxInfoDescricao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -703,16 +706,6 @@
             this.pictureBox15.TabIndex = 76;
             this.pictureBox15.TabStop = false;
             // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::MeuSuporte.Properties.Resources.Store_Black;
-            this.pictureBox16.Location = new System.Drawing.Point(10, 535);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox16.TabIndex = 78;
-            this.pictureBox16.TabStop = false;
-            // 
             // checkBox_Bloatware
             // 
             this.checkBox_Bloatware.AutoSize = true;
@@ -725,16 +718,6 @@
             this.checkBox_Bloatware.Text = "Remover Bloatware";
             this.checkBox_Bloatware.UseVisualStyleBackColor = true;
             // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Image = global::MeuSuporte.Properties.Resources.BackupReportError_Black;
-            this.pictureBox17.Location = new System.Drawing.Point(10, 565);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox17.TabIndex = 80;
-            this.pictureBox17.TabStop = false;
-            // 
             // checkBox_BackupReportError
             // 
             this.checkBox_BackupReportError.AutoSize = true;
@@ -746,12 +729,55 @@
             this.checkBox_BackupReportError.Text = "Backup Relatório de Erro Windows";
             this.checkBox_BackupReportError.UseVisualStyleBackColor = true;
             // 
+            // checkBox_CleanReportError
+            // 
+            this.checkBox_CleanReportError.AutoSize = true;
+            this.checkBox_CleanReportError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_CleanReportError.Location = new System.Drawing.Point(43, 595);
+            this.checkBox_CleanReportError.Name = "checkBox_CleanReportError";
+            this.checkBox_CleanReportError.Size = new System.Drawing.Size(268, 24);
+            this.checkBox_CleanReportError.TabIndex = 81;
+            this.checkBox_CleanReportError.Text = "Limpar Relatório de Erro Windows";
+            this.checkBox_CleanReportError.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::MeuSuporte.Properties.Resources.Store_Black;
+            this.pictureBox16.Location = new System.Drawing.Point(10, 535);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 78;
+            this.pictureBox16.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Image = global::MeuSuporte.Properties.Resources.BackupReportError_Black;
+            this.pictureBox17.Location = new System.Drawing.Point(10, 565);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 80;
+            this.pictureBox17.TabStop = false;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Image = global::MeuSuporte.Properties.Resources.CleanReportError_Black;
+            this.pictureBox18.Location = new System.Drawing.Point(10, 595);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox18.TabIndex = 82;
+            this.pictureBox18.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(988, 707);
+            this.ClientSize = new System.Drawing.Size(988, 715);
+            this.Controls.Add(this.pictureBox18);
+            this.Controls.Add(this.checkBox_CleanReportError);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.checkBox_BackupReportError);
             this.Controls.Add(this.pictureBox16);
@@ -840,6 +866,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -900,10 +927,12 @@
         private System.Windows.Forms.RadioButton radioButtonConnectionRDP_Desativar;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.CheckBox checkBox_Bloatware;
-        private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.CheckBox checkBox_BackupReportError;
+        private System.Windows.Forms.CheckBox checkBox_CleanReportError;
+        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pictureBox18;
     }
 }
 

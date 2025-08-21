@@ -36,7 +36,7 @@ namespace MeuSuporte
             WinApp_Mananger.Initialize(checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, 
                 checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, 
                 checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, 
-                checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError,
+                checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
                 radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonradioButtonConnectionRDP_Ativar
                 );
         }
@@ -119,7 +119,7 @@ namespace MeuSuporte
         }
 
         
-        // Ajusta Layout das CheckBox e 
+        // Ajusta Layout das CheckBox 
         private Dictionary<Control, Point> posicoesOriginais = new Dictionary<Control, Point>();
         private bool posicoesSalvas = false;
         private int panelPosition = 18;
@@ -154,13 +154,13 @@ namespace MeuSuporte
              checkBox_CleanProcess,  checkBox_CleanTemp, checkBox_CleanWindowsUpdate,
              checkBox_CleanGoogle,  checkBox_BackupRegistrysRun, checkBox_CleanPageFile,
              checkBox_DriversBackup,  checkBox_DeleteRegistry,  checkBox_Usuario,
-             checkBox_CleanPrefetch,  checkBox_BackupBCD,  checkBox_RestorePoint,  checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError
+             checkBox_CleanPrefetch,  checkBox_BackupBCD,  checkBox_RestorePoint,  checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError
             };
 
             PictureBox[] pictureBoxes = new PictureBox[] {
               pictureBox0, pictureBox1, pictureBox2, pictureBox3, pictureBox4,
               pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9,
-              pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17
+              pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18
             };
 
             for (int i = 0; i < checkBoxes.Length; i++)
@@ -379,7 +379,7 @@ namespace MeuSuporte
                   {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC}, {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},  {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},  {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},  {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
                   {checkBox_CleanWindowsUpdate, WinApp_Mananger.Instance.CleanWindowsUpdate},  {checkBox_CleanGoogle, WinApp_Mananger.Instance.CleanGoogle}, {checkBox_BackupRegistrysRun, WinApp_Mananger.Instance.BackupRegistrysRun}, {checkBox_CleanPageFile, WinApp_Mananger.Instance.CleanPageFile},
                   {checkBox_DriversBackup, WinApp_Mananger.Instance.DriversBackup}, {checkBox_DeleteRegistry, WinApp_Mananger.Instance.DeleteRegistry}, {checkBox_Usuario, WinApp_Mananger.Instance.UsuarioSuporte},{checkBox_CleanPrefetch, WinApp_Mananger.Instance.CleanPrefetch},  {checkBox_BackupBCD, WinApp_Mananger.Instance.BackupBCD},
-                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPointNew}, {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP}, {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware }, {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError }
+                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPointNew}, {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP}, {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware }, {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError }, {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError }
                 };
 
             try

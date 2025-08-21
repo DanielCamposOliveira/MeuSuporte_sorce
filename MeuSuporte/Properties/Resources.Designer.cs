@@ -283,6 +283,26 @@ namespace MeuSuporte.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CleanReportError_Black {
+            get {
+                object obj = ResourceManager.GetObject("CleanReportError_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CleanReportError_White {
+            get {
+                object obj = ResourceManager.GetObject("CleanReportError_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CleanTask_Black {
             get {
                 object obj = ResourceManager.GetObject("CleanTask_Black", resourceCulture);

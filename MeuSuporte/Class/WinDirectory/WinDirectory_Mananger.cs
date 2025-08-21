@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.AccessControl;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace MeuSuporte
