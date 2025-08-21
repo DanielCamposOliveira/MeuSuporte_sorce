@@ -1,4 +1,6 @@
-﻿namespace MeuSuporte
+﻿using System.IO;
+
+namespace MeuSuporte
 {
     internal class WinGlobal_DirectoryMananger
     {
@@ -28,6 +30,12 @@
         public string GetDirectory(string NameFolder)
         {
             return CreateNameFolde.Folder(NameFolder); ;
+        }
+
+        // verifica se existe arquivos dentro do diretorio
+        public bool GetFileListing(string path)
+        {
+            return Directory.EnumerateFileSystemEntries(path).GetEnumerator().MoveNext() == true;
         }
     }
 }

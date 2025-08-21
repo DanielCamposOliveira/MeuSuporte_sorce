@@ -163,6 +163,26 @@ namespace MeuSuporte.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BackupReportError_Black {
+            get {
+                object obj = ResourceManager.GetObject("BackupReportError_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackupReportError_White {
+            get {
+                object obj = ResourceManager.GetObject("BackupReportError_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CleanDirectorry_Black {
             get {
                 object obj = ResourceManager.GetObject("CleanDirectorry_Black", resourceCulture);

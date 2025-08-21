@@ -29,6 +29,7 @@ namespace MeuSuporte
         private CheckBox checkBox_RestorePoint;
         private CheckBox checkBox_ConnectionRDP;
         private CheckBox checkBox_Bloatware;
+        private CheckBox checkBox_BackupReportError;
 
         private RadioButton radioButtonUserUAC_Ativar;
         private RadioButton radioButtonCleanPageFile_Ativar;
@@ -41,7 +42,7 @@ namespace MeuSuporte
             CheckBox _checkBox_CleanProcess, CheckBox _checkBox_CleanTemp, CheckBox _checkBox_CleanWindowsUpdate, CheckBox _checkBox_CleanGoogle, 
             CheckBox _checkBox_BackupRegistrysRun, CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry, 
             CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, CheckBox _checkBox_RestorePoint, 
-            CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,
+            CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, CheckBox _checkBox_BackupReportError, RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,
             RadioButton _radioButtonradioButtonConnectionRDP_Ativar
             )
         {
@@ -66,6 +67,7 @@ namespace MeuSuporte
                     checkBox_RestorePoint = _checkBox_RestorePoint,
                     checkBox_ConnectionRDP = _checkBox_ConnectionRDP,
                     checkBox_Bloatware = _checkBox_Bloatware,
+                    checkBox_BackupReportError = _checkBox_BackupReportError,
                     radioButtonUserUAC_Ativar = _radioButtonUserUAC_Ativar,
                     radioButtonCleanPageFile_Ativar = _radioButtonCleanPageFile_Ativar,
                     radioButtonradioButtonConnectionRDP_Ativar = _radioButtonradioButtonConnectionRDP_Ativar
@@ -482,6 +484,20 @@ namespace MeuSuporte
 
         #endregion
 
+        #region Backup Relatorio de Erros do Windows
+        public async Task BackupReportError()
+        {
+            WinBackupReportError_Mananger BackupReportError_Mananger = new WinBackupReportError_Mananger();
 
+            // Atualiza a UI antes da execução assíncrona
+            await WinGlobal_UIService.Instance.UpdateIfonUI("Backup Report Error", checkBox_BackupReportError, Resources.BackupReportError_Black, "Backup Relatorios de Error:\n\rRealiza Backup dos Realatorios de Erros do Windows.");
+            await Task.Delay(800);
+
+            await Task.Run(() => BackupReportError_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Delay(1000);
+
+            checkBox_BackupReportError.Font = new Font(checkBox_BackupReportError.Font.FontFamily, checkBox_BackupReportError.Font.Size, FontStyle.Strikeout);
+        }
+        #endregion
     }
 }

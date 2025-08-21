@@ -87,6 +87,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Pipelines, Version=9.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.9.0.3\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -164,6 +165,9 @@
     <Compile Include="Class\WinBackupBCD\WinBackupBCD_Mananger.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Mananger.cs" />
     <Compile Include="Class\WinBackupBCD\WinBackupBCD_ProcessController.cs" />
+    <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Mananger.cs" />
+    <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Processo.cs" />
+    <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Zip.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_CheckInstallation.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_Format.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_List.cs" />
@@ -315,6 +319,8 @@
     <None Include="Resources\vscode_White.png" />
     <None Include="Resources\abort_Black.png" />
     <None Include="Resources\abort_White.png" />
+    <None Include="Resources\BackupReportError_Black.png" />
+    <None Include="Resources\BackupReportError_White.png" />
     <Content Include="windows-2.ico" />
     <Content Include="wine-winecfg.ico" />
   </ItemGroup>
