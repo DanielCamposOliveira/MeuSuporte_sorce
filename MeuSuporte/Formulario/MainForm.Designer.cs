@@ -134,7 +134,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(336, 65);
+            this.progressBar1.Location = new System.Drawing.Point(316, 65);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(488, 11);
             this.progressBar1.TabIndex = 0;
@@ -289,7 +289,7 @@
             this.Btn_Canselar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Canselar.Enabled = false;
             this.Btn_Canselar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Canselar.Location = new System.Drawing.Point(694, 2);
+            this.Btn_Canselar.Location = new System.Drawing.Point(672, 2);
             this.Btn_Canselar.Name = "Btn_Canselar";
             this.Btn_Canselar.Size = new System.Drawing.Size(138, 31);
             this.Btn_Canselar.TabIndex = 16;
@@ -317,14 +317,14 @@
             this.panelBoton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBoton.Location = new System.Drawing.Point(0, 678);
             this.panelBoton.Name = "panelBoton";
-            this.panelBoton.Size = new System.Drawing.Size(988, 37);
+            this.panelBoton.Size = new System.Drawing.Size(966, 37);
             this.panelBoton.TabIndex = 52;
             // 
             // btn_IniciarProcesso
             // 
             this.btn_IniciarProcesso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_IniciarProcesso.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_IniciarProcesso.Location = new System.Drawing.Point(838, 2);
+            this.btn_IniciarProcesso.Location = new System.Drawing.Point(816, 2);
             this.btn_IniciarProcesso.Name = "btn_IniciarProcesso";
             this.btn_IniciarProcesso.Size = new System.Drawing.Size(138, 31);
             this.btn_IniciarProcesso.TabIndex = 17;
@@ -348,7 +348,7 @@
             // panelDivisoria
             // 
             this.panelDivisoria.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelDivisoria.Location = new System.Drawing.Point(321, 55);
+            this.panelDivisoria.Location = new System.Drawing.Point(301, 55);
             this.panelDivisoria.Name = "panelDivisoria";
             this.panelDivisoria.Size = new System.Drawing.Size(1, 570);
             this.panelDivisoria.TabIndex = 53;
@@ -367,7 +367,7 @@
             // 
             this.labelInfoDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInfoDescricao.ForeColor = System.Drawing.Color.Black;
-            this.labelInfoDescricao.Location = new System.Drawing.Point(366, 590);
+            this.labelInfoDescricao.Location = new System.Drawing.Point(346, 590);
             this.labelInfoDescricao.Name = "labelInfoDescricao";
             this.labelInfoDescricao.Size = new System.Drawing.Size(610, 52);
             this.labelInfoDescricao.TabIndex = 58;
@@ -378,7 +378,7 @@
             this.labelInfoTitulo.AutoSize = true;
             this.labelInfoTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInfoTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelInfoTitulo.Location = new System.Drawing.Point(332, 37);
+            this.labelInfoTitulo.Location = new System.Drawing.Point(312, 37);
             this.labelInfoTitulo.Name = "labelInfoTitulo";
             this.labelInfoTitulo.Size = new System.Drawing.Size(81, 20);
             this.labelInfoTitulo.TabIndex = 59;
@@ -388,7 +388,7 @@
             // 
             this.panelLog.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panelLog.Controls.Add(this.txt_Log);
-            this.panelLog.Location = new System.Drawing.Point(328, 87);
+            this.panelLog.Location = new System.Drawing.Point(308, 87);
             this.panelLog.Margin = new System.Windows.Forms.Padding(2);
             this.panelLog.Name = "panelLog";
             this.panelLog.Padding = new System.Windows.Forms.Padding(1);
@@ -399,7 +399,7 @@
             // 
             this.Label_NameMachine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_NameMachine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Label_NameMachine.Location = new System.Drawing.Point(700, 9);
+            this.Label_NameMachine.Location = new System.Drawing.Point(680, 9);
             this.Label_NameMachine.Name = "Label_NameMachine";
             this.Label_NameMachine.Size = new System.Drawing.Size(281, 48);
             this.Label_NameMachine.TabIndex = 63;
@@ -409,7 +409,7 @@
             // pictureBoxInfoDescricao
             // 
             this.pictureBoxInfoDescricao.Image = global::MeuSuporte.Properties.Resources.Info_Black;
-            this.pictureBoxInfoDescricao.Location = new System.Drawing.Point(326, 590);
+            this.pictureBoxInfoDescricao.Location = new System.Drawing.Point(306, 590);
             this.pictureBoxInfoDescricao.Name = "pictureBoxInfoDescricao";
             this.pictureBoxInfoDescricao.Size = new System.Drawing.Size(38, 35);
             this.pictureBoxInfoDescricao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -609,7 +609,7 @@
             // 
             this.panel_UserUAC.Controls.Add(this.radioButtonUserUAC_Ativar);
             this.panel_UserUAC.Controls.Add(this.radioButtonUserUAC_Desativar);
-            this.panel_UserUAC.Location = new System.Drawing.Point(1051, 287);
+            this.panel_UserUAC.Location = new System.Drawing.Point(996, 295);
             this.panel_UserUAC.Name = "panel_UserUAC";
             this.panel_UserUAC.Size = new System.Drawing.Size(147, 27);
             this.panel_UserUAC.TabIndex = 68;
@@ -620,7 +620,7 @@
             this.panel_CleanPageFile.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel_CleanPageFile.Controls.Add(this.radioButtonCleanPageFile_Ativar);
             this.panel_CleanPageFile.Controls.Add(this.radioButtonCleanPageFile_Desativar);
-            this.panel_CleanPageFile.Location = new System.Drawing.Point(1051, 257);
+            this.panel_CleanPageFile.Location = new System.Drawing.Point(996, 265);
             this.panel_CleanPageFile.Margin = new System.Windows.Forms.Padding(8);
             this.panel_CleanPageFile.Name = "panel_CleanPageFile";
             this.panel_CleanPageFile.Size = new System.Drawing.Size(147, 24);
@@ -655,7 +655,7 @@
             this.panel_ConnectionRDP.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel_ConnectionRDP.Controls.Add(this.radioButtonradioButtonConnectionRDP_Ativar);
             this.panel_ConnectionRDP.Controls.Add(this.radioButtonConnectionRDP_Desativar);
-            this.panel_ConnectionRDP.Location = new System.Drawing.Point(1051, 227);
+            this.panel_ConnectionRDP.Location = new System.Drawing.Point(996, 235);
             this.panel_ConnectionRDP.Margin = new System.Windows.Forms.Padding(8);
             this.panel_ConnectionRDP.Name = "panel_ConnectionRDP";
             this.panel_ConnectionRDP.Size = new System.Drawing.Size(147, 24);
@@ -724,9 +724,9 @@
             this.checkBox_BackupReportError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_BackupReportError.Location = new System.Drawing.Point(43, 565);
             this.checkBox_BackupReportError.Name = "checkBox_BackupReportError";
-            this.checkBox_BackupReportError.Size = new System.Drawing.Size(274, 24);
+            this.checkBox_BackupReportError.Size = new System.Drawing.Size(214, 24);
             this.checkBox_BackupReportError.TabIndex = 79;
-            this.checkBox_BackupReportError.Text = "Backup Relatório de Erro Windows";
+            this.checkBox_BackupReportError.Text = "Backup Relatórios de Erro";
             this.checkBox_BackupReportError.UseVisualStyleBackColor = true;
             // 
             // checkBox_CleanReportError
@@ -735,9 +735,9 @@
             this.checkBox_CleanReportError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_CleanReportError.Location = new System.Drawing.Point(43, 595);
             this.checkBox_CleanReportError.Name = "checkBox_CleanReportError";
-            this.checkBox_CleanReportError.Size = new System.Drawing.Size(268, 24);
+            this.checkBox_CleanReportError.Size = new System.Drawing.Size(208, 24);
             this.checkBox_CleanReportError.TabIndex = 81;
-            this.checkBox_CleanReportError.Text = "Limpar Relatório de Erro Windows";
+            this.checkBox_CleanReportError.Text = "Limpar Relatórios de Erro";
             this.checkBox_CleanReportError.UseVisualStyleBackColor = true;
             // 
             // pictureBox16
@@ -775,7 +775,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(988, 715);
+            this.ClientSize = new System.Drawing.Size(966, 715);
             this.Controls.Add(this.pictureBox18);
             this.Controls.Add(this.checkBox_CleanReportError);
             this.Controls.Add(this.pictureBox17);
