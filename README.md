@@ -3,8 +3,7 @@
 #### O Assistente de Manutenção Preventiva é uma ferramenta desenvolvida para auxiliar na manutenção e otimização do Windows, permitindo realizar diversas tarefas automáticas, como limpeza de arquivos temporários, desativação de processos e backup de configurações importantes.
 
 #
-![Screenshot_1](https://github.com/user-attachments/assets/2265d637-9392-4d85-a002-81dd764fe12a)
-
+![Screenshot_3](https://github.com/user-attachments/assets/03671dab-3b8e-41cb-9ea4-0839955eddbe)
 
 #
 
@@ -24,8 +23,10 @@
 - [x] Limpar Prefetch
 - [x] Backup do BootBCD
 - [x] Criar Ponto de Restauração
-- [x] Remover Bloatware
-- [x] Salva Log dos processos executados 
+- [x] ~~Remover Bloatware~~
+- [x] Salva Log dos processos executados
+- [x] Backup Relatorio de Erros do Windows
+- [X] Limpar Relatorio de Erros do Windows
 
 ### Requisitos
 - Windows 10 ou superior
@@ -321,4 +322,30 @@ Softwares pré-instalados que nem sempre são úteis para o usuário, como algun
 • XboxSpeechToTextOverlay #Xbox Game Speech Window  
 • XboxIdentityProvider #Xbox Identity Provider
 ```
+</details>
+
+<details>
+ <summary>🔽 Backup Relatorio de Erros do Windows  </summary>
+ 
+ ``` bash
+#   Cria um arquivo compactado no formato .Zip de todos os Relatório Erros do Sistema e dos Aplicativos
+#   Descompacte os arquivos nos diretórios abaixo
+#      C:\ProgramData\Microsoft\Windows\WER\ReportQueue\
+#      C:\ProgramData\Microsoft\Windows\WER\ReportArchive\
+#   Para visualizar basta ir no Painel de controle do windows
+#   Painel de Controle\Sistema e Segurança\Segurança e Manutenção\Relatórios de Problemas
+ ```
+</details>
+
+<details>
+ <summary>🔽 Limpar Relatorio de Erros do Windows  </summary>
+ 
+ ``` bash
+#   Apagar todos os arquivo de Relatório Erros do Sistema e dos Aplicativos
+#   Local dos Relatórios
+#      C:\ProgramData\Microsoft\Windows\WER\ReportQueue\
+#      C:\ProgramData\Microsoft\Windows\WER\ReportArchive\
+#   Pode visualizar no Painel de controle do windows
+#   Painel de Controle\Sistema e Segurança\Segurança e Manutenção\Relatórios de Problemas
+ ```
 </details>
