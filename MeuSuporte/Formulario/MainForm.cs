@@ -311,12 +311,10 @@ namespace MeuSuporte
         // adiciona o nome do usuario na checkBox_Usuario        
         async Task UserNameCheckBox()
         {
-            Credential_Private Credential = new Credential_Private();
-            //Credential_Public Credential = new Credential_Public();
-
-            UserName = Credential.User;
-            WinGlobal_UIService.Instance.UserName = Credential.User;
-            checkBox_Usuario.Text = "Usuario " + UserName;
+            WinUser_CurrentUser CurrentUser = new WinUser_CurrentUser();
+            
+            WinGlobal_UIService.Instance.UserName = CurrentUser.User;
+            checkBox_Usuario.Text = "Usuario " + CurrentUser.User;
         }
 
         #endregion

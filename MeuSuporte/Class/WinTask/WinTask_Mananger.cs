@@ -23,7 +23,7 @@ namespace MeuSuporte
             {
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-                await WinTask_Connection.Connect2();
+                await WinTask_Connection.Connect();
 
                 // verifica se existe tarefas
                 if (WinTask_Connection.tasks.Count == 0)
@@ -39,8 +39,8 @@ namespace MeuSuporte
 
                 foreach (IRegisteredTask task in WinTask_Connection.tasks) // Verifica a quantidade de tarefas no diretório
                 {
-                    // await WinTask_Bin.Delete(WinTask_Connection.rootFolder, task, ValueUniProgressBar); // apaga a tarefa
-                    await WinTask_State.State(WinTask_Connection.rootFolder, task, ValueUniProgressBar); // apaga a tarefa
+                     await WinTask_Bin.Delete(WinTask_Connection.rootFolder, task, ValueUniProgressBar); // apaga a tarefa
+                   // await WinTask_State.State(WinTask_Connection.rootFolder, task, ValueUniProgressBar); // desabilita a tarefa para uso futuro
                 }
                 WinGlobal_UIService.Instance.Sucesso++;
             }

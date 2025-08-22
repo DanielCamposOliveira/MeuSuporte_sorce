@@ -222,6 +222,7 @@
     <Compile Include="Class\WinUser\WinUser_Account.cs" />
     <Compile Include="Class\WinUser\WinUser_AccountCreate.cs" />
     <Compile Include="Class\WinUser\WinUser_AccountUpdate.cs" />
+    <Compile Include="Class\WinUser\WinUser_CurrentUser.cs" />
     <Compile Include="Class\WinUser\WinUser_GroupAdministrators.cs" />
     <Compile Include="Class\WinUser\WinUser_GroupRemote.cs" />
     <Compile Include="Class\WinUser\WinUser_Mananger.cs" />

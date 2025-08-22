@@ -18,6 +18,7 @@ namespace MeuSuporte
             tasks = rootFolder.GetTasks(0);
         }
 
+        // sera usado para desativar tarefas no futuro
         public async Task Connect2()
         {
             taskService = new TaskScheduler.TaskScheduler();// cria uma instância
