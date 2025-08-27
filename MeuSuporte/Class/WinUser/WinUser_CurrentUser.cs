@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace MeuSuporte
+﻿namespace MeuSuporte
 {
     internal class WinUser_CurrentUser
     {

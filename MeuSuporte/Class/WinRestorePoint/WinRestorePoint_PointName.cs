@@ -4,7 +4,7 @@ namespace MeuSuporte
 {
     internal class WinRestorePoint_PointName
     {
-        public string GetName(string Etapa)
+        public string GetName()
         {
             // Pegando data e hora atual
             DateTime _DateTime = DateTime.Now;
@@ -15,7 +15,7 @@ namespace MeuSuporte
             string Hora = _DateTime.Hour.ToString("D2");
             string Minutos = _DateTime.Minute.ToString("D2");
 
-            return $"MeuSuporte {Etapa} {Dia}-{Mes}-{Ano}_{Hora}:{Minutos}";
+            return $"MeuSuporte {Dia}-{Mes}-{Ano}_{Hora}:{Minutos}";
         }
     }
 }

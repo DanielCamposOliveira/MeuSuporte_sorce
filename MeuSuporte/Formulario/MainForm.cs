@@ -374,10 +374,10 @@ namespace MeuSuporte
             // Dicionário associando CheckBox com métodos
             Dictionary<CheckBox, Func<Task>> checkBoxActions = new Dictionary<CheckBox, Func<Task>>
                 {
-                  {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC}, {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},  {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},  {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},  {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
+                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPoint}, {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC}, {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},  {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},  {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},  {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
                   {checkBox_CleanWindowsUpdate, WinApp_Mananger.Instance.CleanWindowsUpdate},  {checkBox_CleanGoogle, WinApp_Mananger.Instance.CleanGoogle}, {checkBox_BackupRegistrysRun, WinApp_Mananger.Instance.BackupRegistrysRun}, {checkBox_CleanPageFile, WinApp_Mananger.Instance.CleanPageFile},
                   {checkBox_DriversBackup, WinApp_Mananger.Instance.DriversBackup}, {checkBox_DeleteRegistry, WinApp_Mananger.Instance.DeleteRegistry}, {checkBox_Usuario, WinApp_Mananger.Instance.UsuarioSuporte},{checkBox_CleanPrefetch, WinApp_Mananger.Instance.CleanPrefetch},  {checkBox_BackupBCD, WinApp_Mananger.Instance.BackupBCD},
-                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPointNew}, {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP}, {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware }, {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError }, {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError }
+                  {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP}, {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware }, {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError }, {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError }
                 };
 
             try
@@ -393,10 +393,10 @@ namespace MeuSuporte
                 WinGlobal_UIService.Instance.ValueUniProgressBar = 100 / checkBoxActions.Keys.Count(cb => cb.Checked);
 
                 // cria um ponto de restauração antes de todas as alterações caso essa opção esteja marcada 
-                if (checkBox_RestorePoint.Checked == true)
-                {
-                    await WinApp_Mananger.Instance.CreateSystemPointOld();
-                }
+                //if (checkBox_RestorePoint.Checked == true)
+                //{
+                //    await WinApp_Mananger.Instance.CreateSystemPoint();
+                //}
 
                 //Lista uma Variavel com todo os processo que sera executado
                 foreach (var item in checkBoxActions)

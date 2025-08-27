@@ -7,51 +7,74 @@ namespace MeuSuporte
 {
     internal class WinRestorePoint_Create
     {
-        public async Task CreatePoint(string description, int ValueUniProgressBar)
+        public async Task<bool> CreatePoint(string description, int ValueUniProgressBar)
         {
-            await Task.Run(async () =>
+            try
             {
-                try
+                WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
+
+                ManagementScope oScope = new ManagementScope("\\\\localhost\\root\\default");
+                ManagementPath oPath = new ManagementPath("SystemRestore");
+                ObjectGetOptions oGetOp = new ObjectGetOptions();
+                ManagementClass oProcess = new ManagementClass(oScope, oPath, oGetOp);
+
+                ManagementBaseObject oInParams = oProcess.GetMethodParameters("CreateRestorePoint");
+                oInParams["Description"] = description;
+                oInParams["RestorePointType"] = 0; 
+                oInParams["EventType"] = 100;
+
+                //Define o tipo de ponto de restauração. Os valores possíveis são:
+                // Microsoft recomenda 0 (Undefined) ou 10 (Application Install).
+                // 0 – Um ponto de restauração indefinido.
+                // 10 – Instalação do sistema operacional.
+                // 12 – Instalação de aplicativo (padrão para criar manualmente).
+                // 13 – Modificação do sistema.
+
+                ManagementBaseObject oOutParams = oProcess.InvokeMethod("CreateRestorePoint", oInParams, null);
+                int returnValue = Convert.ToInt32(oOutParams["ReturnValue"]);
+
+                switch (returnValue)
                 {
-                    WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
-
-                    ManagementScope oScope = new ManagementScope("\\\\localhost\\root\\default");
-                    ManagementPath oPath = new ManagementPath("SystemRestore");
-                    ObjectGetOptions oGetOp = new ObjectGetOptions();
-                    ManagementClass oProcess = new ManagementClass(oScope, oPath, oGetOp);
-
-                    ManagementBaseObject oInParams = oProcess.GetMethodParameters("CreateRestorePoint");
-                    oInParams["Description"] = description;
-                    oInParams["RestorePointType"] = 12; // 12 - funcional
-                    oInParams["EventType"] = 100;
-
-                    //Define o tipo de ponto de restauração. Os valores possíveis são:
-                    // 0 – Um ponto de restauração indefinido.
-                    // 10 – Instalação do sistema operacional.
-                    // 12 – Instalação de aplicativo (padrão para criar manualmente).
-                    // 13 – Modificação do sistema.
-
-                    ManagementBaseObject oOutParams = oProcess.InvokeMethod("CreateRestorePoint", oInParams, null);
-
-                    int returnValue = Convert.ToInt32(oOutParams["ReturnValue"]);
-                    if (returnValue != 0)
-                    {
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync("Erro ao criar ponto de restauração. Código: " + returnValue, true);
-                        WinGlobal_UIService.Instance.Erro++;
-                    }
-                    else
-                    {
+                    case 0:
                         WinGlobal_UIService.Instance.Sucesso++;
                         WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                         await WinGlobal_UIService.Instance.Log_MensagemAsync($"Ponto de restauração [{description}] Criado com sucesso.", true);
-                    }
-                }     
-                catch (Exception ex)
-                {
-                    WinGlobal_UIService.Instance.Erro++;
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao criar ponto de restauração Código:" + ex.Message, true);
+                        return true;
+                        break;
+
+                    case 5:
+                        await WinGlobal_UIService.Instance.Log_MensagemAsync("A Proteção do Sistema está desativada no disco C:. Ative antes de criar pontos.", true);
+                        WinGlobal_UIService.Instance.Erro++;
+                        return false;
+                        break;
+
+                    case 13:
+                        await WinGlobal_UIService.Instance.Log_MensagemAsync("Já existe um ponto recente (menos de 24h).", true);
+                        WinGlobal_UIService.Instance.Erro++;
+                        return false;
+                        break;
+
+                    default:
+                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao criar ponto de restauração. Código retornado: {returnValue}", true);
+                        WinGlobal_UIService.Instance.Erro++;
+                        return false;
+                        break;
                 }
-            });
+
+                
+                // 0 = Sucesso
+                // 1 = Falha genérica
+                // 2 = Serviço não está rodando
+                // 3 = Espaço insuficiente
+                // 5 = A proteção do sistema está desativada
+                // 13 = Já existe um ponto recente (limite de tempo)
+            }
+            catch (Exception ex)
+            {
+                WinGlobal_UIService.Instance.Erro++;
+                //await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao criar ponto de restauração Código:" + ex.Message, true);
+                return false;
+            }     
         }
     }
 }

@@ -196,6 +196,7 @@
     <Compile Include="Class\WinRegistry\Backup\WinRegistryBackup_Key.cs" />
     <Compile Include="Class\WinRegistry\Backup\WinRegistryBackup_RegistryFile.cs" />
     <Compile Include="Class\WinRegistry\Backup\WinRegistryBackup_ProcessSubkey.cs" />
+    <Compile Include="Class\WinRegistry\Delete\WinRegistryBin_List.cs" />
     <Compile Include="Class\WinRegistry\Delete\WinRegistryBin_MACHINE.cs" />
     <Compile Include="Class\WinRegistry\Delete\WinRegistryBin_User.cs" />
     <Compile Include="Class\WinRegistry\Delete\WinRegistryBin_WOW6432Node.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Firewall.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Registry.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Service.cs" />
+    <Compile Include="Class\WinRestorePoint\WinRestorePoint_Mananger.cs" />
     <Compile Include="Class\WinService\WinService_List.cs" />
     <Compile Include="Class\WinTask\WinTask_State.cs" />
     <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />

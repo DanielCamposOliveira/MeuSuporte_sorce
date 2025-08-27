@@ -297,12 +297,13 @@ namespace MeuSuporte
         public async Task DeleteRegistry()
         {
             WinRegistryBin_Mananger _ClassCleanRegistry = new WinRegistryBin_Mananger();
+            WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
 
             // Atualiza a UI antes da execução assíncrona
             await WinGlobal_UIService.Instance.UpdateIfonUI("Delete Registry", checkBox_DeleteRegistry, Resources.CleanRegistry_Black, "Limpar Registro:\n\rRemove entradas inválidas do registro, ajudando na estabilidade do sistema.");
             await Task.Delay(800);
 
-            await Task.Run(() => _ClassCleanRegistry.DeleteRegistry(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => _ClassCleanRegistry.DeleteRegistry(RegistryBin_List.Registry), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             checkBox_DeleteRegistry.Font = new Font(checkBox_DeleteRegistry.Font.FontFamily, checkBox_DeleteRegistry.Font.Size, FontStyle.Strikeout);
@@ -369,55 +370,22 @@ namespace MeuSuporte
 
         #region Proteção de Propriedades do Sistema
 
-        public async Task CreateSystemPointOld()
+        public async Task CreateSystemPoint()
         {
+            WinRestorePoint_Mananger RestorePoint_Mananger = new WinRestorePoint_Mananger();
+
             await WinGlobal_UIService.Instance.UpdateIfonUI("Proteção do Sistema", checkBox_RestorePoint, Resources.restore_Black, checkBox_RestorePoint.Text + "Ponto de Restauração\n\rpermite reverter o sistema para um estado anterior, revertendo configurações, programas e arquivos do sistema");
             await Task.Delay(800);
 
-            await CreateSystemPoint("Old");
-            await Task.Delay(1000);
+            await RestorePoint_Mananger.Mananger();
 
-            checkBox_RestorePoint.Font = new Font(checkBox_DriversBackup.Font.FontFamily, checkBox_DriversBackup.Font.Size);
-        }
-
-        public async Task CreateSystemPointNew()
-        {
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Proteção do Sistema", checkBox_RestorePoint, Resources.restore_Black, checkBox_RestorePoint.Text + "Ponto de Restauração\n\rpermite reverter o sistema para um estado anterior, revertendo configurações, programas e arquivos do sistema");
-            await Task.Delay(800);
-
-            await CreateSystemPoint("New");
+            ///await CreateSystemPoint("New");
             await Task.Delay(1000);
 
             checkBox_RestorePoint.Font = new Font(checkBox_RestorePoint.Font.FontFamily, checkBox_RestorePoint.Font.Size, FontStyle.Strikeout);
         }
 
-        private async Task CreateSystemPoint(string State)
-        {
-            WinRestorePoint_IsSystemRestoreEnabled _IsSystemRestoreEnabled = new WinRestorePoint_IsSystemRestoreEnabled();
 
-            //1° verifica se a configuração esta ativa
-            if (!await _IsSystemRestoreEnabled.IsSystemRestoreEnabledAsync())
-            {
-                // ativa a configuração
-                WinRestorePoint_EnableProtection _Class_EnableProtection = new WinRestorePoint_EnableProtection();
-                await _Class_EnableProtection.EnableProtection(WinGlobal_UIService.Instance.ValueUniProgressBar / 3);
-                await Task.Delay(1000);
-            }
-
-            // Gera uma Descrição para o Ponto de Restauração
-            WinRestorePoint_PointName _PointName = new WinRestorePoint_PointName();
-            string NamePoint = _PointName.GetName(State);
-            await Task.Delay(200);
-
-            //2° Cria Ponto de Restauração
-            WinRestorePoint_Create _PointCreate = new WinRestorePoint_Create();
-            await Task.Run(() => _PointCreate.CreatePoint(NamePoint, WinGlobal_UIService.Instance.ValueUniProgressBar / 3), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
-            await Task.Delay(1000);
-
-            //3° Procura pelo Ponto de Restauração recém-criado
-            WinRestorePoint_PointSearch _PointSearch = new WinRestorePoint_PointSearch();
-            await Task.Run(() => _PointSearch.PointSearch(NamePoint, WinGlobal_UIService.Instance.ValueUniProgressBar / 3), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread                 
-        }
 
         #endregion
 
