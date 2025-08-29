@@ -179,7 +179,7 @@ namespace MeuSuporte
             await Task.Delay(800);
 
             string DiretorioPasta = @"C:\Users\" + Environment.UserName.ToString() + @"\AppData\Local\Temp";
-            await Task.Run(() => Directory_Mananger.Mananger(DiretorioPasta, "%Temp%", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Temp", DiretorioPasta, "%Temp%", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             // Atualiza a UI após a execução assíncrona
@@ -201,7 +201,7 @@ namespace MeuSuporte
             await Task.Delay(800);
 
             string DiretorioPasta = @"C:\Windows\SoftwareDistribution\Download";
-            await Task.Run(() => Directory_Mananger.Mananger(DiretorioPasta, "Windows Update", WinGlobal_UIService.Instance.ValueUniProgressBar / 2), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Windows", DiretorioPasta, "Windows Update", WinGlobal_UIService.Instance.ValueUniProgressBar / 2), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Run(() => Service_Mananger.Mananger(Service_List.WindowsUpdate, WinGlobal_UIService.Instance.ValueUniProgressBar / 2, true), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
@@ -227,7 +227,7 @@ namespace MeuSuporte
             await Task.Delay(1000);
 
             string DiretorioPasta = @"C:\Program Files (x86)\Google\Update";
-            await Task.Run(() => Directory_Mananger.Mananger(DiretorioPasta, "Google Update", WinGlobal_UIService.Instance.ValueUniProgressBar / 2), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Google", DiretorioPasta, "Google Update", WinGlobal_UIService.Instance.ValueUniProgressBar / 2), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             // Atualiza a UI após a execução assíncrona
@@ -341,7 +341,7 @@ namespace MeuSuporte
 
             // Executa a função assíncrona sem bloquear a UI
             string DiretorioPasta = @"C:\Windows\Prefetch";
-            await Task.Run(() => Directory_Mananger.Mananger(DiretorioPasta, "Prefetch", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Prefetch", DiretorioPasta, "Prefetch", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             // Atualiza a UI após a execução assíncrona    
@@ -409,7 +409,6 @@ namespace MeuSuporte
 
         #region Bloatware
 
-
         public async Task RenoveBloatware()
         {
             WinBloatware_Mananger RemoveBloatware = new WinBloatware_Mananger();
@@ -425,12 +424,8 @@ namespace MeuSuporte
 
         public async Task Bloatware_ExtractProgress(int valor)
         {
-
-
             int valorMaximo = (valor > 1) ? Convert.ToInt32(valor) : 100;
-
             float unidade = (float)WinGlobal_UIService.Instance.ValueUniProgressBar / (float)valorMaximo;
-
             WinGlobal_UIService.Instance.ProgressBarADD(await ValueUnitBloatware(unidade));
         }
 

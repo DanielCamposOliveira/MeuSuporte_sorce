@@ -1,8 +1,7 @@
-﻿using System.DirectoryServices;
-using System.Threading;
-using System;
-using System.Threading.Tasks;
+﻿using System;
+using System.DirectoryServices;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
@@ -44,9 +43,9 @@ namespace MeuSuporte
                             child.Invoke("SetPassword", new Object[] { PasswordUser });   // altera a senha do usuario
 
                             WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
-                            WinGlobal_UIService.Instance.Log_MensagemAsync($"Conta Local de Suporte Tecnico atualizado !", true);
-                            WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);
-                            WinGlobal_UIService.Instance.Log_MensagemAsync($"Senha: {PasswordUser}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Conta Atualizado com Sucesso", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Senha: {PasswordUser}", true);
                         }
                     }
                 }
@@ -54,7 +53,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro:  {ex.Message}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Ocorreu um Erro ao tentar Atualizar a senha do Usuario {NameUser}", true);
             }
         }
 

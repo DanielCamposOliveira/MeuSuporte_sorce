@@ -17,9 +17,9 @@ namespace MeuSuporte
 
                 Microsoft.Win32.RegistryKey PastaCurrentVersion = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager");
 
-                using (RegistryKey testSettings = PastaCurrentVersion.OpenSubKey("Memory Management", true))
+                using (RegistryKey RegistrySettings = PastaCurrentVersion.OpenSubKey("Memory Management", true))
                 {
-                    testSettings.SetValue("ClearPageFileAtShutdown", Convert.ToInt32(state), RegistryValueKind.DWord);
+                    RegistrySettings.SetValue("ClearPageFileAtShutdown", Convert.ToInt32(state), RegistryValueKind.DWord);
                 }
 
                 WinGlobal_UIService.Instance.Sucesso++;
@@ -30,7 +30,7 @@ namespace MeuSuporte
             catch (Exception e)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"PageFile.sys:  Erro ! {e.Message}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"PageFile.sys: Não foi possivel realizara a Alteração", true);
             }
         }
     }

@@ -22,14 +22,14 @@ namespace MeuSuporte
             if (!DirectoryManange.Check(Path))
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Ocorreu um erro ao tentar acessa o diretório {NameFolder}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Report Error: Ocorreu um erro ao tentar acessa o diretório {NameFolder}", true);
                 return;
             }
 
             // verifica se o diretorio dos relatorios esta vazio
             if (!DirectoryManange.GetFileListing(Path))
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Limpar Relatório de Erro Windows: Não existe {TypeReport} para Limpar", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Report Error: Não existe {TypeReport} para Limpar", true);
                 return;
             }
 
@@ -37,7 +37,7 @@ namespace MeuSuporte
             if (await WinDirectory_FileSecurity.SecurityAsync(_FileSecurity, _DirectorySecurity, Environment.UserName.ToString()) == false)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Erro ao fazer atribuição de Segurança nos Arquivos", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("Clean Report Error: Ocorreu um Erro ao tentar atribuir de Segurança nos Arquivos", true);
                 return;
             }
 

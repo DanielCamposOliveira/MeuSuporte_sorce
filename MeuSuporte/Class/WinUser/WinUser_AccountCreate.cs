@@ -1,6 +1,5 @@
-﻿using System.DirectoryServices;
-using System;
-using System.Threading;
+﻿using System;
+using System.DirectoryServices;
 using System.Threading.Tasks;
 
 namespace MeuSuporte
@@ -36,14 +35,14 @@ namespace MeuSuporte
 
                 WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.Sucesso++;
-                WinGlobal_UIService.Instance.Log_MensagemAsync($"Conta Local de Suporte Tecnico criado !", true);
-                WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);
-                WinGlobal_UIService.Instance.Log_MensagemAsync($"Senha: {PasswordUser}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Conta Criada com Sucesso", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Senha: {PasswordUser}", true);
             }
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro: {ex.Message}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Ocorreu um Erro ao tentar Criar Usuario {NameUser}", true);
             }
         }
     }

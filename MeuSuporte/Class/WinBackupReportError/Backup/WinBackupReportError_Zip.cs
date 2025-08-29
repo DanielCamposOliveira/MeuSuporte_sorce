@@ -10,18 +10,15 @@ namespace MeuSuporte
         {
             try
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("BackupReportError: Gerando Zip dos arquivos do Relatorio...", true);
-                await Task.Delay(500);
-
                 ZipFile.CreateFromDirectory(OriginPath, DestinationPath, CompressionLevel.Optimal, false);
                 await Task.Delay(500);
 
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("BackupReportError: Zip dos arquivos do Relatorio Criado ...", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Report Error: Arquivos de Backup do Relatorio Criado.", true);
                 await Task.Delay(500);
             }
             catch (Exception)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("BackupReportError: Erro ao tentar Gerar Zip dos arquivos do Relatorio...", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Report Error: Ocorreu um Erro ao tentar criar Backup do Relatorio", true);
                 await Task.Delay(500);
                 WinGlobal_UIService.Instance.Erro++;
             }

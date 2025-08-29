@@ -23,12 +23,12 @@
 
         public string User // propriedade pública
         {
-            get { return user; } // retorna o valor            
+            get { return user; }            
         }
 
         public string Password // propriedade pública
         {
-            get { return password; } // retorna o valor            
+            get { return password; }            
         }
     }
 }

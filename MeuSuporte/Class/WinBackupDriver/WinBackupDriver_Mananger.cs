@@ -27,7 +27,7 @@ namespace MeuSuporte
                 // Cria o diretorio
                 if (DirectoryManange.Create(NameFolder) == false)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Driver: Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
                     return;
                 }
                                 

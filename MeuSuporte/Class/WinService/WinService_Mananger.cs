@@ -49,7 +49,7 @@ namespace MeuSuporte
             if (!foundServices)
             {
                 WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
-                WinGlobal_UIService.Instance.Log_MensagemAsync("Serviço: No listings found!", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("Serviço: No listings found!", true);
                 await Task.Delay(500);
             }
         }

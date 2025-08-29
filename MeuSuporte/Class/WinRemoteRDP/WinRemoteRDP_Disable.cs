@@ -18,9 +18,9 @@ namespace MeuSuporte
                     if (chave != null)
                     {
                         chave.SetValue("fDenyTSConnections", 1, RegistryValueKind.DWord); // 1 = Desabilita
+                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Acesso Remoto Desativado", true);
                     }
-                }
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Acesso Remoto Desativado", true);         
+                }                        
             }
             catch (Exception ex)
             {

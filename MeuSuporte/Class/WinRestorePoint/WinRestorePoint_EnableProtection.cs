@@ -15,14 +15,14 @@ namespace MeuSuporte
                     return false;
 
                 await Task.Delay(2000);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync(@"Proteção do sistema: Ativado", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync(@"Proteção do sistema: Habilitado", true);
 
                 // Se não conseguir   Redimensiona o espaço de armazenamento da sombra para 10%
                 if (!await RunCommandPowershell("-Command \"& 'C:\\Windows\\System32\\vssadmin.exe' resize shadowstorage /for=C: /on=C: /maxsize=10%\""))
                     return false;
 
                 await Task.Delay(2000);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync(@"Uso do Espaço do Disco definido para 10% para Proteção do Sistema", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync(@"Proteção do Sistema: Uso do Espaço do Disco definido para 10%", true);
                 
                 WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 await Task.Delay(2000);
@@ -32,7 +32,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync(@"Ocorreu um erro ao tentar ativar a configuração de Proteção do sistema", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync(@"Proteção do Sistema: Ocorreu um erro ao tentar ativar Proteção do sistema", true);
                 return false;
             }          
         }

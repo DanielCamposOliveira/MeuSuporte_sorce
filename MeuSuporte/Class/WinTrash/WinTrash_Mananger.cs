@@ -55,7 +55,7 @@ namespace MeuSuporte
             catch (Exception e)
             {
                 WinGlobal_UIService.Instance.Erro++;
-               await WinGlobal_UIService.Instance.Log_MensagemAsync($"Lixeira: Erro ao apagar. Detalhes: \n  {e.Message}", true);
+               await WinGlobal_UIService.Instance.Log_MensagemAsync($"Lixeira: Erro ao tentar Apagar os dados da Lixeira", true);
             }
         }
     }

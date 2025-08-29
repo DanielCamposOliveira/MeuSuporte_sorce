@@ -17,11 +17,11 @@ namespace MeuSuporte
         public async Task<bool> TryUninstallAsync(ServiceController service)
         {
 
-            bool isServiceStopped = await _serviceStopper.WaitForServiceToStop(service);
+            bool isServiceStopped = await _serviceStopper.WaitForServiceToStop(service); // para o serviço
 
             if (!isServiceStopped)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} não pode ser removido pois ainda está em execução.", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} não pode ser removido devido ainda está em execução.", true);
                 return false;
             }
 
@@ -40,7 +40,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao desinstalar o Serviço: {service.DisplayName}\n{ex.Message}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: Ocorreu um Erro ao tentar desinstalar o Serviço - {service.DisplayName}", true);
                 return false;
             }
         }

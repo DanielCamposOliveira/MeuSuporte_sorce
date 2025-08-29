@@ -19,25 +19,25 @@ namespace MeuSuporte
             if (!DirectoryManange.Check(Path))
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Relatório de Erro Windows: Ocorreu um erro ao tentar acessa {TypeReport}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Report Error: Ocorreu um erro ao tentar acessa o diretório {TypeReport}", true);
                 return;
             }
 
             // verifica se o diretorio dos relatorios esta vazio
             if (!DirectoryManange.GetFileListing(Path))
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Relatório de Erro Windows: Não existe {TypeReport} para Gera Zip", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Report Error: Não existe {TypeReport} para gera Backup", true);
                 return;
             }
 
             // Cria o diretorio
             if (DirectoryManange.Create(NameFolder) == false)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Report Error: Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
                 return;
             }
-
-           // string FullDestinationPath = DirectoryManange.GetDirectory(NameFolder) +"\\"+ NameFile + " - " + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".zip";
+            
+            // gera o nome do Zip
             string FullDestinationPath = DirectoryManange.GetDirectory(NameFolder) +"\\"+ NameFile + " - " + DateTime.Now.ToString("yyyy-MM-dd_HH.mmssff") + ".zip";
 
             // Compacta todos os arquivos do diretorio do relatorio

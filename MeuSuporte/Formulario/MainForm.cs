@@ -17,12 +17,10 @@ namespace MeuSuporte
 {
     public partial class MainForm : System.Windows.Forms.Form
     {
-      //  private bool SaveLog = false;
         public int ValueUniProgressBar = 100;
         public int Sucesso = 0;
         public int Erro = 0;
         private bool Aborted = false;
-        private string UserName;
         private CancellationTokenSource cts;
         CancellationToken token;
 
@@ -31,8 +29,7 @@ namespace MeuSuporte
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;            
             WinGlobal_UIService.Initialize(this, txt_Log, progressBar1, labelInfoTitulo, checkBox_UserUAC, labelInfoDescricao, pictureBoxInfoDescricao, token); // envia os componete para interface
-            //WinApp_Temp.Initialize(checkBox_CleanTemp, radioButtonUserUAC_Ativar);
-           
+                       
             WinApp_Mananger.Initialize(checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, 
                 checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, 
                 checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, 
@@ -109,16 +106,6 @@ namespace MeuSuporte
             UserNameCheckBox();
         }
 
-        //Evento Closing do Formulario
-        private bool SaveLog = false;
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e) // evento antes de fechar o Programa
-        {      
-            SaveLog = MessageBox.Show("Deseja Salvar Log?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-            GravaLog();           
-        }
-
-        
         // Ajusta Layout das CheckBox 
         private Dictionary<Control, Point> posicoesOriginais = new Dictionary<Control, Point>();
         private bool posicoesSalvas = false;
@@ -321,12 +308,19 @@ namespace MeuSuporte
 
         #region Funcao de Encerramento do Programa
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) // evento antes de fechar o Programa
+        {
+            GravaLog();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DeletaApp();
+        }
+
         // Grava Log em um arquivo de Texto
         private async Task GravaLog()
-        {
-            if(SaveLog == false)         
-                return;        
-
+        {    
             WinApp_Log class_Log = new WinApp_Log();
             await Task.Run(async () =>
             {
@@ -392,11 +386,6 @@ namespace MeuSuporte
                // ValueUniProgressBar = 100 / checkBoxActions.Keys.Count(cb => cb.Checked);
                 WinGlobal_UIService.Instance.ValueUniProgressBar = 100 / checkBoxActions.Keys.Count(cb => cb.Checked);
 
-                // cria um ponto de restauração antes de todas as alterações caso essa opção esteja marcada 
-                //if (checkBox_RestorePoint.Checked == true)
-                //{
-                //    await WinApp_Mananger.Instance.CreateSystemPoint();
-                //}
 
                 //Lista uma Variavel com todo os processo que sera executado
                 foreach (var item in checkBoxActions)
@@ -473,10 +462,6 @@ namespace MeuSuporte
         }
 
         #endregion
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            DeletaApp();
-        }
+                
     }
 }
