@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using MeuSuporte.Properties;
 using Control = System.Windows.Forms.Control;
 using Font = System.Drawing.Font;
@@ -27,6 +28,22 @@ namespace MeuSuporte
         public MainForm()
         {
             InitializeComponent();
+
+            // Instancia a classe responsavel pela resolução da tela           
+            WinApp_Form.Initialize(progressBar1, checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash,
+                checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle,
+                checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry,
+                checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
+                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonradioButtonConnectionRDP_Ativar,
+                pictureBox0, pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10,
+                pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18,
+                txt_Log, Btn_Canselar, panelBoton, btn_IniciarProcesso, panelDivisoria, panel_UserUAC, panelLog, pictureBoxInfoDescricao, panel_ConnectionRDP,
+                panel_CleanPageFile, checkBoxAll, label1, labelInfoDescricao, labelInfoTitulo, Label_NameMachine, radioButtonUserUAC_Desativar, radioButtonCleanPageFile_Desativar, radioButtonConnectionRDP_Desativar,
+                this
+                );
+                
+            ScreenResolucao(); // Aplaca a resolução do App de acordo com tamanho da Tela
+
             CheckForIllegalCrossThreadCalls = false;            
             WinGlobal_UIService.Initialize(this, txt_Log, progressBar1, labelInfoTitulo, checkBox_UserUAC, labelInfoDescricao, pictureBoxInfoDescricao, token); // envia os componete para interface
                        
@@ -36,15 +53,17 @@ namespace MeuSuporte
                 checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
                 radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonradioButtonConnectionRDP_Ativar
                 );
+
         }
 
         #region Funçoes de UI
 
         // Painel de informações, mostra a descrição do processo
-        public void PainelInfoDescricao(Image foto, string texto)
+        public void PainelInfoDescricao(Image foto, string texto, Color Cor)
         {
             pictureBoxInfoDescricao.Image = foto;
             labelInfoDescricao.Text = texto;
+            labelInfoDescricao.ForeColor = Cor;
         }
 
         // informa a conclusao no painel de informações
@@ -104,6 +123,19 @@ namespace MeuSuporte
             ExecutionPath(); // verifica o local da execução do programa
             CheckBuild();   // verifica a versão do programa
             UserNameCheckBox();
+        }
+
+        // Aplaca a resolução do App de acordo com tamanho da Tela
+        private void ScreenResolucao()
+        {
+            if (Screen.PrimaryScreen.Bounds.Height >= 900)
+            {
+                WinApp_Form.Instance.ScreenResolution1920x1080();
+            }
+            else
+            {
+                WinApp_Form.Instance.ScreenResolution1024x800();
+            }
         }
 
         // Ajusta Layout das CheckBox 
@@ -461,7 +493,7 @@ namespace MeuSuporte
             });
         }
 
-        #endregion
-                
+        #endregion           
+        
     }
 }

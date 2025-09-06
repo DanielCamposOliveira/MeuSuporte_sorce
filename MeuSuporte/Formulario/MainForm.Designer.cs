@@ -418,7 +418,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Image = global::MeuSuporte.Properties.Resources.BackupDriver_Black;
             this.pictureBox9.Location = new System.Drawing.Point(10, 325);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(24, 24);

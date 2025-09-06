@@ -161,6 +161,7 @@
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetGitHub.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetVersion.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Process.cs" />
+    <Compile Include="Class\WinApp\Mananger\WinApp_Form.cs" />
     <Compile Include="Class\WinApp\Mananger\WinApp_Mananger.cs" />
     <Compile Include="Class\WinBackupBCD\WinBackupBCD_Mananger.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Mananger.cs" />
