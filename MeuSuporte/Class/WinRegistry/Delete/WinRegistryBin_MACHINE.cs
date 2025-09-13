@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Win32;
 
 namespace MeuSuporte
 {
@@ -20,33 +19,40 @@ namespace MeuSuporte
                     foreach (string NomeChave in Pasta_MACH_Run.GetValueNames())
                     {
                         WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
-                        if (!RegistryList.Contains(NomeChave, StringComparer.OrdinalIgnoreCase))
+
+                        object conteudoChave = Pasta_MACH_Run.GetValue(NomeChave);
+                        string caminhoRegistro = conteudoChave?.ToString() ?? string.Empty; // Converte o valor para string
+
+                        RegistryValueKind tipoChaveEnum = Pasta_MACH_Run.GetValueKind(NomeChave);
+                        string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
+
+                        // verifica se existe exeçoes
+                        if (RegistryList.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            try
-                            {
-                                // Deleta a chave do registro
-                                Pasta_MACH_CurrentVersion.DeleteValue(NomeChave);
-                                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {NomeChave} Apagado !", true);
-                                WinGlobal_UIService.Instance.Sucesso++;
-                            }
-                            catch (Exception e)
-                            {
-                                WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao Apagar Registro: {NomeChave}", true);
-                                WinGlobal_UIService.Instance.Erro++;
-                            }
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: MACHINE - Chave Preservada: {NomeChave}", true);
+                            continue;
                         }
-                        else
+
+                        // Deleta a chave do registro
+                        try
+                        {                            
+                            Pasta_MACH_CurrentVersion.DeleteValue(NomeChave);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: MACHINE - Apagado Nome:{NomeChave} Valor:{caminhoRegistro} Tipo:{tipoChave}", true);
+                            WinGlobal_UIService.Instance.Sucesso++;
+                        }
+                        catch (Exception e)
                         {
-                            // Apenas logando os que foram ignorados
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync(
-                                $"Registro MACHINE preservado: {NomeChave}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: MACHINE - Ocorreu um Erro ao Apagar Nome:{NomeChave} Valor:{caminhoRegistro} Tipo:{tipoChave}", true);
+                            WinGlobal_UIService.Instance.Erro++;
                         }
+
+
                     }
                     WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 }
                 else
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Sem chave no Registro: MACHINE", true);
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Registro: MACHINE - Sem registro.", true);
                 }
             }
         }

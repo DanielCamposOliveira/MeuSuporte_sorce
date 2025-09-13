@@ -270,6 +270,7 @@ namespace MeuSuporte
                 //InfoDescricaoConclusao(UIService.Erro, UIService.Sucesso);
                 InfoDescricaoConclusao(WinGlobal_UIService.Instance.Erro, WinGlobal_UIService.Instance.Sucesso);
                 btn_IniciarProcesso.Enabled = true;
+                Btn_Canselar.Enabled = false;
             }
             else
             {

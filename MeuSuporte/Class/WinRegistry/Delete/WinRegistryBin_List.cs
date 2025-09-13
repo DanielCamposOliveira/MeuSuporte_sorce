@@ -2,12 +2,14 @@
 {
     internal class WinRegistryBin_List
     {
-        public readonly string[] Registry = {
-            "Wave",  // Aplicacao de Telefone Wave
-            "OneDrive",  // armazenamento em nuvem OneDrive
-            "RtkAudUService",// driver da placa de som
-            "CriptoCNS",  // Aplicacao Caixa Kriptonita para uso em SEFIP ou GRFF
-            "AgenteExecucaoAssistente", // Aplicacao Contabil
+        // somente o Diretorio faz como que todas chaves que use esse diretorio não seja apagado
+        //C:\Windows\System32           
+
+        // Diretorio + Executavel faz com que todas as chaves que não tenha o Executavel e que use o diretorio seja apagado
+        //C:\Windows\System32\teste.exe   
+
+        public readonly string[] RootPath = {
+        @"C:\Windows\System32\DriverStore", //Driver do Windows
         };
     }
 }

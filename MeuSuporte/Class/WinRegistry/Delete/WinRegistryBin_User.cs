@@ -6,7 +6,9 @@ using Microsoft.Win32;
 namespace MeuSuporte
 {
     internal class WinRegistryBin_User
-    {       
+    {
+
+
         public async Task Delete(string[] RegistryList, int ValueUniProgressBar)
         {
             using (RegistryKey Pasta_USER_Run = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run"))
@@ -14,40 +16,44 @@ namespace MeuSuporte
             {
                 if (Pasta_USER_Run?.ValueCount > 0)
                 {
-                    // Itera sobre todas as chaves dentro da pasta Run
                     foreach (string NomeChave in Pasta_USER_Run.GetValueNames())
                     {
                         WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
+                                             
+                        object conteudoChave = Pasta_USER_Run.GetValue(NomeChave);                        
+                        string caminhoRegistro = conteudoChave?.ToString() ?? string.Empty; // Converte o valor para string
 
-                        if (!RegistryList.Contains(NomeChave, StringComparer.OrdinalIgnoreCase))
+                        RegistryValueKind tipoChaveEnum = Pasta_USER_Run.GetValueKind(NomeChave);
+                        string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
+
+                        // verifica se existe exeçoes
+                        if (RegistryList.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            try
-                            {
-                                // Deleta a chave do registro
-                                Pasta_USER_CurrentVersion.DeleteValue(NomeChave);
-                                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {NomeChave} Apagado !", true);
-                                WinGlobal_UIService.Instance.Sucesso++;
-                            }
-                            catch (Exception e)
-                            {
-                                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao Apagar Registro: {NomeChave}", true);
-                                WinGlobal_UIService.Instance.Erro++;
-                            }
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Chave Preservada: {NomeChave}", true);
+                            continue;
                         }
-                        else
+
+                        // Deleta a chave do registro
+                        try
+                        {                            
+                            Pasta_USER_CurrentVersion.DeleteValue(NomeChave);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Apagado Nome:{NomeChave} Valor:{caminhoRegistro} Tipo:{tipoChave}", true);
+                            WinGlobal_UIService.Instance.Sucesso++;
+                        }
+                        catch (Exception e)
                         {
-                            // Apenas logando os que foram ignorados
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync(
-                                $"Registro USER preservado: {NomeChave}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Ocorreu um Erro ao Apagar Nome:{NomeChave} Valor:{caminhoRegistro} Tipo:{tipoChave}", true);
+                            WinGlobal_UIService.Instance.Erro++;
                         }
                     }
                     WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 }
                 else
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Sem chave no Registro: USER", true);
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Registro: USER - Sem registro.", true);
                 }
             }
         }
+
     }
 }
