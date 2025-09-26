@@ -431,6 +431,26 @@ namespace MeuSuporte.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportInventory_Black {
+            get {
+                object obj = ResourceManager.GetObject("ExportInventory_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExportInventory_White {
+            get {
+                object obj = ResourceManager.GetObject("ExportInventory_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
         /// </summary>
         internal static System.Drawing.Icon GitHub {
@@ -496,6 +516,26 @@ namespace MeuSuporte.Properties {
         internal static System.Drawing.Bitmap Offline_White {
             get {
                 object obj = ResourceManager.GetObject("Offline_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OptimizeBar_Black {
+            get {
+                object obj = ResourceManager.GetObject("OptimizeBar_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OptimizeBar_White {
+            get {
+                object obj = ResourceManager.GetObject("OptimizeBar_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

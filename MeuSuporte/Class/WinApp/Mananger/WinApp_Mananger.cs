@@ -296,14 +296,13 @@ namespace MeuSuporte
 
         public async Task DeleteRegistry()
         {
-            WinRegistryBin_Mananger _ClassCleanRegistry = new WinRegistryBin_Mananger();
-            WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+            WinRegistryBin_Mananger _ClassCleanRegistry = new WinRegistryBin_Mananger();     
 
             // Atualiza a UI antes da execução assíncrona
             await WinGlobal_UIService.Instance.UpdateIfonUI("Delete Registry", checkBox_DeleteRegistry, Resources.CleanRegistry_Black, "Limpar Registro:\n\rRemove entradas inválidas do registro, ajudando na estabilidade do sistema.");
             await Task.Delay(800);
 
-            await Task.Run(() => _ClassCleanRegistry.DeleteRegistry(RegistryBin_List.RootPath), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => _ClassCleanRegistry.DeleteRegistry(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             checkBox_DeleteRegistry.Font = new Font(checkBox_DeleteRegistry.Font.FontFamily, checkBox_DeleteRegistry.Font.Size, FontStyle.Strikeout);

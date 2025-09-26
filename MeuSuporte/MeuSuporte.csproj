@@ -330,6 +330,10 @@
     <None Include="Resources\CleanReportError_Black.png" />
     <None Include="Resources\DeleteReportError_White.png" />
     <None Include="Resources\CleanReportError_White.png" />
+    <None Include="Resources\OptimizeBar_Black.png" />
+    <None Include="Resources\OptimizeBar_White.png" />
+    <None Include="Resources\ExportInventory_Black.png" />
+    <None Include="Resources\ExportInventory_White.png" />
     <Content Include="windows-2.ico" />
     <Content Include="wine-winecfg.ico" />
   </ItemGroup>

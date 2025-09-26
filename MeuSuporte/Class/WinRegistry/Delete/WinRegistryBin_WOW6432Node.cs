@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Win32;
 
 namespace MeuSuporte
 {
     internal class WinRegistryBin_WOW6432Node
     {
-        public async Task Delete(string[] RegistryList, int ValueUniProgressBar)
+        WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+        public async Task Delete(int ValueUniProgressBar)
         {
             // Usando o método OpenSubKey para acessar as chaves do registro
             using (RegistryKey Pasta_Node_Run = Registry.LocalMachine.OpenSubKey(@"Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Run"))
@@ -29,7 +29,14 @@ namespace MeuSuporte
                         string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
 
                         // verifica se existe exeçoes
-                        if (RegistryList.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: WOW6432Node - Chave Preservada: {NomeChave}", true);
+                            continue;
+                        }
+
+                        // verifica se existe exeçoes
+                        if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: WOW6432Node - Chave Preservada: {NomeChave}", true);
                             continue;

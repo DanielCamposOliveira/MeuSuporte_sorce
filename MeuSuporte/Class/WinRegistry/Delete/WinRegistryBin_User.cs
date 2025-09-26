@@ -7,9 +7,9 @@ namespace MeuSuporte
 {
     internal class WinRegistryBin_User
     {
+        WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
 
-
-        public async Task Delete(string[] RegistryList, int ValueUniProgressBar)
+        public async Task Delete(int ValueUniProgressBar)
         {
             using (RegistryKey Pasta_USER_Run = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run"))
             using (RegistryKey Pasta_USER_CurrentVersion = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true))
@@ -27,7 +27,13 @@ namespace MeuSuporte
                         string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
 
                         // verifica se existe exeçoes
-                        if (RegistryList.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Chave Preservada: {NomeChave}", true);
+                            continue;
+                        }
+
+                        if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Chave Preservada: {NomeChave}", true);
                             continue;

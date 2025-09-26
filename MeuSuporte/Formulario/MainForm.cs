@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MeuSuporte.Properties;
+using Microsoft.VisualBasic.Devices;
 using Control = System.Windows.Forms.Control;
 using Font = System.Drawing.Font;
 using Point = System.Drawing.Point;
@@ -29,20 +30,48 @@ namespace MeuSuporte
         {
             InitializeComponent();
 
-            // Instancia a classe responsavel pela resolução da tela           
-            WinApp_Form.Initialize(progressBar1, checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash,
-                checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle,
-                checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry,
-                checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
-                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonradioButtonConnectionRDP_Ativar,
-                pictureBox0, pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10,
-                pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18,
-                txt_Log, Btn_Canselar, panelBoton, btn_IniciarProcesso, panelDivisoria, panel_UserUAC, panelLog, pictureBoxInfoDescricao, panel_ConnectionRDP,
-                panel_CleanPageFile, checkBoxAll, label1, labelInfoDescricao, labelInfoTitulo, Label_NameMachine, radioButtonUserUAC_Desativar, radioButtonCleanPageFile_Desativar, radioButtonConnectionRDP_Desativar,
-                this
-                );
-                
-            ScreenResolucao(); // Aplaca a resolução do App de acordo com tamanho da Tela
+            WinApp_Form.Initialize(
+    // 1. CheckBoxes
+    checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, checkBox_CleanProcess,
+    checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, checkBox_BackupRegistrysRun,
+    checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, checkBox_Usuario,
+    checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP,
+    checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError, checkBox_ExportInventory,
+    checkBox_OptimizeBar, checkBoxAll,
+
+    // 2. RadioButtons - Ativar/Desativar
+    radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar,
+    radioButtonUserUAC_Desativar, radioButtonCleanPageFile_Desativar, radioButtonConnectionRDP_Desativar,
+
+    // 3. RadioButtons - Otimização/Limpeza (Atual/Todos)
+    radioButtonOptimizeBar_Atual, radioButtonOptimizeBar_Todos,
+    radioButtonDeleteRegistry_Atual, radioButtonDeleteRegistry_todos,
+    radioButtonCleanTemp_Atual, radioButtonCleanTemp_Todos,
+    radioButtonBackupRegistrysRun_Atual, radioButtonBackupRegistrysRun_Todos,
+
+    // 4. PictureBoxes
+    pictureBox_UserUAC, pictureBox_CleanTask, pictureBox_CleanTrash, pictureBox_CleanProcess,
+    pictureBox_CleanTemp, pictureBox_CleanWindowsUpdate, pictureBox_CleanGoogle, pictureBox_BackupRegistrysRun,
+    pictureBox_CleanPageFile, pictureBox_DriversBackup, pictureBox_DeleteRegistry, pictureBox_Usuario,
+    pictureBox_CleanPrefetch, pictureBox_BackupBCD, pictureBox_RestorePoint, pictureBox_ConnectionRDP,
+    pictureBox_Bloatware, pictureBox_BackupReportError, pictureBox_CleanReportError, pictureBoxInfoDescricao,
+    pictureBox_ExportInventory, pictureBox_OptimizeBar,
+
+    // 5. Panels
+    panelBoton, panelDivisoria, panel_UserUAC, panelLog, panel_ConnectionRDP, panel_CleanPageFile,
+    panel1, panel_CleanTemp, panel_BackupRegistrysRun, panel_DeleteRegistry, panel_OptimizeBar,
+
+    // 6. Labels
+    label1, labelInfoDescricao, labelInfoTitulo, Label_NameMachine,
+
+    // 7. Buttons
+    Btn_Canselar, btn_IniciarProcesso,
+
+    // 8. Controles Únicos / Form
+    progressBar1, txt_Log, this  // 'this' é usado para representar o próprio Form (MainForm)
+);
+
+             ScreenResolucao(); // Aplaca a resolução do App de acordo com tamanho da Tela
 
             CheckForIllegalCrossThreadCalls = false;            
             WinGlobal_UIService.Initialize(this, txt_Log, progressBar1, labelInfoTitulo, checkBox_UserUAC, labelInfoDescricao, pictureBoxInfoDescricao, token); // envia os componete para interface
@@ -51,8 +80,48 @@ namespace MeuSuporte
                 checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, 
                 checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, 
                 checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
-                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonradioButtonConnectionRDP_Ativar
+                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar
                 );
+
+
+            // Mapeia cada checkbox ao seu painel correspondente
+            checkBoxPanelMap = new Dictionary<CheckBox, Panel>
+             {
+                 { checkBox_UserUAC, panel_UserUAC },
+                 { checkBox_CleanPageFile, panel_CleanPageFile },
+                 { checkBox_ConnectionRDP, panel_ConnectionRDP },
+                 { checkBox_CleanTemp, panel_CleanTemp},
+                 { checkBox_BackupRegistrysRun, panel_BackupRegistrysRun },
+                 { checkBox_DeleteRegistry, panel_DeleteRegistry },
+                 { checkBox_OptimizeBar, panel_OptimizeBar }
+            };
+
+            // NOVO: Mapeia cada checkbox ao seu PictureBox (ícone) correspondente
+            checkBoxIconMap = new Dictionary<CheckBox, PictureBox>
+            {
+                { checkBox_OptimizeBar, pictureBox_OptimizeBar},
+                {checkBox_UserUAC, pictureBox_UserUAC },
+                {checkBox_CleanTask, pictureBox_CleanTask },
+                {checkBox_CleanTrash, pictureBox_CleanTrash },
+                {checkBox_CleanProcess, pictureBox_CleanProcess },
+                {checkBox_CleanTemp, pictureBox_CleanTemp },
+                {checkBox_CleanWindowsUpdate, pictureBox_CleanWindowsUpdate },
+                {checkBox_CleanGoogle, pictureBox_CleanGoogle },
+                {checkBox_BackupRegistrysRun, pictureBox_BackupRegistrysRun },
+                {checkBox_CleanPageFile, pictureBox_CleanPageFile },
+                {checkBox_DriversBackup, pictureBox_DriversBackup },
+                {checkBox_DeleteRegistry, pictureBox_DeleteRegistry },
+                {checkBox_Usuario, pictureBox_Usuario },
+                {checkBox_CleanPrefetch, pictureBox_CleanPrefetch },
+                {checkBox_BackupBCD, pictureBox_BackupBCD },
+                {checkBox_RestorePoint, pictureBox_RestorePoint },
+                {checkBox_ConnectionRDP, pictureBox_ConnectionRDP },
+                {checkBox_Bloatware, pictureBox_Bloatware },
+                {checkBox_BackupReportError, pictureBox_BackupReportError },
+                {checkBox_CleanReportError, pictureBox_CleanReportError },
+                {checkBox_ExportInventory, pictureBox_ExportInventory }
+            };
+
 
         }
 
@@ -130,6 +199,7 @@ namespace MeuSuporte
         {
             if (Screen.PrimaryScreen.Bounds.Height >= 900)
             {
+                //WinApp_Form.Instance.ScreenResolution1920x1080();
                 WinApp_Form.Instance.ScreenResolution1920x1080();
             }
             else
@@ -138,123 +208,135 @@ namespace MeuSuporte
             }
         }
 
-        // Ajusta Layout das CheckBox 
-        private Dictionary<Control, Point> posicoesOriginais = new Dictionary<Control, Point>();
-        private bool posicoesSalvas = false;
-        private int panelPosition = 18;
-        private void AjustarLayout()
+        #endregion
+       
+        
+    
+
+
+
+
+
+
+        // Adicione esta variável no topo da sua classe do Formulário
+        private Dictionary<CheckBox, Panel> checkBoxPanelMap;
+        private Dictionary<CheckBox, PictureBox> checkBoxIconMap;
+
+
+        private void AtualizarLayoutDinamico()
         {
-            // Salvar posições apenas uma vez
-            if (!posicoesSalvas)
+            // AVISA O PAINEL PARA PARAR DE ATUALIZAR O LAYOUT
+            panel1.SuspendLayout();
+
+            try
             {
-                //foreach (Control ctrl in this.Controls)
-                foreach (Control ctrl in this.Controls)
+                // Pega a lista ordenada de CheckBoxes pela sua posição vertical (Top)
+                var checkBoxesOrdenados = panel1.Controls.OfType<CheckBox>()
+                                                          .OrderBy(cb => cb.Top);
+
+                // Verifica se existe algum checkbox para evitar erros
+                if (!checkBoxesOrdenados.Any()) return;
+
+                // Pega a posição inicial do primeiro CheckBox
+                int posicaoYAtual = checkBoxesOrdenados.First().Location.Y;
+                const int espacoVertical = 3; // Espaço extra entre os controles
+
+                foreach (CheckBox checkbox in checkBoxesOrdenados)
                 {
-                    if (ctrl is CheckBox || ctrl is Panel || ctrl is PictureBox)
-                        posicoesOriginais[ctrl] = ctrl.Location;
-                }
-                posicoesSalvas = true;
+                    // --- INÍCIO DA MUDANÇA ---
 
-            }
+                    // 1. Reposiciona o ÍCONE associado
+                    if (checkBoxIconMap.ContainsKey(checkbox))
+                    {
+                        PictureBox iconeAssociado = checkBoxIconMap[checkbox];
+                        // Alinha o Y do ícone com o Y do checkbox que será posicionado
+                        // (O cálculo no meio serve para centralizar verticalmente caso as alturas sejam diferentes)
+                        int iconeY = posicaoYAtual + (checkbox.Height - iconeAssociado.Height) / 2;
+                        iconeAssociado.Location = new Point(iconeAssociado.Location.X, iconeY);
+                    }
 
-            // Começa reposicionando tudo de acordo com a posição original
-            foreach (var item in posicoesOriginais)
-            {
-                item.Key.Location = item.Value;
-            }
+                    // 2. Reposiciona o CHECKBOX atual (como antes)
+                    checkbox.Location = new Point(checkbox.Location.X, posicaoYAtual);
 
-            // Adiciona espaço para os painéis abertos
-            int offset = 18; // altura dos painéis
-            int acumuladorY = 0;
+                 
 
-            // CheckBoxes e PictureBoxes em ordem
-            CheckBox[] checkBoxes = new CheckBox[] {
-             checkBox_UserUAC, checkBox_CleanTask,  checkBox_CleanTrash,
-             checkBox_CleanProcess,  checkBox_CleanTemp, checkBox_CleanWindowsUpdate,
-             checkBox_CleanGoogle,  checkBox_BackupRegistrysRun, checkBox_CleanPageFile,
-             checkBox_DriversBackup,  checkBox_DeleteRegistry,  checkBox_Usuario,
-             checkBox_CleanPrefetch,  checkBox_BackupBCD,  checkBox_RestorePoint,  checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError
-            };
+                    // 3. Incrementa a posição Y para o próximo controle
+                    posicaoYAtual += checkbox.Height + espacoVertical;
 
-            PictureBox[] pictureBoxes = new PictureBox[] {
-              pictureBox0, pictureBox1, pictureBox2, pictureBox3, pictureBox4,
-              pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9,
-              pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18
-            };
+                    // 4. Verifica se este checkbox tem um painel associado
+                    if (checkBoxPanelMap.ContainsKey(checkbox))
+                    {
+                        Panel painelAssociado = checkBoxPanelMap[checkbox];
 
-            for (int i = 0; i < checkBoxes.Length; i++)
-            {
-                CheckBox atual = checkBoxes[i];
-                PictureBox imagem = pictureBoxes[i];
+                        // 5. Se o checkbox estiver MARCADO, mostra e posiciona o painel
+                        if (checkbox.Checked)
+                        {
+                            painelAssociado.Visible = true;
+                            painelAssociado.Location = new Point(checkbox.Location.X + 20, posicaoYAtual);
 
-                // Ajusta posição do checkbox
-                Point posCheck = posicoesOriginais[atual];
-                atual.Location = new Point(posCheck.X, posCheck.Y + acumuladorY);
+                            // Garante que o painel está dentro do panel1 (boa prática)
+                            if (!panel1.Controls.Contains(painelAssociado))
+                            {
+                                panel1.Controls.Add(painelAssociado);
+                            }
 
-                // Ajusta posição da imagem associada
-                Point posImg = posicoesOriginais[imagem];
-                imagem.Location = new Point(posImg.X, posImg.Y + acumuladorY);
-
-                // Verifica se o checkbox exige painel e se está marcado
-                if (atual == checkBox_UserUAC && atual.Checked)
-                {
-                    panel_UserUAC.Location = new Point(atual.Location.X + 20, atual.Location.Y + panelPosition);
-                    panel_UserUAC.Visible = true;
-                    acumuladorY += offset;
-                }
-                else if (atual == checkBox_CleanPageFile && atual.Checked)
-                {
-                    panel_CleanPageFile.Location = new Point(atual.Location.X + 20, atual.Location.Y + panelPosition);
-                    panel_CleanPageFile.Visible = true;
-                    acumuladorY += offset;
-                }
-                else if (atual == checkBox_ConnectionRDP && atual.Checked)
-                {
-                    panel_ConnectionRDP.Location = new Point(atual.Location.X + 20, atual.Location.Y + panelPosition);
-                    panel_ConnectionRDP.Visible = true;
-                    acumuladorY += offset;
+                            // 6. Adiciona a altura do painel à posição Y para o próximo controle
+                            posicaoYAtual += painelAssociado.Height + espacoVertical;
+                        }
+                        else
+                        {
+                            // Se não estiver marcado, apenas garante que o painel está invisível
+                            painelAssociado.Visible = false;
+                        }
+                    }
                 }
             }
-
-            // Esconde os painéis que não foram ativados
-            if (!checkBox_UserUAC.Checked) panel_UserUAC.Visible = false;
-            if (!checkBox_CleanPageFile.Checked) panel_CleanPageFile.Visible = false;
-            if (!checkBox_ConnectionRDP.Checked) panel_ConnectionRDP.Visible = false;
+            finally
+            {
+                // REATIVA AS ATUALIZAÇÕES DE LAYOUT, MOSTRANDO TODAS AS MUDANÇAS DE UMA VEZ
+                panel1.ResumeLayout(true);
+            }
         }
 
-        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
 
         #region Funçoes dos Botões UI
 
         //CheckBox Marca todos
         private void checkBoxAll_Click(object sender, EventArgs e)
         {
-            foreach (Control control in this.Controls)
+            bool estadoDesejado = checkBoxAll.Checked;
+
+            // Itera sobre os controles DENTRO do panel1, que é o container correto.
+            foreach (Control control in panel1.Controls)
             {
-                if (control is CheckBox checkBox && checkBox != checkBoxAll)
+                // Se o controle for um CheckBox...
+                if (control is CheckBox checkBox)
                 {
-                    checkBox.Checked = checkBoxAll.Checked;
+                    // ...e não for o próprio "Marcar Todos", atualiza o seu estado.
+                    if (checkBox != checkBoxAll)
+                    {
+                        checkBox.Checked = estadoDesejado;
+                    }
                 }
             }
-            AjustarLayout();
-        }
 
-        //CheckBox Notificação UAC
-        private void checkBox_UserUAC_Click(object sender, EventArgs e)
-        {
-            AjustarLayout();
-        }
-
-        //CheckBox Acesso Remoto RDP
-        private void checkBox_ConnectionRDP_Click(object sender, EventArgs e)
-        {
-            AjustarLayout();
-        }
-
-        //CheckBox PageFile
-        private void checkBox_CleanPageFile_Click(object sender, EventArgs e)
-        {
-            AjustarLayout();
+            AtualizarLayoutDinamico();
         }
 
         //Botão de Iniciar
@@ -287,6 +369,34 @@ namespace MeuSuporte
             btn_IniciarProcesso.Enabled = true;
         }
 
+        private void checkBox_CleanTemp_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_BackupRegistrysRun_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_DeleteRegistry_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_OptimizeBar_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_ConnectionRDP_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_CleanPageFile_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_UserUAC_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
 
         #endregion
          
@@ -469,7 +579,7 @@ namespace MeuSuporte
         // Verifica se algum CheckBox está marcado  com exeção do checkBoxAll
         private bool IsAnyCheckBoxChecked()
         {
-            return this.Controls
+            return panel1.Controls
                 .OfType<CheckBox>()
                 .Where(cb => cb != checkBoxAll) // Se necessário, exclui o checkBoxAll da verificação
                 .Any(cb => cb.Checked);
@@ -494,7 +604,22 @@ namespace MeuSuporte
             });
         }
 
-        #endregion           
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #endregion
+
+
     }
 }
