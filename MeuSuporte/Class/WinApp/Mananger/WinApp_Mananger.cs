@@ -35,6 +35,7 @@ namespace MeuSuporte
         private RadioButton radioButtonUserUAC_Ativar;
         private RadioButton radioButtonCleanPageFile_Ativar;
         private RadioButton radioButtonradioButtonConnectionRDP_Ativar;
+        private RadioButton radioButtonCleanTemp_All;
 
         #endregion
 
@@ -44,7 +45,7 @@ namespace MeuSuporte
             CheckBox _checkBox_BackupRegistrysRun, CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry, 
             CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, CheckBox _checkBox_RestorePoint, 
             CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,
-            RadioButton _radioButtonradioButtonConnectionRDP_Ativar
+            RadioButton _radioButtonradioButtonConnectionRDP_Ativar, RadioButton _radioButtonCleanTemp_All
             )
         {
             if (_instance == null)
@@ -72,7 +73,8 @@ namespace MeuSuporte
                     checkBox_CleanReportError = _checkBox_CleanReportError,
                     radioButtonUserUAC_Ativar = _radioButtonUserUAC_Ativar,
                     radioButtonCleanPageFile_Ativar = _radioButtonCleanPageFile_Ativar,
-                    radioButtonradioButtonConnectionRDP_Ativar = _radioButtonradioButtonConnectionRDP_Ativar
+                    radioButtonradioButtonConnectionRDP_Ativar = _radioButtonradioButtonConnectionRDP_Ativar,
+                    radioButtonCleanTemp_All = _radioButtonCleanTemp_All,
                 };
             }
         }
@@ -172,18 +174,16 @@ namespace MeuSuporte
 
         public async Task CleanTemp()
         {
-            WinDirectory_Mananger Directory_Mananger = new WinDirectory_Mananger();
-
+            WinCleanTemp_Mananger CleanTemp_Mananger = new WinCleanTemp_Mananger();
             // Atualiza a UI antes da execução assíncrona
             await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Temp", checkBox_CleanTemp, Resources.CleanDirectorry_Black, "Limpar Pasta %Temp%:\n\rApaga arquivos temporários do sistema e dos aplicativos para liberar espaço.");
             await Task.Delay(800);
 
-            string DiretorioPasta = @"C:\Users\" + Environment.UserName.ToString() + @"\AppData\Local\Temp";
-            await Task.Run(() => Directory_Mananger.Mananger("Clean Temp", DiretorioPasta, "%Temp%", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
-            await Task.Delay(1000);
+            await Task.Run(() => CleanTemp_Mananger.Mananger(radioButtonCleanTemp_All.Checked));
 
+            await Task.Delay(1000);
             // Atualiza a UI após a execução assíncrona
-            checkBox_CleanTemp.Font = new Font(checkBox_CleanTemp.Font.FontFamily, checkBox_CleanTemp.Font.Size, FontStyle.Strikeout);            
+            checkBox_CleanTemp.Font = new Font(checkBox_CleanTemp.Font.FontFamily, checkBox_CleanTemp.Font.Size, FontStyle.Strikeout);
         }
 
         #endregion

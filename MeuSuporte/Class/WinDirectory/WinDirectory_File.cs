@@ -10,7 +10,7 @@ namespace MeuSuporte
         private readonly FileSecurity _FileSecurity = new FileSecurity();
         private FileInfo file;
 
-        public async Task<bool> Delete(string txt ) // deleta o arquivo de forma assíncrona
+        public async Task<bool> Delete(string txt) // deleta o arquivo de forma assíncrona
         {
             file = new FileInfo(txt); // atribui o arquivo
             file.SetAccessControl(_FileSecurity); // atribui o acesso

@@ -95,8 +95,8 @@
             this.checkBox_OptimizeBar = new System.Windows.Forms.CheckBox();
             this.pictureBox_OptimizeBar = new System.Windows.Forms.PictureBox();
             this.panel_CleanTemp = new System.Windows.Forms.Panel();
-            this.radioButtonCleanTemp_Atual = new System.Windows.Forms.RadioButton();
-            this.radioButtonCleanTemp_Todos = new System.Windows.Forms.RadioButton();
+            this.radioButtonCleanTemp_Single = new System.Windows.Forms.RadioButton();
+            this.radioButtonCleanTemp_All = new System.Windows.Forms.RadioButton();
             this.panel_BackupRegistrysRun = new System.Windows.Forms.Panel();
             this.radioButtonBackupRegistrysRun_Atual = new System.Windows.Forms.RadioButton();
             this.radioButtonBackupRegistrysRun_Todos = new System.Windows.Forms.RadioButton();
@@ -899,37 +899,37 @@
             // panel_CleanTemp
             // 
             this.panel_CleanTemp.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel_CleanTemp.Controls.Add(this.radioButtonCleanTemp_Atual);
-            this.panel_CleanTemp.Controls.Add(this.radioButtonCleanTemp_Todos);
+            this.panel_CleanTemp.Controls.Add(this.radioButtonCleanTemp_Single);
+            this.panel_CleanTemp.Controls.Add(this.radioButtonCleanTemp_All);
             this.panel_CleanTemp.Location = new System.Drawing.Point(996, 328);
             this.panel_CleanTemp.Name = "panel_CleanTemp";
             this.panel_CleanTemp.Size = new System.Drawing.Size(147, 27);
             this.panel_CleanTemp.TabIndex = 85;
             this.panel_CleanTemp.Visible = false;
             // 
-            // radioButtonCleanTemp_Atual
+            // radioButtonCleanTemp_Single
             // 
-            this.radioButtonCleanTemp_Atual.AutoSize = true;
-            this.radioButtonCleanTemp_Atual.Checked = true;
-            this.radioButtonCleanTemp_Atual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonCleanTemp_Atual.Location = new System.Drawing.Point(3, 3);
-            this.radioButtonCleanTemp_Atual.Name = "radioButtonCleanTemp_Atual";
-            this.radioButtonCleanTemp_Atual.Size = new System.Drawing.Size(52, 19);
-            this.radioButtonCleanTemp_Atual.TabIndex = 65;
-            this.radioButtonCleanTemp_Atual.TabStop = true;
-            this.radioButtonCleanTemp_Atual.Text = "Atual";
-            this.radioButtonCleanTemp_Atual.UseVisualStyleBackColor = true;
+            this.radioButtonCleanTemp_Single.AutoSize = true;
+            this.radioButtonCleanTemp_Single.Checked = true;
+            this.radioButtonCleanTemp_Single.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonCleanTemp_Single.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonCleanTemp_Single.Name = "radioButtonCleanTemp_Single";
+            this.radioButtonCleanTemp_Single.Size = new System.Drawing.Size(51, 19);
+            this.radioButtonCleanTemp_Single.TabIndex = 65;
+            this.radioButtonCleanTemp_Single.TabStop = true;
+            this.radioButtonCleanTemp_Single.Text = "User";
+            this.radioButtonCleanTemp_Single.UseVisualStyleBackColor = true;
             // 
-            // radioButtonCleanTemp_Todos
+            // radioButtonCleanTemp_All
             // 
-            this.radioButtonCleanTemp_Todos.AutoSize = true;
-            this.radioButtonCleanTemp_Todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonCleanTemp_Todos.Location = new System.Drawing.Point(62, 3);
-            this.radioButtonCleanTemp_Todos.Name = "radioButtonCleanTemp_Todos";
-            this.radioButtonCleanTemp_Todos.Size = new System.Drawing.Size(59, 19);
-            this.radioButtonCleanTemp_Todos.TabIndex = 64;
-            this.radioButtonCleanTemp_Todos.Text = "Todos";
-            this.radioButtonCleanTemp_Todos.UseVisualStyleBackColor = true;
+            this.radioButtonCleanTemp_All.AutoSize = true;
+            this.radioButtonCleanTemp_All.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonCleanTemp_All.Location = new System.Drawing.Point(62, 3);
+            this.radioButtonCleanTemp_All.Name = "radioButtonCleanTemp_All";
+            this.radioButtonCleanTemp_All.Size = new System.Drawing.Size(59, 19);
+            this.radioButtonCleanTemp_All.TabIndex = 64;
+            this.radioButtonCleanTemp_All.Text = "Todos";
+            this.radioButtonCleanTemp_All.UseVisualStyleBackColor = true;
             // 
             // panel_BackupRegistrysRun
             // 
@@ -1180,8 +1180,8 @@
         private System.Windows.Forms.PictureBox pictureBox_CleanReportError;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_CleanTemp;
-        private System.Windows.Forms.RadioButton radioButtonCleanTemp_Atual;
-        private System.Windows.Forms.RadioButton radioButtonCleanTemp_Todos;
+        private System.Windows.Forms.RadioButton radioButtonCleanTemp_Single;
+        private System.Windows.Forms.RadioButton radioButtonCleanTemp_All;
         private System.Windows.Forms.Panel panel_BackupRegistrysRun;
         private System.Windows.Forms.RadioButton radioButtonBackupRegistrysRun_Atual;
         private System.Windows.Forms.RadioButton radioButtonBackupRegistrysRun_Todos;

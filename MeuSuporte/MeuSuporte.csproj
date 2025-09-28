@@ -28,6 +28,7 @@
     <ApplicationVersion>1.0.0.4</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -183,6 +184,12 @@
     <Compile Include="Class\WinBloatware\WinBloatware_RenoveAllUser.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_RenoveNewUser.cs" />
     <Compile Include="Class\WinBloatware\WinBloatware_SearchInstallation.cs" />
+    <Compile Include="Class\WinCleanTemp\All\WinCleanTemp_ProfilePathAll.cs" />
+    <Compile Include="Class\WinCleanTemp\Single\WinCleanTemp_ProfilePathSingle.cs" />
+    <Compile Include="Class\WinDirectory\WinDirectory_AssignsPathPermission.cs" />
+    <Compile Include="Class\WinCleanTemp\WinCleanTemp_Mananger.cs" />
+    <Compile Include="Class\WinCleanTemp\All\WinCleanTemp_UserAll.cs" />
+    <Compile Include="Class\WinCleanTemp\Single\WinCleanTemp_UserSingle.cs" />
     <Compile Include="Class\WinDirectory\WinDirectory_File.cs" />
     <Compile Include="Class\WinDirectory\WinDirectory_Folder.cs" />
     <Compile Include="Class\WinDirectory\WinDirectory_ListFiles.cs" />

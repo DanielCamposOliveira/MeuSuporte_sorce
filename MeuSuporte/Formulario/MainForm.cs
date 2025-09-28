@@ -46,7 +46,7 @@ namespace MeuSuporte
     // 3. RadioButtons - Otimização/Limpeza (Atual/Todos)
     radioButtonOptimizeBar_Atual, radioButtonOptimizeBar_Todos,
     radioButtonDeleteRegistry_Atual, radioButtonDeleteRegistry_todos,
-    radioButtonCleanTemp_Atual, radioButtonCleanTemp_Todos,
+    radioButtonCleanTemp_Single, radioButtonCleanTemp_All,
     radioButtonBackupRegistrysRun_Atual, radioButtonBackupRegistrysRun_Todos,
 
     // 4. PictureBoxes
@@ -80,7 +80,7 @@ namespace MeuSuporte
                 checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, 
                 checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, 
                 checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
-                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar
+                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar, radioButtonCleanTemp_All
                 );
 
 
