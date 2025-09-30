@@ -8,11 +8,8 @@ namespace MeuSuporte
     {
         public async Task<string> GetUserProfilePathsAsync()
         {
-
-            string usersFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); // C:\Users\Usuario
-  
+            string usersFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); // C:\Users\Usuario  
             string tempPath = Path.Combine(usersFolderPath, "AppData", "Local", "Temp");
-
             return tempPath;
         }
     }

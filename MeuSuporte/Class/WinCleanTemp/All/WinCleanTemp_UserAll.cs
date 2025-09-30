@@ -36,11 +36,8 @@ namespace MeuSuporte
 
                 // funcao de apagar os arquivos
                 // await ListFiles.Remove(ValueUniProgressBar, DirectoryFolder, _NameFolder);
-
                 
-                await Directory_ListFiles.Remove(ValueUniProgressBar, path, "%Temp% Users");
-
-          
+                await Directory_ListFiles.Remove(ValueUniProgressBar, path, "%Temp% Users");          
                 //  await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);
                 //  await WinGlobal_UIService.Instance.Log_MensagemAsync($"{applicant}: Limpeza da pasta {_NameFolder} : {ListFiles.countFoldersDeleted} Pasta(s) Apagada(s) e {ListFiles.countFileDeleted} Arquivo(s) Apagado(s)", false);
 

@@ -99,10 +99,10 @@
             this.radioButtonCleanTemp_All = new System.Windows.Forms.RadioButton();
             this.panel_BackupRegistrysRun = new System.Windows.Forms.Panel();
             this.radioButtonBackupRegistrysRun_Atual = new System.Windows.Forms.RadioButton();
-            this.radioButtonBackupRegistrysRun_Todos = new System.Windows.Forms.RadioButton();
+            this.radioButtonBackupRegistrysRun_All = new System.Windows.Forms.RadioButton();
             this.panel_DeleteRegistry = new System.Windows.Forms.Panel();
-            this.radioButtonDeleteRegistry_Atual = new System.Windows.Forms.RadioButton();
-            this.radioButtonDeleteRegistry_todos = new System.Windows.Forms.RadioButton();
+            this.radioButtonDeleteRegistry_Single = new System.Windows.Forms.RadioButton();
+            this.radioButtonDeleteRegistry_All = new System.Windows.Forms.RadioButton();
             this.panel_OptimizeBar = new System.Windows.Forms.Panel();
             this.radioButtonOptimizeBar_Atual = new System.Windows.Forms.RadioButton();
             this.radioButtonOptimizeBar_Todos = new System.Windows.Forms.RadioButton();
@@ -935,7 +935,7 @@
             // 
             this.panel_BackupRegistrysRun.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel_BackupRegistrysRun.Controls.Add(this.radioButtonBackupRegistrysRun_Atual);
-            this.panel_BackupRegistrysRun.Controls.Add(this.radioButtonBackupRegistrysRun_Todos);
+            this.panel_BackupRegistrysRun.Controls.Add(this.radioButtonBackupRegistrysRun_All);
             this.panel_BackupRegistrysRun.Location = new System.Drawing.Point(996, 362);
             this.panel_BackupRegistrysRun.Name = "panel_BackupRegistrysRun";
             this.panel_BackupRegistrysRun.Size = new System.Drawing.Size(147, 27);
@@ -955,51 +955,51 @@
             this.radioButtonBackupRegistrysRun_Atual.Text = "Atual";
             this.radioButtonBackupRegistrysRun_Atual.UseVisualStyleBackColor = true;
             // 
-            // radioButtonBackupRegistrysRun_Todos
+            // radioButtonBackupRegistrysRun_All
             // 
-            this.radioButtonBackupRegistrysRun_Todos.AutoSize = true;
-            this.radioButtonBackupRegistrysRun_Todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonBackupRegistrysRun_Todos.Location = new System.Drawing.Point(62, 3);
-            this.radioButtonBackupRegistrysRun_Todos.Name = "radioButtonBackupRegistrysRun_Todos";
-            this.radioButtonBackupRegistrysRun_Todos.Size = new System.Drawing.Size(59, 19);
-            this.radioButtonBackupRegistrysRun_Todos.TabIndex = 64;
-            this.radioButtonBackupRegistrysRun_Todos.Text = "Todos";
-            this.radioButtonBackupRegistrysRun_Todos.UseVisualStyleBackColor = true;
+            this.radioButtonBackupRegistrysRun_All.AutoSize = true;
+            this.radioButtonBackupRegistrysRun_All.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonBackupRegistrysRun_All.Location = new System.Drawing.Point(62, 3);
+            this.radioButtonBackupRegistrysRun_All.Name = "radioButtonBackupRegistrysRun_All";
+            this.radioButtonBackupRegistrysRun_All.Size = new System.Drawing.Size(59, 19);
+            this.radioButtonBackupRegistrysRun_All.TabIndex = 64;
+            this.radioButtonBackupRegistrysRun_All.Text = "Todos";
+            this.radioButtonBackupRegistrysRun_All.UseVisualStyleBackColor = true;
             // 
             // panel_DeleteRegistry
             // 
             this.panel_DeleteRegistry.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel_DeleteRegistry.Controls.Add(this.radioButtonDeleteRegistry_Atual);
-            this.panel_DeleteRegistry.Controls.Add(this.radioButtonDeleteRegistry_todos);
+            this.panel_DeleteRegistry.Controls.Add(this.radioButtonDeleteRegistry_Single);
+            this.panel_DeleteRegistry.Controls.Add(this.radioButtonDeleteRegistry_All);
             this.panel_DeleteRegistry.Location = new System.Drawing.Point(996, 395);
             this.panel_DeleteRegistry.Name = "panel_DeleteRegistry";
             this.panel_DeleteRegistry.Size = new System.Drawing.Size(147, 27);
             this.panel_DeleteRegistry.TabIndex = 87;
             this.panel_DeleteRegistry.Visible = false;
             // 
-            // radioButtonDeleteRegistry_Atual
+            // radioButtonDeleteRegistry_Single
             // 
-            this.radioButtonDeleteRegistry_Atual.AutoSize = true;
-            this.radioButtonDeleteRegistry_Atual.Checked = true;
-            this.radioButtonDeleteRegistry_Atual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonDeleteRegistry_Atual.Location = new System.Drawing.Point(3, 3);
-            this.radioButtonDeleteRegistry_Atual.Name = "radioButtonDeleteRegistry_Atual";
-            this.radioButtonDeleteRegistry_Atual.Size = new System.Drawing.Size(52, 19);
-            this.radioButtonDeleteRegistry_Atual.TabIndex = 65;
-            this.radioButtonDeleteRegistry_Atual.TabStop = true;
-            this.radioButtonDeleteRegistry_Atual.Text = "Atual";
-            this.radioButtonDeleteRegistry_Atual.UseVisualStyleBackColor = true;
+            this.radioButtonDeleteRegistry_Single.AutoSize = true;
+            this.radioButtonDeleteRegistry_Single.Checked = true;
+            this.radioButtonDeleteRegistry_Single.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonDeleteRegistry_Single.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonDeleteRegistry_Single.Name = "radioButtonDeleteRegistry_Single";
+            this.radioButtonDeleteRegistry_Single.Size = new System.Drawing.Size(51, 19);
+            this.radioButtonDeleteRegistry_Single.TabIndex = 65;
+            this.radioButtonDeleteRegistry_Single.TabStop = true;
+            this.radioButtonDeleteRegistry_Single.Text = "User";
+            this.radioButtonDeleteRegistry_Single.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDeleteRegistry_todos
+            // radioButtonDeleteRegistry_All
             // 
-            this.radioButtonDeleteRegistry_todos.AutoSize = true;
-            this.radioButtonDeleteRegistry_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonDeleteRegistry_todos.Location = new System.Drawing.Point(62, 3);
-            this.radioButtonDeleteRegistry_todos.Name = "radioButtonDeleteRegistry_todos";
-            this.radioButtonDeleteRegistry_todos.Size = new System.Drawing.Size(59, 19);
-            this.radioButtonDeleteRegistry_todos.TabIndex = 64;
-            this.radioButtonDeleteRegistry_todos.Text = "Todos";
-            this.radioButtonDeleteRegistry_todos.UseVisualStyleBackColor = true;
+            this.radioButtonDeleteRegistry_All.AutoSize = true;
+            this.radioButtonDeleteRegistry_All.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonDeleteRegistry_All.Location = new System.Drawing.Point(62, 3);
+            this.radioButtonDeleteRegistry_All.Name = "radioButtonDeleteRegistry_All";
+            this.radioButtonDeleteRegistry_All.Size = new System.Drawing.Size(59, 19);
+            this.radioButtonDeleteRegistry_All.TabIndex = 64;
+            this.radioButtonDeleteRegistry_All.Text = "Todos";
+            this.radioButtonDeleteRegistry_All.UseVisualStyleBackColor = true;
             // 
             // panel_OptimizeBar
             // 
@@ -1184,10 +1184,10 @@
         private System.Windows.Forms.RadioButton radioButtonCleanTemp_All;
         private System.Windows.Forms.Panel panel_BackupRegistrysRun;
         private System.Windows.Forms.RadioButton radioButtonBackupRegistrysRun_Atual;
-        private System.Windows.Forms.RadioButton radioButtonBackupRegistrysRun_Todos;
+        private System.Windows.Forms.RadioButton radioButtonBackupRegistrysRun_All;
         public System.Windows.Forms.Panel panel_DeleteRegistry;
-        private System.Windows.Forms.RadioButton radioButtonDeleteRegistry_Atual;
-        private System.Windows.Forms.RadioButton radioButtonDeleteRegistry_todos;
+        private System.Windows.Forms.RadioButton radioButtonDeleteRegistry_Single;
+        private System.Windows.Forms.RadioButton radioButtonDeleteRegistry_All;
         private System.Windows.Forms.CheckBox checkBox_OptimizeBar;
         private System.Windows.Forms.PictureBox pictureBox_OptimizeBar;
         private System.Windows.Forms.Panel panel_OptimizeBar;

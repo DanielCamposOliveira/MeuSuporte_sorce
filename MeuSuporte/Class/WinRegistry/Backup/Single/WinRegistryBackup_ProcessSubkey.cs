@@ -6,19 +6,17 @@ namespace MeuSuporte
 {
     internal class WinRegistryBackup_ProcessSubkey
     {
-        private readonly WinRegistryBackup_FormatRegister FormatRegister;
+        private  WinRegistryBackup_FormatRegister FormatRegister;
 
-        public WinRegistryBackup_ProcessSubkey()
+        public async Task Subkey(RegistryKey Key, StringBuilder regFile)
         {
             FormatRegister = new WinRegistryBackup_FormatRegister();
-        }
-        public async Task Subkey(RegistryKey Key, StringBuilder RegistryFile)
-        {
-            if (Key == null) return;
 
             // Adiciona a chave atual ao arquivo de backup
-            RegistryFile.AppendLine("");
-            RegistryFile.AppendLine($"[{Key.Name}]");
+            // Todas as chamadas AppendLine estão MODIFICANDO 
+            // DIRETAMENTE o objeto 'regFile' (a referência) que foi passado.
+            regFile.AppendLine("");
+            regFile.AppendLine($"[{Key.Name}]");
 
             // Processa todos os valores dentro da chave atual
             foreach (string NameValue in Key.GetValueNames())
@@ -31,7 +29,7 @@ namespace MeuSuporte
 
                 if (FormattedValue != null)
                 {
-                    RegistryFile.AppendLine($"\"{NameValue}\"={FormattedValue}");
+                    regFile.AppendLine($"\"{NameValue}\"={FormattedValue}");
                 }
             }
 
@@ -40,7 +38,7 @@ namespace MeuSuporte
             {
                 using (RegistryKey subChave = Key.OpenSubKey(nomeSubchave))
                 {
-                    Subkey(subChave, RegistryFile);
+                    Subkey(subChave, regFile);
                 }
             }
         }        

@@ -1,21 +1,17 @@
-﻿using System.Security.AccessControl;
-using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
     internal class WinDeleteReportError_Recycle
     {
         private WinGlobal_DirectoryMananger DirectoryManange;
-        private WinDirectory_Security WinDirectory_FileSecurity;
-        private FileSecurity _FileSecurity = new FileSecurity();
-        private DirectorySecurity _DirectorySecurity = new DirectorySecurity();
+        private WinDirectory_AssignsPathPermission AssignsPathPermission;
         private WinDirectory_ListFiles ListFiles;
 
         public async Task Clean( string Path, string NameFolder, string TypeReport, int ValueUniProgressBar)
         {
             DirectoryManange = new WinGlobal_DirectoryMananger();
-            WinDirectory_FileSecurity = new WinDirectory_Security();
+            AssignsPathPermission = new WinDirectory_AssignsPathPermission();
             ListFiles = new WinDirectory_ListFiles();
 
             // verifica se diretorio existe
@@ -34,7 +30,7 @@ namespace MeuSuporte
             }
 
             // atribui as permissões de segurança
-            if (await WinDirectory_FileSecurity.SecurityAsync(_FileSecurity, _DirectorySecurity, Environment.UserName.ToString()) == false)
+            if (!await AssignsPathPermission.AssignsPermission(Path))
             {
                 WinGlobal_UIService.Instance.Erro++;
                 await WinGlobal_UIService.Instance.Log_MensagemAsync("Clean Report Error: Ocorreu um Erro ao tentar atribuir de Segurança nos Arquivos", true);

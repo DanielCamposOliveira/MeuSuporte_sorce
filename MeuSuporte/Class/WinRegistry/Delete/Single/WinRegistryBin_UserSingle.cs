@@ -5,7 +5,7 @@ using Microsoft.Win32;
 
 namespace MeuSuporte
 {
-    internal class WinRegistryBin_User
+    internal class WinRegistryBin_UserSingle
     {
         WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
 
@@ -29,13 +29,13 @@ namespace MeuSuporte
                         // verifica se existe exeçoes
                         if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Chave Preservada: {NomeChave}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
 
                         if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Chave Preservada: {NomeChave}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
 
@@ -43,12 +43,12 @@ namespace MeuSuporte
                         try
                         {                            
                             Pasta_USER_CurrentVersion.DeleteValue(NomeChave);
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Apagado Nome:{NomeChave} Valor:{caminhoRegistro} Tipo:{tipoChave}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Sucesso++;
                         }
                         catch (Exception e)
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER - Ocorreu um Erro ao Apagar Nome:{NomeChave} Valor:{caminhoRegistro} Tipo:{tipoChave}", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Erro++;
                         }
                     }
@@ -56,7 +56,7 @@ namespace MeuSuporte
                 }
                 else
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Registro: USER - Sem registro.", true);
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Sem registro.", true);
                 }
             }
         }

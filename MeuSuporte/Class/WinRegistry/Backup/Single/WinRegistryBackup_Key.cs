@@ -16,15 +16,17 @@ namespace MeuSuporte
 
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-            // monta registro para salvar
+            // cria uma nova instância de StringBuilder.
             StringBuilder regFile = new StringBuilder();
             regFile.AppendLine("Windows Registry Editor Version 5.00");
             regFile.AppendLine("");
-         
-            ProcessSubkey.Subkey(RegistryCurrent, regFile);
 
-            // Chama a Função de grava a chave no Disco
-            await RegistryFile.Write(NameFolder, regFile, ValueUniProgressBar);
+            //passa a REFERÊNCIA desse objeto(regFile) para o Subkey.
+            await ProcessSubkey.Subkey(RegistryCurrent, regFile);
+            
+            //passa a MESMA REFERÊNCIA desse objeto(regFile)
+            //O Write acessa o MESMO bloco de memória modificado pelo Subkey.
+            await RegistryFile.Write(NameFolder, regFile, ValueUniProgressBar);  // Chama a Função de grava a chave no Disco            
         }
     }
 }

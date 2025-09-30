@@ -36,16 +36,18 @@ namespace MeuSuporte
         private RadioButton radioButtonCleanPageFile_Ativar;
         private RadioButton radioButtonradioButtonConnectionRDP_Ativar;
         private RadioButton radioButtonCleanTemp_All;
+        private RadioButton radioButtonDeleteRegistry_All;
+        private RadioButton radioButtonBackupRegistrysRun_All;
 
         #endregion
 
         #region instância
-        public static void Initialize(CheckBox _checkBox_UserUAC, CheckBox _checkBox_CleanTask, CheckBox _checkBox_CleanTrash, 
-            CheckBox _checkBox_CleanProcess, CheckBox _checkBox_CleanTemp, CheckBox _checkBox_CleanWindowsUpdate, CheckBox _checkBox_CleanGoogle, 
-            CheckBox _checkBox_BackupRegistrysRun, CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry, 
-            CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, CheckBox _checkBox_RestorePoint, 
+        public static void Initialize(CheckBox _checkBox_UserUAC, CheckBox _checkBox_CleanTask, CheckBox _checkBox_CleanTrash,
+            CheckBox _checkBox_CleanProcess, CheckBox _checkBox_CleanTemp, CheckBox _checkBox_CleanWindowsUpdate, CheckBox _checkBox_CleanGoogle,
+            CheckBox _checkBox_BackupRegistrysRun, CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry,
+            CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, CheckBox _checkBox_RestorePoint,
             CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,
-            RadioButton _radioButtonradioButtonConnectionRDP_Ativar, RadioButton _radioButtonCleanTemp_All
+            RadioButton _radioButtonradioButtonConnectionRDP_Ativar, RadioButton _radioButtonCleanTemp_All, RadioButton _radioButtonDeleteRegistry_All, RadioButton _radioButtonBackupRegistrysRun_All
             )
         {
             if (_instance == null)
@@ -75,6 +77,8 @@ namespace MeuSuporte
                     radioButtonCleanPageFile_Ativar = _radioButtonCleanPageFile_Ativar,
                     radioButtonradioButtonConnectionRDP_Ativar = _radioButtonradioButtonConnectionRDP_Ativar,
                     radioButtonCleanTemp_All = _radioButtonCleanTemp_All,
+                    radioButtonDeleteRegistry_All = _radioButtonDeleteRegistry_All,
+                    radioButtonBackupRegistrysRun_All = _radioButtonBackupRegistrysRun_All,
                 };
             }
         }
@@ -113,6 +117,7 @@ namespace MeuSuporte
 
         #endregion
 
+        // fazer para all
         #region Limpar Agenda de Tarefas
 
         public async Task CleanTask()
@@ -241,12 +246,15 @@ namespace MeuSuporte
         public async Task BackupRegistrysRun()
         {
             WinRegistryBackup_Mananger RegistryBackup_Mananger = new WinRegistryBackup_Mananger();
-
+          
             // Atualiza a UI antes da execução assíncrona
             await WinGlobal_UIService.Instance.UpdateIfonUI("Backup Registrys Run", checkBox_BackupRegistrysRun, Resources.BackupRegistrys_Black, "Backup Registro:\r\nSalva uma cópia dos registro, para facilitar a restauração em caso de problemas.");
             await Task.Delay(800);
 
-            await Task.Run(() => RegistryBackup_Mananger.Mananger(), WinGlobal_UIService.Instance.token);
+            await Task.Run(() => RegistryBackup_Mananger.Mananger(radioButtonBackupRegistrysRun_All.Checked), WinGlobal_UIService.Instance.token);
+
+
+
             await Task.Delay(1000);
 
             checkBox_BackupRegistrysRun.Font = new Font(checkBox_BackupRegistrysRun.Font.FontFamily, checkBox_BackupRegistrysRun.Font.Size, FontStyle.Strikeout);
@@ -301,8 +309,9 @@ namespace MeuSuporte
             // Atualiza a UI antes da execução assíncrona
             await WinGlobal_UIService.Instance.UpdateIfonUI("Delete Registry", checkBox_DeleteRegistry, Resources.CleanRegistry_Black, "Limpar Registro:\n\rRemove entradas inválidas do registro, ajudando na estabilidade do sistema.");
             await Task.Delay(800);
+                       
+            await Task.Run(() => _ClassCleanRegistry.Delete(radioButtonDeleteRegistry_All.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
 
-            await Task.Run(() => _ClassCleanRegistry.DeleteRegistry(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             checkBox_DeleteRegistry.Font = new Font(checkBox_DeleteRegistry.Font.FontFamily, checkBox_DeleteRegistry.Font.Size, FontStyle.Strikeout);
@@ -322,7 +331,7 @@ namespace MeuSuporte
 
             await Task.Run(() => User_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
-
+            // Atualiza a UI após a execução assíncrona
             checkBox_Usuario.Font = new Font(checkBox_Usuario.Font.FontFamily, checkBox_Usuario.Font.Size, FontStyle.Strikeout);
         }
 
@@ -338,9 +347,7 @@ namespace MeuSuporte
             await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Prefetch", checkBox_CleanPrefetch, Resources.ClearPrefetch_Black, "Limpar Prefetch:\r\nExclui arquivos de pré-carregamento do sistema para otimizar o tempo de inicialização.");
             await Task.Delay(800);
 
-            // Executa a função assíncrona sem bloquear a UI
-            string DiretorioPasta = @"C:\Windows\Prefetch";
-            await Task.Run(() => Directory_Mananger.Mananger("Clean Prefetch", DiretorioPasta, "Prefetch", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Prefetch", @"C:\Windows\Prefetch", "Prefetch", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             // Atualiza a UI após a execução assíncrona    
@@ -362,6 +369,7 @@ namespace MeuSuporte
             await Task.Run(() => BackupBCD_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
+            // Atualiza a UI após a execução assíncrona
             checkBox_BackupBCD.Font = new Font(checkBox_BackupBCD.Font.FontFamily, checkBox_BackupBCD.Font.Size, FontStyle.Strikeout);
         }
 
@@ -372,15 +380,14 @@ namespace MeuSuporte
         public async Task CreateSystemPoint()
         {
             WinRestorePoint_Mananger RestorePoint_Mananger = new WinRestorePoint_Mananger();
-
+            // Atualiza a UI antes da execução assíncrona
             await WinGlobal_UIService.Instance.UpdateIfonUI("Proteção do Sistema", checkBox_RestorePoint, Resources.restore_Black, checkBox_RestorePoint.Text + "Ponto de Restauração\n\rpermite reverter o sistema para um estado anterior, revertendo configurações, programas e arquivos do sistema");
             await Task.Delay(800);
 
-            await RestorePoint_Mananger.Mananger();
-
-            ///await CreateSystemPoint("New");
+            await Task.Run(() => RestorePoint_Mananger.Mananger(), WinGlobal_UIService.Instance.token);
             await Task.Delay(1000);
 
+            // Atualiza a UI após a execução assíncrona
             checkBox_RestorePoint.Font = new Font(checkBox_RestorePoint.Font.FontFamily, checkBox_RestorePoint.Font.Size, FontStyle.Strikeout);
         }
 
