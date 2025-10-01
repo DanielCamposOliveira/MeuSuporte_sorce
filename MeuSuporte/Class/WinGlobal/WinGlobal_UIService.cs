@@ -61,7 +61,7 @@ namespace MeuSuporte
             }
         }
 
-        public void ProgressBarADD(int valor)
+        public async Task ProgressBarADD(int valor)
         {
             if (_progressBar.InvokeRequired)
             {

@@ -4,16 +4,25 @@ using Microsoft.Win32;
 
 namespace MeuSuporte
 {
+    /// <summary>
+    /// Class Responsavel por
+    /// Criar o arquivo do registro
+    /// Chamada do metado de adicionar os regsitro no arquivo 
+    /// Chamada do metado de gravar o arquivo no Disco
+    /// </summary>
+
     internal class WinRegistryBackup_Key
     {
         private  WinRegistryBackup_RegistryFile RegistryFile;
         private  WinRegistryBackup_ProcessSubkey ProcessSubkey;
 
-        public async Task Backup(string NameFolder, RegistryKey RegistryCurrent, int ValueUniProgressBar)
+        public WinRegistryBackup_Key()
         {
             RegistryFile = new WinRegistryBackup_RegistryFile();
             ProcessSubkey = new WinRegistryBackup_ProcessSubkey();
-
+        }
+        public async Task Backup(string NameFolder, RegistryKey RegistryCurrent, int ValueUniProgressBar)
+        {
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
             // cria uma nova instância de StringBuilder.
@@ -23,9 +32,8 @@ namespace MeuSuporte
 
             //passa a REFERÊNCIA desse objeto(regFile) para o Subkey.
             await ProcessSubkey.Subkey(RegistryCurrent, regFile);
-            
-            //passa a MESMA REFERÊNCIA desse objeto(regFile)
-            //O Write acessa o MESMO bloco de memória modificado pelo Subkey.
+
+            // Grava o objeto(regFile) em um arquivo no Disco
             await RegistryFile.Write(NameFolder, regFile, ValueUniProgressBar);  // Chama a Função de grava a chave no Disco            
         }
     }

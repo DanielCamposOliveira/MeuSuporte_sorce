@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
-    internal class WinRegistryBackup_RegistryFile
-    {
+    /// <summary>
+    /// Class Responsavel por gravar o arquivo do registro no Disco
+    /// </summary>
 
+    internal class WinRegistryBackup_RegistryFile
+    {        
         private readonly WinGlobal_DirectoryMananger DirectoryManange;
 
         public WinRegistryBackup_RegistryFile()
@@ -32,7 +35,7 @@ namespace MeuSuporte
                 // Salva o arquivo 
                 File.WriteAllText(DirectoryManange.GetDirectory("BackupRegistry") + "\\" + NameFolder, regFile.ToString(), Encoding.Unicode);
                 WinGlobal_UIService.Instance.Sucesso++;
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
 
                 await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: \"{NameFolder}\" - Backup Chave Criada", true);
             }

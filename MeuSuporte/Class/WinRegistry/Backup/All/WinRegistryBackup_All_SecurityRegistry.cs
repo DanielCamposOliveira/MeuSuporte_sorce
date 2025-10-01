@@ -10,17 +10,17 @@ namespace MeuSuporte
 
         private readonly WinRegistryBackup_All_Privilege _privilegeManager;
         private readonly WinRegistryBackup_All_HiveLoader _hiveLoader;
-        private WinRegistryBackup_All_SaveRegistry RegistryBackupAll_List;
+        private WinRegistryBackup_All_Key RegistryBackup_All_SaveRegistry;
         private readonly WinRegistryBackup_All_ProfileList RegistryBackup_All_ProfileList;
 
         public WinRegistryBackup_All_SecurityRegistry()
         {
             _privilegeManager = new WinRegistryBackup_All_Privilege();
             _hiveLoader = new WinRegistryBackup_All_HiveLoader();
-            RegistryBackupAll_List = new WinRegistryBackup_All_SaveRegistry();
+            RegistryBackup_All_SaveRegistry = new WinRegistryBackup_All_Key();
 
             // 2. Instanciar a nova classe, INJETANDO as dependências necessárias
-            RegistryBackup_All_ProfileList = new WinRegistryBackup_All_ProfileList(_hiveLoader, RegistryBackupAll_List);
+            RegistryBackup_All_ProfileList = new WinRegistryBackup_All_ProfileList(_hiveLoader, RegistryBackup_All_SaveRegistry);
         }
 
 

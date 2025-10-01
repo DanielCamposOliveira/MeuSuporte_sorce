@@ -6,6 +6,10 @@ using Microsoft.Win32;
 
 namespace MeuSuporte
 {
+    /// <summary>
+    /// Class responsavel por formatar a string para o valor do tipo de chave de registro
+    /// </summary>
+    
     internal class WinRegistryBackup_FormatRegister
     {
         public async Task<string> Format(RegistryValueKind KeyType, object KeyValue)

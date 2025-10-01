@@ -1,29 +1,25 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Win32;
 
 namespace MeuSuporte
 {
-    internal class WinRegistryBackup_ProcessSubkey
+    internal class WinRegistryBackup_All_ProcessSubkey
     {
         /// <summary>
-        /// Class responsavel por montar o arquivo StringBuilder regFile com as informacoes dos registros
+        /// Class responsavel por montar o arquivo (StringBuilder regFile) com as informacoes dos registros
         /// </summary>
 
-        private readonly WinRegistryBackup_FormatRegister FormatRegister;
+        private WinRegistryBackup_FormatRegister RegistryBackup_FormatRegister;
 
-        public WinRegistryBackup_ProcessSubkey()
+        public WinRegistryBackup_All_ProcessSubkey()
         {
-            FormatRegister = new WinRegistryBackup_FormatRegister();
+            RegistryBackup_FormatRegister = new WinRegistryBackup_FormatRegister();
         }
 
-        public async Task Subkey(RegistryKey Key, StringBuilder regFile)
+        public async Task RegistryCatalog(RegistryKey Key, StringBuilder regFile)
         {
-            // Adiciona a chave atual ao arquivo de backup
-            // Todas as chamadas AppendLine estão MODIFICANDO 
-            // DIRETAMENTE o objeto 'regFile' (a referência) que foi passado.
-            regFile.AppendLine("");
-            regFile.AppendLine($"[{Key.Name}]");
+            regFile.AppendLine(@"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run]");
 
             // Processa todos os valores dentro da chave atual
             foreach (string NameValue in Key.GetValueNames())
@@ -32,7 +28,7 @@ namespace MeuSuporte
                 RegistryValueKind TypeValue = Key.GetValueKind(NameValue);
 
                 // Formatar o valor conforme o tipo de dado
-                string FormattedValue = await FormatRegister.Format(TypeValue, valor);
+                string FormattedValue = await RegistryBackup_FormatRegister.Format(TypeValue, valor);
 
                 if (FormattedValue != null)
                 {
@@ -45,9 +41,9 @@ namespace MeuSuporte
             {
                 using (RegistryKey subChave = Key.OpenSubKey(nomeSubchave))
                 {
-                    Subkey(subChave, regFile);
+                    RegistryCatalog(subChave, regFile);
                 }
             }
-        }        
+        }
     }
 }

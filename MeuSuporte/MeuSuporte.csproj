@@ -200,10 +200,11 @@
     <Compile Include="Class\WinGlobal\WinGlobal_UIService.cs" />
     <Compile Include="Class\WinGlobal\WinGlobal_ValidNameFolde.cs" />
     <Compile Include="Class\WinPageFile\WinPageFile_KeyRegistry.cs" />
+    <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_ProcessSubkey.cs" />
     <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_ProfileList.cs" />
     <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_Mananger.cs" />
     <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_SecurityRegistry.cs" />
-    <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_SaveRegistry.cs" />
+    <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_Key.cs" />
     <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_HiveLoader.cs" />
     <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_Privilege.cs" />
     <Compile Include="Class\WinRegistry\Backup\All\WinRegistryBackup_All_WriteFile.cs" />

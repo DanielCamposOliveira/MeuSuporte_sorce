@@ -4,13 +4,21 @@ using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
+    /// <summary>
+    /// Class responsavel por chamar a Class que realiza a montagem do registro e a gravação no disco
+    /// </summary>
     internal class WinRegistryBackup_Single_Mananger
     {
         private  WinRegistryBackup_Key RegistryBackup_Key;
 
-        public async Task Mananger()
+        public WinRegistryBackup_Single_Mananger()
         {
             RegistryBackup_Key = new WinRegistryBackup_Key();
+        }
+
+        public async Task Mananger()
+        {
+            
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
             string NameMachineRun = "LocalMachineRun.reg";

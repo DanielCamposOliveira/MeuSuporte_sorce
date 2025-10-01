@@ -6,7 +6,9 @@ using System.Security.Principal;
 namespace MeuSuporte
 {
     /// <summary>
-    /// Essa class sera responsavel por lista todos os perfis dos usuarios e repassar para class de processamento
+    /// Essa class sera responsavel por 
+    /// Lista todos os Usuarios
+    /// Repassar o caminho do perfil do usuario para class de WinRegistryBackup_All_Key
     /// </summary>
 
 
@@ -15,14 +17,14 @@ namespace MeuSuporte
         private const string PROFILE_LIST_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList";
 
         // Dependências injetadas
-        private readonly WinRegistryBackup_All_HiveLoader _hiveLoader;
-        private readonly WinRegistryBackup_All_SaveRegistry RegistryBackup_All_SaveRegistry;
+        private readonly WinRegistryBackup_All_HiveLoader RegistryBackup_All_HiveLoader;
+        private readonly WinRegistryBackup_All_Key RegistryBackup_All_Key;
 
         // Construtor para RECEBER as dependências do orquestrador
-        public WinRegistryBackup_All_ProfileList(WinRegistryBackup_All_HiveLoader hiveLoader, WinRegistryBackup_All_SaveRegistry registryBackupList)
+        public WinRegistryBackup_All_ProfileList(WinRegistryBackup_All_HiveLoader hiveLoader, WinRegistryBackup_All_Key registryBackupList)
         {
-            _hiveLoader = hiveLoader;
-            RegistryBackup_All_SaveRegistry = registryBackupList;
+            RegistryBackup_All_HiveLoader = hiveLoader;
+            RegistryBackup_All_Key = registryBackupList;
         }
 
         // Método principal, agora público ou interno, dependendo da necessidade
@@ -63,10 +65,10 @@ namespace MeuSuporte
                         if (!File.Exists(ntUserDatPath)) continue;
 
                         // 3. Carregar o hive usando a dependência
-                        _hiveLoader.LoadHive(tempHiveName, ntUserDatPath);
+                        RegistryBackup_All_HiveLoader.LoadHive(tempHiveName, ntUserDatPath);
 
                         // 4. Aplicar as configurações usando a dependência
-                        RegistryBackup_All_SaveRegistry.Backup(tempHiveName, usuario);
+                        RegistryBackup_All_Key.Backup(tempHiveName, usuario);
                     }
                     catch (Exception ex)
                     {
@@ -76,7 +78,7 @@ namespace MeuSuporte
                     finally
                     {
                         // 5. Descarregar o hive usando a dependência
-                        _hiveLoader.UnloadHive(tempHiveName);
+                        RegistryBackup_All_HiveLoader.UnloadHive(tempHiveName);
                     }
                 }
             }
