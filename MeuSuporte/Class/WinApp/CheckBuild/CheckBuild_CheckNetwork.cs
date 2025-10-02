@@ -12,7 +12,7 @@ namespace MeuSuporte
             {
                 using (var ping = new Ping())
                 {
-                    var reply = ping.Send("1.1.1.8", 3000); // Realiza um ping por 3 segundos para Servidor externo para verificar se tem conexao 
+                    var reply = ping.Send("google.com", 3000); // Realiza um ping por 3 segundos para Servidor externo para verificar se tem conexao 
                     return reply.Status == IPStatus.Success;
                 }
             }

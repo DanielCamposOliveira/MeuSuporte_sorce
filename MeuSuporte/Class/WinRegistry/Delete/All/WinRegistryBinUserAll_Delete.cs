@@ -7,8 +7,16 @@ namespace MeuSuporte
 {
     internal class WinRegistryBinUserAll_Delete
     {
+        /// <summary>
+        /// Class responsavel por apagar todos os registro do Usuario
+        /// </summary>
+              
+        private readonly WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
 
-        WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+        public WinRegistryBinUserAll_Delete()
+        {
+            RegistryBin_List = new WinRegistryBin_List();
+        }
 
         public async Task Delete(string tempHiveName, string Usuario)
         {
@@ -16,9 +24,6 @@ namespace MeuSuporte
             using (RegistryKey Pasta_USER_Runss = Registry.Users.CreateSubKey(searchKeyPath))
             using (RegistryKey? searchKey = Registry.Users.CreateSubKey(searchKeyPath, true))
             {
-                //searchKey?.SetValue("SearchboxTaskbarMode", 0, RegistryValueKind.DWord);
-                //searchKey?.SetValue("SearchboxTaskbarModeCache", 0, RegistryValueKind.DWord);
-
                 if (Pasta_USER_Runss?.ValueCount > 0)
                 {
                     foreach (string NomeChave in Pasta_USER_Runss.GetValueNames())
@@ -35,13 +40,13 @@ namespace MeuSuporte
                         // verifica se existe exeçoes
                         if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
 
                         if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
                         
@@ -50,19 +55,19 @@ namespace MeuSuporte
                             // Deleta a chave do registro
                             searchKey.DeleteValue(NomeChave);
                             
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Usuario}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Sucesso++;
                         }
                         catch (Exception e)
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Usuario}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Erro++;
                         }
                     }
                 }
                 else
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Usuario}\" - Sem registro.", true);
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Sem registro.", true);
                 }
             }
         }

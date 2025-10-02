@@ -5,6 +5,7 @@ using System.Security.Principal;
 
 namespace MeuSuporte
 {
+    //  3
     /// <summary>
     /// Essa class sera responsavel por 
     /// Lista todos os Usuarios
@@ -19,15 +20,16 @@ namespace MeuSuporte
         // Dependências injetadas
         private readonly WinRegistryBackup_All_HiveLoader RegistryBackup_All_HiveLoader;
         private readonly WinRegistryBackup_All_Key RegistryBackup_All_Key;
+        private readonly WinGlobal_FileCheck FileCheck;
 
         // Construtor para RECEBER as dependências do orquestrador
-        public WinRegistryBackup_All_ProfileList(WinRegistryBackup_All_HiveLoader hiveLoader, WinRegistryBackup_All_Key registryBackupList)
+        public WinRegistryBackup_All_ProfileList(WinRegistryBackup_All_HiveLoader hiveLoader)
         {
             RegistryBackup_All_HiveLoader = hiveLoader;
-            RegistryBackup_All_Key = registryBackupList;
+            RegistryBackup_All_Key = new WinRegistryBackup_All_Key();
+            FileCheck = new WinGlobal_FileCheck();
         }
 
-        // Método principal, agora público ou interno, dependendo da necessidade
         public void ProfilesMananger(int ValueUniProgressBar)
         {
             // Obtém o Security Identifier (SID) do usuário logado
@@ -36,6 +38,9 @@ namespace MeuSuporte
             using (RegistryKey? profileListKey = Registry.LocalMachine.OpenSubKey(PROFILE_LIST_PATH))
             {
                 if (profileListKey == null) return;
+
+                //Divide o valor ValueUniProgressBar pela QTD de Usuarios
+                int _ValueUniProgressBar = ValueUniProgressBar / profileListKey.ValueCount;
 
                 // percorre por todos os usuarios encontrado no PROFILE_LIST_PATH
                 foreach (string sid in profileListKey.GetSubKeyNames())
@@ -62,13 +67,16 @@ namespace MeuSuporte
                         string usuario = Path.GetFileName(ntUserDatPath);
                         ntUserDatPath = Path.Combine(ntUserDatPath, "NTUSER.DAT");
 
-                        if (!File.Exists(ntUserDatPath)) continue;
+                        if(!FileCheck.Check(ntUserDatPath))
+                        {
+                            continue;
+                        }                     
 
                         // 3. Carregar o hive usando a dependência
                         RegistryBackup_All_HiveLoader.LoadHive(tempHiveName, ntUserDatPath);
 
                         // 4. Aplicar as configurações usando a dependência
-                        RegistryBackup_All_Key.Backup(tempHiveName, usuario);
+                        RegistryBackup_All_Key.Backup(tempHiveName, usuario, _ValueUniProgressBar);
                     }
                     catch (Exception ex)
                     {
@@ -78,8 +86,8 @@ namespace MeuSuporte
                     finally
                     {
                         // 5. Descarregar o hive usando a dependência
-                        RegistryBackup_All_HiveLoader.UnloadHive(tempHiveName);
-                    }
+                        RegistryBackup_All_HiveLoader.UnloadHive(tempHiveName);                        
+                    }                   
                 }
             }
         }

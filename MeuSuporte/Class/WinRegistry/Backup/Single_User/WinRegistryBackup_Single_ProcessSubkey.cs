@@ -4,15 +4,16 @@ using Microsoft.Win32;
 
 namespace MeuSuporte
 {
-    internal class WinRegistryBackup_ProcessSubkey
-    {
-        /// <summary>
-        /// Class responsavel por montar o arquivo StringBuilder regFile com as informacoes dos registros
-        /// </summary>
+    // 3
+    /// <summary>
+    /// Class responsavel por montar o arquivo StringBuilder regFile com as informacoes dos registros
+    /// </summary>
 
+    internal class WinRegistryBackup_Single_ProcessSubkey
+    {
         private readonly WinRegistryBackup_FormatRegister FormatRegister;
 
-        public WinRegistryBackup_ProcessSubkey()
+        public WinRegistryBackup_Single_ProcessSubkey()
         {
             FormatRegister = new WinRegistryBackup_FormatRegister();
         }

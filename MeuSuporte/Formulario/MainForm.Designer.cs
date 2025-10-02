@@ -877,6 +877,7 @@
             // 
             this.checkBox_OptimizeBar.AutoSize = true;
             this.checkBox_OptimizeBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_OptimizeBar.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.checkBox_OptimizeBar.Location = new System.Drawing.Point(40, 5);
             this.checkBox_OptimizeBar.Name = "checkBox_OptimizeBar";
             this.checkBox_OptimizeBar.Size = new System.Drawing.Size(213, 24);

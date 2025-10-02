@@ -7,7 +7,16 @@ namespace MeuSuporte
 {
     internal class WinRegistryBin_WOW6432Node
     {
+        /// <summary>
+        /// Class responsavel por excluir os registros
+        /// </summary>
+ 
         WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+
+        public WinRegistryBin_WOW6432Node()
+        {
+            RegistryBin_List = new WinRegistryBin_List();
+        }
         public async Task Delete(int ValueUniProgressBar)
         {
             // Usando o método OpenSubKey para acessar as chaves do registro

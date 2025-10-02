@@ -4,6 +4,7 @@ using Microsoft.Win32;
 
 namespace MeuSuporte
 {
+    // 2
     /// <summary>
     /// Class Responsavel por
     /// Criar o arquivo do registro
@@ -11,17 +12,17 @@ namespace MeuSuporte
     /// Chamada do metado de gravar o arquivo no Disco
     /// </summary>
 
-    internal class WinRegistryBackup_Key
+    internal class WinRegistryBackup_LOCAL_MACHINE_Key
     {
-        private  WinRegistryBackup_RegistryFile RegistryFile;
-        private  WinRegistryBackup_ProcessSubkey ProcessSubkey;
+        private WinRegistryBackup_LOCAL_MACHINE_RegistryWriteFile RegistryBackup_RegistryWriteFile;
+        private WinRegistryBackup_LOCAL_MACHINE_ProcessSubkey RegistryBackup_ProcessSubkey;
 
-        public WinRegistryBackup_Key()
+        public WinRegistryBackup_LOCAL_MACHINE_Key()
         {
-            RegistryFile = new WinRegistryBackup_RegistryFile();
-            ProcessSubkey = new WinRegistryBackup_ProcessSubkey();
+            RegistryBackup_RegistryWriteFile = new WinRegistryBackup_LOCAL_MACHINE_RegistryWriteFile();
+            RegistryBackup_ProcessSubkey = new WinRegistryBackup_LOCAL_MACHINE_ProcessSubkey();
         }
-        public async Task Backup(string NameFolder, RegistryKey RegistryCurrent, int ValueUniProgressBar)
+        public async Task Backup(string Name, RegistryKey RegistryCurrent, int ValueUniProgressBar)
         {
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
@@ -31,10 +32,10 @@ namespace MeuSuporte
             regFile.AppendLine("");
 
             //passa a REFERÊNCIA desse objeto(regFile) para o Subkey.
-            await ProcessSubkey.Subkey(RegistryCurrent, regFile);
+            await RegistryBackup_ProcessSubkey.Subkey(RegistryCurrent, regFile);
 
             // Grava o objeto(regFile) em um arquivo no Disco
-            await RegistryFile.Write(NameFolder, regFile, ValueUniProgressBar);  // Chama a Função de grava a chave no Disco            
+            await RegistryBackup_RegistryWriteFile.Write(Name, regFile, ValueUniProgressBar);  // Chama a Função de grava a chave no Disco            
         }
     }
 }

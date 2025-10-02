@@ -5,18 +5,21 @@ using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
+    // 4
     /// <summary>
-    /// Class responsavel por gravar o arquivo no Disco
+    /// Class Responsavel por gravar o arquivo do registro no Disco
     /// </summary>
-    internal class WinRegistryBackup_All_WriteFile
-    {
+
+    internal class WinRegistryBackup_Single_RegistryWriteFile
+    {        
         private readonly WinGlobal_DirectoryMananger DirectoryManange;
-        public WinRegistryBackup_All_WriteFile()
+
+        public WinRegistryBackup_Single_RegistryWriteFile()
         {
             DirectoryManange = new WinGlobal_DirectoryMananger();
         }
 
-        public async Task Write(string NameUser, StringBuilder regFile, int ValueUniProgressBar)
+        public async Task Write(string Name, StringBuilder regFile, int ValueUniProgressBar )
         {
             try
             {
@@ -28,21 +31,20 @@ namespace MeuSuporte
                     await WinGlobal_UIService.Instance.Log_MensagemAsync("Ocorreu um erro ao tentar criar Pasta BackupRegistry", true);
                     return;
                 }
-          
-                string NameFile = $"{NameUser}_LocalUserRun.reg";
+
+                string NameFile = $"{Name}_LocalUserRun.reg";
 
                 // Salva o arquivo 
                 File.WriteAllText(DirectoryManange.GetDirectory("BackupRegistry") + "\\" + NameFile, regFile.ToString(), Encoding.Unicode);
-                WinGlobal_UIService.Instance.Sucesso++;   
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: USER \"{NameUser}\" - Backup Chave Criada", true);
+                WinGlobal_UIService.Instance.Sucesso++;
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
 
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
-
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: User \"{Name}\" - Backup Chave Criada", true);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: USER \"{NameUser}\" - Ocorreu um erro ao tentar criar Backup da chave", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("Ocorreu um erro ao BackupRegistry: " + ex.Message, true);
             }
         }
     }

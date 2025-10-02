@@ -6,11 +6,12 @@ namespace MeuSuporte
 {
     internal class WinRegistryBackup_All_ProcessSubkey
     {
+        // 5
         /// <summary>
         /// Class responsavel por montar o arquivo (StringBuilder regFile) com as informacoes dos registros
         /// </summary>
 
-        private WinRegistryBackup_FormatRegister RegistryBackup_FormatRegister;
+        private readonly WinRegistryBackup_FormatRegister RegistryBackup_FormatRegister;
 
         public WinRegistryBackup_All_ProcessSubkey()
         {

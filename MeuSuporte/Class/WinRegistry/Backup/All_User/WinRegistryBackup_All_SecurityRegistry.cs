@@ -4,23 +4,22 @@ namespace MeuSuporte
 {
     internal class WinRegistryBackup_All_SecurityRegistry
     {
+        //  - 2
         /// <summary>
         /// Class responsavel por atribuir a segurança no processo de leitura do arquivo Regedit
         /// </summary>
 
         private readonly WinRegistryBackup_All_Privilege _privilegeManager;
         private readonly WinRegistryBackup_All_HiveLoader _hiveLoader;
-        private WinRegistryBackup_All_Key RegistryBackup_All_SaveRegistry;
         private readonly WinRegistryBackup_All_ProfileList RegistryBackup_All_ProfileList;
 
         public WinRegistryBackup_All_SecurityRegistry()
         {
             _privilegeManager = new WinRegistryBackup_All_Privilege();
             _hiveLoader = new WinRegistryBackup_All_HiveLoader();
-            RegistryBackup_All_SaveRegistry = new WinRegistryBackup_All_Key();
 
             // 2. Instanciar a nova classe, INJETANDO as dependências necessárias
-            RegistryBackup_All_ProfileList = new WinRegistryBackup_All_ProfileList(_hiveLoader, RegistryBackup_All_SaveRegistry);
+            RegistryBackup_All_ProfileList = new WinRegistryBackup_All_ProfileList(_hiveLoader);
         }
 
 
@@ -32,14 +31,11 @@ namespace MeuSuporte
 
             if (!restoreEnabled || !backupEnabled)
             {
-                // Lógica de erro
                 return;
             }
 
             try
             {
-                // DELEGAÇÃO: Chama o método na nova classe instanciada
-                // Note que o método ConfigureExistingUserProfiles AGORA não está mais aqui.
                 RegistryBackup_All_ProfileList.ProfilesMananger(ValueUniProgressBar);
             }
             finally

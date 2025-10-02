@@ -7,7 +7,15 @@ namespace MeuSuporte
 {
     internal class WinRegistryBin_UserSingle
     {
-        WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+        /// <summary>
+        /// Class responsavel por excluir os registros
+        /// </summary>
+       private readonly WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+
+        public WinRegistryBin_UserSingle() 
+        {
+            RegistryBin_List = new WinRegistryBin_List();
+        }
 
         public async Task Delete(int ValueUniProgressBar)
         {
@@ -33,6 +41,7 @@ namespace MeuSuporte
                             continue;
                         }
 
+                        // verifica se existe exeçoes
                         if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);

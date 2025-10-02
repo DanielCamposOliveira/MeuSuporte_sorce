@@ -7,16 +7,19 @@ namespace MeuSuporte
         WinRegistryBin_All_Mananger RegistryBin_All_Mananger;
         WinRegistryBin_Single_Mananger RegistryBin_Single_Mananger;
 
+        public WinRegistryBin_Mananger()
+        {
+            RegistryBin_All_Mananger = new WinRegistryBin_All_Mananger();
+            RegistryBin_Single_Mananger = new WinRegistryBin_Single_Mananger();
+        }
         public async Task Delete(bool isAll)
         {
             if (isAll)
-            {
-                RegistryBin_All_Mananger = new WinRegistryBin_All_Mananger();
+            {                
                 await RegistryBin_All_Mananger.Delete();
             }
             else 
-            {
-                RegistryBin_Single_Mananger = new WinRegistryBin_Single_Mananger();
+            {                
                 await RegistryBin_Single_Mananger.Delete();
             }
         }
