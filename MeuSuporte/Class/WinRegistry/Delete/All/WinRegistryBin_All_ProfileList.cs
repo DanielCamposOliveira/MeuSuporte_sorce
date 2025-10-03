@@ -14,26 +14,26 @@ namespace MeuSuporte
     /// </summary>
 
 
-    internal class WinRegistryBackup_All_ProfileList
+    internal class WinRegistryBin_All_ProfileList
     {
         private const string PROFILE_LIST_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList";
 
         // Dependências injetadas
-        private readonly WinRegistryBackup_All_HiveLoader RegistryBackup_All_HiveLoader;
-        private readonly WinRegistryBackup_All_Key RegistryBackup_All_Key;
+        private readonly WinRegistryBinUserAll_HiveLoader RegistryBackup_All_HiveLoader;
+        private readonly WinRegistryBinUserAll_Delete RegistryBinUserAll_Delete;
         private readonly WinGlobal_FileCheck FileCheck;
 
         // Construtor para RECEBER as dependências do orquestrador
-        public WinRegistryBackup_All_ProfileList(WinRegistryBackup_All_HiveLoader hiveLoader)
+        public WinRegistryBin_All_ProfileList(WinRegistryBinUserAll_HiveLoader _hiveLoader)
         {
-            RegistryBackup_All_HiveLoader = hiveLoader;
-            RegistryBackup_All_Key = new WinRegistryBackup_All_Key();
+            RegistryBackup_All_HiveLoader = _hiveLoader;
+            RegistryBinUserAll_Delete = new WinRegistryBinUserAll_Delete();
             FileCheck = new WinGlobal_FileCheck();
         }
 
         public async Task ProfilesMananger(int ValueUniProgressBar)
         {
-            // Obtém o Security Identifier (SID) do usuário logado
+            // Obtém o Security Identifier (SID) do usuário que está executando o script, para evitar tentar carregar e modificar seu próprio perfil de registro.
             string currentUserSid = WindowsIdentity.GetCurrent().User.Value;
 
             using (RegistryKey? profileListKey = Registry.LocalMachine.OpenSubKey(PROFILE_LIST_PATH))
@@ -43,12 +43,11 @@ namespace MeuSuporte
                 //Divide o valor ValueUniProgressBar pela QTD de Usuarios
                 int _ValueUniProgressBar = ValueUniProgressBar / profileListKey.ValueCount;
 
-                // percorre por todos os usuarios encontrado no PROFILE_LIST_PATH
                 foreach (string sid in profileListKey.GetSubKeyNames())
                 {
                     WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-                    // Verifica se é um usuário válido e não o usuário logado
+                    // verifica se o usuario é do sistema ou do usuario logado
                     if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid) continue;
 
                     string tempHiveName = $"TempHive_{sid}";
@@ -62,35 +61,39 @@ namespace MeuSuporte
                             ntUserDatPath = sidKey?.GetValue("ProfileImagePath")?.ToString();
                         }
 
-                        // 2. Verificações de caminho e arquivo
+                        // Verifica o caminho do perfil se ele existe, caso contrário, pula este SID
                         if (string.IsNullOrEmpty(ntUserDatPath) || !Directory.Exists(ntUserDatPath)) continue;
 
                         string usuario = Path.GetFileName(ntUserDatPath);
                         ntUserDatPath = Path.Combine(ntUserDatPath, "NTUSER.DAT");
 
-                        if(!FileCheck.Check(ntUserDatPath))
+                        // Verifia se arquivo NTUSER.DAT existe
+                        if (!FileCheck.Check(ntUserDatPath))
                         {
                             continue;
-                        }                     
+                        }
 
-                        // 3. Carregar o hive usando a dependência
+                        // 5. Usa a instância do HiveLoader para carregar
                         RegistryBackup_All_HiveLoader.LoadHive(tempHiveName, ntUserDatPath);
 
-                        // 4. Aplicar as configurações usando a dependência
-                        RegistryBackup_All_Key.Backup(tempHiveName, usuario, _ValueUniProgressBar);
+                        // 6. Aplica as configurações                        
+                        await RegistryBinUserAll_Delete.Delete(tempHiveName, usuario, _ValueUniProgressBar);
                     }
                     catch (Exception ex)
                     {
-                        WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: USER - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
+                        WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
                         WinGlobal_UIService.Instance.Erro++;
                     }
                     finally
                     {
-                        // 5. Descarregar o hive usando a dependência
-                        RegistryBackup_All_HiveLoader.UnloadHive(tempHiveName);                        
-                    }                   
+                        // 7. Usa a instância do HiveLoader para descarregar
+                        RegistryBackup_All_HiveLoader.UnloadHive(tempHiveName);
+                    }
                 }
             }
+
+            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
         }
+
     }
 }

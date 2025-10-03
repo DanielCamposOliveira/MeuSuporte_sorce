@@ -19,7 +19,7 @@ namespace MeuSuporte.Properties {
     // através de uma ferramenta como ResGen ou Visual Studio.
     // Para adicionar ou remover um associado, edite o arquivo .ResX e execute ResGen novamente
     // com a opção /str, ou recrie o projeto do VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -523,26 +523,6 @@ namespace MeuSuporte.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OptimizeBar_Black {
-            get {
-                object obj = ResourceManager.GetObject("OptimizeBar_Black", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap OptimizeBar_White {
-            get {
-                object obj = ResourceManager.GetObject("OptimizeBar_White", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Remoto__White {
             get {
                 object obj = ResourceManager.GetObject("Remoto__White", resourceCulture);
@@ -616,6 +596,26 @@ namespace MeuSuporte.Properties {
         internal static System.Drawing.Bitmap Store_White {
             get {
                 object obj = ResourceManager.GetObject("Store_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Taskbar_Black {
+            get {
+                object obj = ResourceManager.GetObject("Taskbar_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Taskbar_White {
+            get {
+                object obj = ResourceManager.GetObject("Taskbar_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

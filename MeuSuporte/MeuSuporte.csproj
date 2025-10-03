@@ -218,9 +218,10 @@
     <Compile Include="Class\WinRegistry\Backup\Single_User\WinRegistryBackup_Single_ProcessSubkey.cs" />
     <Compile Include="Class\WinRegistry\Backup\Single_User\WinRegistryBackup_Single_Key.cs" />
     <Compile Include="Class\WinRegistry\Backup\WinRegistryBackup_Mananger.cs" />
+    <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_All_ProfileList.cs" />
+    <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_All_SecurityRegistry.cs" />
     <Compile Include="Class\WinRegistry\Delete\All\Private\WinRegistryBinUserAll_Privilege.cs" />
     <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_All_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_UserAll.cs" />
     <Compile Include="Class\WinRegistry\Delete\All\Private\WinRegistryBinUserAll_HiveLoader.cs" />
     <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBinUserAll_Delete.cs" />
     <Compile Include="Class\WinRegistry\Delete\Global\WinRegistryBin_List.cs" />
@@ -228,8 +229,12 @@
     <Compile Include="Class\WinRegistry\Delete\Single\WinRegistryBin_Single_Mananger.cs" />
     <Compile Include="Class\WinRegistry\Delete\Single\WinRegistryBin_UserSingle.cs" />
     <Compile Include="Class\WinRegistry\Delete\Global\WinRegistryBin_WOW6432Node.cs" />
-    <Compile Include="Class\WinRegistry\Update\WinRegistryUpdate_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Update\WinRegistryUpdate_State.cs" />
+    <Compile Include="Class\WinTaskbar\Private\WinTaskbar_HiveLoader.cs" />
+    <Compile Include="Class\WinTaskbar\Private\WinTaskbar_Privilege.cs" />
+    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Changes.cs" />
+    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_ProfileList.cs" />
+    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_SecurityRegistry.cs" />
+    <Compile Include="Class\WinTaskbar\WinTaskbar_Mananger.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Disable.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Enable.cs" />
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Firewall.cs" />
@@ -237,6 +242,7 @@
     <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Service.cs" />
     <Compile Include="Class\WinRestorePoint\WinRestorePoint_Mananger.cs" />
     <Compile Include="Class\WinService\WinService_List.cs" />
+    <Compile Include="Class\WinTaskbar\Single\WinTaskbar_Single_Mananger.cs" />
     <Compile Include="Class\WinTask\WinTask_State.cs" />
     <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />
     <Compile Include="Class\WinUser\Credential_Public.cs" />
@@ -359,8 +365,6 @@
     <None Include="Resources\CleanReportError_Black.png" />
     <None Include="Resources\DeleteReportError_White.png" />
     <None Include="Resources\CleanReportError_White.png" />
-    <None Include="Resources\OptimizeBar_Black.png" />
-    <None Include="Resources\OptimizeBar_White.png" />
     <None Include="Resources\ExportInventory_Black.png" />
     <None Include="Resources\ExportInventory_White.png" />
     <Content Include="windows-2.ico" />

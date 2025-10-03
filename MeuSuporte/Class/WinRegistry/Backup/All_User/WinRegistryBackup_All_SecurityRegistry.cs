@@ -36,7 +36,7 @@ namespace MeuSuporte
 
             try
             {
-                RegistryBackup_All_ProfileList.ProfilesMananger(ValueUniProgressBar);
+               await RegistryBackup_All_ProfileList.ProfilesMananger(ValueUniProgressBar);
             }
             finally
             {

@@ -92,8 +92,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox_ExportInventory = new System.Windows.Forms.PictureBox();
             this.checkBox_ExportInventory = new System.Windows.Forms.CheckBox();
-            this.checkBox_OptimizeBar = new System.Windows.Forms.CheckBox();
-            this.pictureBox_OptimizeBar = new System.Windows.Forms.PictureBox();
+            this.checkBox_Taskbar = new System.Windows.Forms.CheckBox();
+            this.pictureBox_Taskbar = new System.Windows.Forms.PictureBox();
             this.panel_CleanTemp = new System.Windows.Forms.Panel();
             this.radioButtonCleanTemp_Single = new System.Windows.Forms.RadioButton();
             this.radioButtonCleanTemp_All = new System.Windows.Forms.RadioButton();
@@ -104,8 +104,8 @@
             this.radioButtonDeleteRegistry_Single = new System.Windows.Forms.RadioButton();
             this.radioButtonDeleteRegistry_All = new System.Windows.Forms.RadioButton();
             this.panel_OptimizeBar = new System.Windows.Forms.Panel();
-            this.radioButtonOptimizeBar_Atual = new System.Windows.Forms.RadioButton();
-            this.radioButtonOptimizeBar_Todos = new System.Windows.Forms.RadioButton();
+            this.radioButtonTaskbar_Ativar = new System.Windows.Forms.RadioButton();
+            this.radioButtonTaskbar_Desativar = new System.Windows.Forms.RadioButton();
             this.panelBoton.SuspendLayout();
             this.panelLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoDescricao)).BeginInit();
@@ -133,7 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CleanReportError)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ExportInventory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_OptimizeBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Taskbar)).BeginInit();
             this.panel_CleanTemp.SuspendLayout();
             this.panel_BackupRegistrysRun.SuspendLayout();
             this.panel_DeleteRegistry.SuspendLayout();
@@ -181,9 +181,9 @@
             this.checkBox_CleanTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_CleanTask.Location = new System.Drawing.Point(40, 66);
             this.checkBox_CleanTask.Name = "checkBox_CleanTask";
-            this.checkBox_CleanTask.Size = new System.Drawing.Size(220, 24);
+            this.checkBox_CleanTask.Size = new System.Drawing.Size(202, 24);
             this.checkBox_CleanTask.TabIndex = 12;
-            this.checkBox_CleanTask.Text = "Limpar Tarefas Agendadas";
+            this.checkBox_CleanTask.Text = "Limpar Tarefas Agendas";
             this.checkBox_CleanTask.UseVisualStyleBackColor = true;
             // 
             // checkBox_CleanTrash
@@ -807,8 +807,8 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.pictureBox_ExportInventory);
             this.panel1.Controls.Add(this.checkBox_ExportInventory);
-            this.panel1.Controls.Add(this.checkBox_OptimizeBar);
-            this.panel1.Controls.Add(this.pictureBox_OptimizeBar);
+            this.panel1.Controls.Add(this.checkBox_Taskbar);
+            this.panel1.Controls.Add(this.pictureBox_Taskbar);
             this.panel1.Controls.Add(this.checkBox_UserUAC);
             this.panel1.Controls.Add(this.checkBox_CleanProcess);
             this.panel1.Controls.Add(this.pictureBox_UserUAC);
@@ -873,29 +873,29 @@
             this.checkBox_ExportInventory.Text = "Exportar inventário";
             this.checkBox_ExportInventory.UseVisualStyleBackColor = true;
             // 
-            // checkBox_OptimizeBar
+            // checkBox_Taskbar
             // 
-            this.checkBox_OptimizeBar.AutoSize = true;
-            this.checkBox_OptimizeBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_OptimizeBar.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.checkBox_OptimizeBar.Location = new System.Drawing.Point(40, 5);
-            this.checkBox_OptimizeBar.Name = "checkBox_OptimizeBar";
-            this.checkBox_OptimizeBar.Size = new System.Drawing.Size(213, 24);
-            this.checkBox_OptimizeBar.TabIndex = 83;
-            this.checkBox_OptimizeBar.Text = "Optimiza Barra de Tarefas";
-            this.checkBox_OptimizeBar.UseVisualStyleBackColor = true;
-            this.checkBox_OptimizeBar.Click += new System.EventHandler(this.checkBox_OptimizeBar_Click);
+            this.checkBox_Taskbar.AutoSize = true;
+            this.checkBox_Taskbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_Taskbar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox_Taskbar.Location = new System.Drawing.Point(40, 5);
+            this.checkBox_Taskbar.Name = "checkBox_Taskbar";
+            this.checkBox_Taskbar.Size = new System.Drawing.Size(213, 24);
+            this.checkBox_Taskbar.TabIndex = 83;
+            this.checkBox_Taskbar.Text = "Optimiza Barra de Tarefas";
+            this.checkBox_Taskbar.UseVisualStyleBackColor = true;
+            this.checkBox_Taskbar.Click += new System.EventHandler(this.checkBox_Taskbar_Click);
             // 
-            // pictureBox_OptimizeBar
+            // pictureBox_Taskbar
             // 
-            this.pictureBox_OptimizeBar.Enabled = false;
-            this.pictureBox_OptimizeBar.Image = global::MeuSuporte.Properties.Resources.OptimizeBar_Black;
-            this.pictureBox_OptimizeBar.Location = new System.Drawing.Point(7, 5);
-            this.pictureBox_OptimizeBar.Name = "pictureBox_OptimizeBar";
-            this.pictureBox_OptimizeBar.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_OptimizeBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_OptimizeBar.TabIndex = 84;
-            this.pictureBox_OptimizeBar.TabStop = false;
+            this.pictureBox_Taskbar.Enabled = false;
+            this.pictureBox_Taskbar.Image = global::MeuSuporte.Properties.Resources.Taskbar_Black;
+            this.pictureBox_Taskbar.Location = new System.Drawing.Point(7, 5);
+            this.pictureBox_Taskbar.Name = "pictureBox_Taskbar";
+            this.pictureBox_Taskbar.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_Taskbar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Taskbar.TabIndex = 84;
+            this.pictureBox_Taskbar.TabStop = false;
             // 
             // panel_CleanTemp
             // 
@@ -1005,37 +1005,37 @@
             // panel_OptimizeBar
             // 
             this.panel_OptimizeBar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel_OptimizeBar.Controls.Add(this.radioButtonOptimizeBar_Atual);
-            this.panel_OptimizeBar.Controls.Add(this.radioButtonOptimizeBar_Todos);
+            this.panel_OptimizeBar.Controls.Add(this.radioButtonTaskbar_Ativar);
+            this.panel_OptimizeBar.Controls.Add(this.radioButtonTaskbar_Desativar);
             this.panel_OptimizeBar.Location = new System.Drawing.Point(996, 428);
             this.panel_OptimizeBar.Name = "panel_OptimizeBar";
             this.panel_OptimizeBar.Size = new System.Drawing.Size(147, 27);
             this.panel_OptimizeBar.TabIndex = 88;
             this.panel_OptimizeBar.Visible = false;
             // 
-            // radioButtonOptimizeBar_Atual
+            // radioButtonTaskbar_Ativar
             // 
-            this.radioButtonOptimizeBar_Atual.AutoSize = true;
-            this.radioButtonOptimizeBar_Atual.Checked = true;
-            this.radioButtonOptimizeBar_Atual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonOptimizeBar_Atual.Location = new System.Drawing.Point(3, 3);
-            this.radioButtonOptimizeBar_Atual.Name = "radioButtonOptimizeBar_Atual";
-            this.radioButtonOptimizeBar_Atual.Size = new System.Drawing.Size(52, 19);
-            this.radioButtonOptimizeBar_Atual.TabIndex = 65;
-            this.radioButtonOptimizeBar_Atual.TabStop = true;
-            this.radioButtonOptimizeBar_Atual.Text = "Atual";
-            this.radioButtonOptimizeBar_Atual.UseVisualStyleBackColor = true;
+            this.radioButtonTaskbar_Ativar.AutoSize = true;
+            this.radioButtonTaskbar_Ativar.Checked = true;
+            this.radioButtonTaskbar_Ativar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTaskbar_Ativar.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonTaskbar_Ativar.Name = "radioButtonTaskbar_Ativar";
+            this.radioButtonTaskbar_Ativar.Size = new System.Drawing.Size(54, 19);
+            this.radioButtonTaskbar_Ativar.TabIndex = 65;
+            this.radioButtonTaskbar_Ativar.TabStop = true;
+            this.radioButtonTaskbar_Ativar.Text = "Ativar";
+            this.radioButtonTaskbar_Ativar.UseVisualStyleBackColor = true;
             // 
-            // radioButtonOptimizeBar_Todos
+            // radioButtonTaskbar_Desativar
             // 
-            this.radioButtonOptimizeBar_Todos.AutoSize = true;
-            this.radioButtonOptimizeBar_Todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonOptimizeBar_Todos.Location = new System.Drawing.Point(62, 3);
-            this.radioButtonOptimizeBar_Todos.Name = "radioButtonOptimizeBar_Todos";
-            this.radioButtonOptimizeBar_Todos.Size = new System.Drawing.Size(59, 19);
-            this.radioButtonOptimizeBar_Todos.TabIndex = 64;
-            this.radioButtonOptimizeBar_Todos.Text = "Todos";
-            this.radioButtonOptimizeBar_Todos.UseVisualStyleBackColor = true;
+            this.radioButtonTaskbar_Desativar.AutoSize = true;
+            this.radioButtonTaskbar_Desativar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTaskbar_Desativar.Location = new System.Drawing.Point(62, 3);
+            this.radioButtonTaskbar_Desativar.Name = "radioButtonTaskbar_Desativar";
+            this.radioButtonTaskbar_Desativar.Size = new System.Drawing.Size(76, 19);
+            this.radioButtonTaskbar_Desativar.TabIndex = 64;
+            this.radioButtonTaskbar_Desativar.Text = "Desativar";
+            this.radioButtonTaskbar_Desativar.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1104,7 +1104,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ExportInventory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_OptimizeBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Taskbar)).EndInit();
             this.panel_CleanTemp.ResumeLayout(false);
             this.panel_CleanTemp.PerformLayout();
             this.panel_BackupRegistrysRun.ResumeLayout(false);
@@ -1189,11 +1189,11 @@
         public System.Windows.Forms.Panel panel_DeleteRegistry;
         private System.Windows.Forms.RadioButton radioButtonDeleteRegistry_Single;
         private System.Windows.Forms.RadioButton radioButtonDeleteRegistry_All;
-        private System.Windows.Forms.CheckBox checkBox_OptimizeBar;
-        private System.Windows.Forms.PictureBox pictureBox_OptimizeBar;
+        private System.Windows.Forms.CheckBox checkBox_Taskbar;
+        private System.Windows.Forms.PictureBox pictureBox_Taskbar;
         private System.Windows.Forms.Panel panel_OptimizeBar;
-        private System.Windows.Forms.RadioButton radioButtonOptimizeBar_Atual;
-        private System.Windows.Forms.RadioButton radioButtonOptimizeBar_Todos;
+        private System.Windows.Forms.RadioButton radioButtonTaskbar_Ativar;
+        private System.Windows.Forms.RadioButton radioButtonTaskbar_Desativar;
         private System.Windows.Forms.PictureBox pictureBox_ExportInventory;
         private System.Windows.Forms.CheckBox checkBox_ExportInventory;
     }

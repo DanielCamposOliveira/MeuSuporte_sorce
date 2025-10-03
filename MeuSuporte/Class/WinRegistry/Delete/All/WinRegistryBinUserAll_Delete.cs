@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
+    // 4
+    /// <summary>
+    /// Class responsavel por apagar todos os registro do Usuario
+    /// </summary>
+    
     internal class WinRegistryBinUserAll_Delete
-    {
-        /// <summary>
-        /// Class responsavel por apagar todos os registro do Usuario
-        /// </summary>
-              
+    {     
         private readonly WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
 
         public WinRegistryBinUserAll_Delete()
@@ -18,7 +19,7 @@ namespace MeuSuporte
             RegistryBin_List = new WinRegistryBin_List();
         }
 
-        public async Task Delete(string tempHiveName, string Usuario)
+        public async Task Delete(string tempHiveName, string Usuario, int ValueUniProgressBar)
         {
             string searchKeyPath = @$"{tempHiveName}\Software\Microsoft\Windows\CurrentVersion\Run";
             using (RegistryKey Pasta_USER_Runss = Registry.Users.CreateSubKey(searchKeyPath))
@@ -54,7 +55,8 @@ namespace MeuSuporte
                         {
                             // Deleta a chave do registro
                             searchKey.DeleteValue(NomeChave);
-                            
+
+                            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Sucesso++;
                         }
@@ -67,6 +69,7 @@ namespace MeuSuporte
                 }
                 else
                 {
+                    WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                     await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Sem registro.", true);
                 }
             }

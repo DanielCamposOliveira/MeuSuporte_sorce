@@ -11,14 +11,14 @@ namespace MeuSuporte
         private WinRegistryBin_WOW6432Node RegistryBin_WOW6432Node;
         private WinRegistryBin_MACHINE RegistryBin_MACHINE;
         private WinRegistryBin_UserSingle RegistryBin_UserSingle;
-        private WinRegistryBin_UserAll RegistryBin_UserAll;
+        private WinRegistryBin_All_SecurityRegistry RegistryBin_All_SecurityRegistry;
 
         public WinRegistryBin_All_Mananger()
         {
             RegistryBin_WOW6432Node = new WinRegistryBin_WOW6432Node();
             RegistryBin_MACHINE = new WinRegistryBin_MACHINE();
             RegistryBin_UserSingle = new WinRegistryBin_UserSingle();
-            RegistryBin_UserAll = new WinRegistryBin_UserAll();
+            RegistryBin_All_SecurityRegistry = new WinRegistryBin_All_SecurityRegistry();
         }
 
         public async Task Delete()
@@ -27,7 +27,7 @@ namespace MeuSuporte
                 RegistryBin_WOW6432Node.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
                 RegistryBin_MACHINE.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
                 RegistryBin_UserSingle.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
-                RegistryBin_UserAll.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4)
+               RegistryBin_All_SecurityRegistry.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4)
             );
         }
 

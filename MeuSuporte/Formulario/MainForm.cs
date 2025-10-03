@@ -37,14 +37,14 @@ namespace MeuSuporte
     checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, checkBox_Usuario,
     checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP,
     checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError, checkBox_ExportInventory,
-    checkBox_OptimizeBar, checkBoxAll,
+    checkBox_Taskbar, checkBoxAll,
 
     // 2. RadioButtons - Ativar/Desativar
     radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar,
     radioButtonUserUAC_Desativar, radioButtonCleanPageFile_Desativar, radioButtonConnectionRDP_Desativar,
 
     // 3. RadioButtons - Otimização/Limpeza (Atual/Todos)
-    radioButtonOptimizeBar_Atual, radioButtonOptimizeBar_Todos,
+    radioButtonTaskbar_Ativar, radioButtonTaskbar_Desativar,
     radioButtonDeleteRegistry_Single, radioButtonDeleteRegistry_All,
     radioButtonCleanTemp_Single, radioButtonCleanTemp_All,
     radioButtonBackupRegistrysRun_Atual, radioButtonBackupRegistrysRun_All,
@@ -55,7 +55,7 @@ namespace MeuSuporte
     pictureBox_CleanPageFile, pictureBox_DriversBackup, pictureBox_DeleteRegistry, pictureBox_Usuario,
     pictureBox_CleanPrefetch, pictureBox_BackupBCD, pictureBox_RestorePoint, pictureBox_ConnectionRDP,
     pictureBox_Bloatware, pictureBox_BackupReportError, pictureBox_CleanReportError, pictureBoxInfoDescricao,
-    pictureBox_ExportInventory, pictureBox_OptimizeBar,
+    pictureBox_ExportInventory, pictureBox_Taskbar,
 
     // 5. Panels
     panelBoton, panelDivisoria, panel_UserUAC, panelLog, panel_ConnectionRDP, panel_CleanPageFile,
@@ -76,11 +76,11 @@ namespace MeuSuporte
             CheckForIllegalCrossThreadCalls = false;            
             WinGlobal_UIService.Initialize(this, txt_Log, progressBar1, labelInfoTitulo, checkBox_UserUAC, labelInfoDescricao, pictureBoxInfoDescricao, token); // envia os componete para interface
                        
-            WinApp_Mananger.Initialize(checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, 
+            WinApp_Mananger.Initialize(checkBox_Taskbar,checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, 
                 checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, 
                 checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, 
                 checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
-                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar, radioButtonCleanTemp_All, radioButtonDeleteRegistry_All, radioButtonBackupRegistrysRun_All
+                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar, radioButtonCleanTemp_All, radioButtonDeleteRegistry_All, radioButtonBackupRegistrysRun_All, radioButtonTaskbar_Ativar
                 );
 
 
@@ -93,13 +93,13 @@ namespace MeuSuporte
                  { checkBox_CleanTemp, panel_CleanTemp},
                  { checkBox_BackupRegistrysRun, panel_BackupRegistrysRun },
                  { checkBox_DeleteRegistry, panel_DeleteRegistry },
-                 { checkBox_OptimizeBar, panel_OptimizeBar }
+                 { checkBox_Taskbar, panel_OptimizeBar }
             };
 
             // NOVO: Mapeia cada checkbox ao seu PictureBox (ícone) correspondente
             checkBoxIconMap = new Dictionary<CheckBox, PictureBox>
             {
-                { checkBox_OptimizeBar, pictureBox_OptimizeBar},
+                {checkBox_Taskbar, pictureBox_Taskbar},
                 {checkBox_UserUAC, pictureBox_UserUAC },
                 {checkBox_CleanTask, pictureBox_CleanTask },
                 {checkBox_CleanTrash, pictureBox_CleanTrash },
@@ -381,10 +381,10 @@ namespace MeuSuporte
         {
             AtualizarLayoutDinamico();
         }
-        private void checkBox_OptimizeBar_Click(object sender, EventArgs e)
+        private void checkBox_Taskbar_Click(object sender, EventArgs e)
         {
             AtualizarLayoutDinamico();
-        }
+        }     
         private void checkBox_ConnectionRDP_Click(object sender, EventArgs e)
         {
             AtualizarLayoutDinamico();
@@ -511,7 +511,7 @@ namespace MeuSuporte
             // Dicionário associando CheckBox com métodos
             Dictionary<CheckBox, Func<Task>> checkBoxActions = new Dictionary<CheckBox, Func<Task>>
                 {
-                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPoint}, {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC}, {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},  {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},  {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},  {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
+                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPoint}, { checkBox_Taskbar,WinApp_Mananger.Instance.Taskbar}, {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC}, {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},  {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},  {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},  {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
                   {checkBox_CleanWindowsUpdate, WinApp_Mananger.Instance.CleanWindowsUpdate},  {checkBox_CleanGoogle, WinApp_Mananger.Instance.CleanGoogle}, {checkBox_BackupRegistrysRun, WinApp_Mananger.Instance.BackupRegistrysRun}, {checkBox_CleanPageFile, WinApp_Mananger.Instance.CleanPageFile},
                   {checkBox_DriversBackup, WinApp_Mananger.Instance.DriversBackup}, {checkBox_DeleteRegistry, WinApp_Mananger.Instance.DeleteRegistry}, {checkBox_Usuario, WinApp_Mananger.Instance.UsuarioSuporte},{checkBox_CleanPrefetch, WinApp_Mananger.Instance.CleanPrefetch},  {checkBox_BackupBCD, WinApp_Mananger.Instance.BackupBCD},
                   {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP}, {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware }, {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError }, {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError }
@@ -603,6 +603,7 @@ namespace MeuSuporte
                 }
             });
         }
+
 
 
 

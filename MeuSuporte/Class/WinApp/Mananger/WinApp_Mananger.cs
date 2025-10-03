@@ -12,6 +12,7 @@ namespace MeuSuporte
 
         private static WinApp_Mananger _instance;
 
+        private CheckBox checkBox_Taskbar;
         private CheckBox checkBox_UserUAC;
         private CheckBox checkBox_CleanTask;
         private CheckBox checkBox_CleanTrash;
@@ -38,22 +39,25 @@ namespace MeuSuporte
         private RadioButton radioButtonCleanTemp_All;
         private RadioButton radioButtonDeleteRegistry_All;
         private RadioButton radioButtonBackupRegistrysRun_All;
+        private RadioButton radioButtonTaskbar_Ativar;
 
         #endregion
 
         #region instância
-        public static void Initialize(CheckBox _checkBox_UserUAC, CheckBox _checkBox_CleanTask, CheckBox _checkBox_CleanTrash,
+        public static void Initialize(CheckBox _checkBox_Taskbar, CheckBox _checkBox_UserUAC, CheckBox _checkBox_CleanTask, CheckBox _checkBox_CleanTrash,
             CheckBox _checkBox_CleanProcess, CheckBox _checkBox_CleanTemp, CheckBox _checkBox_CleanWindowsUpdate, CheckBox _checkBox_CleanGoogle,
             CheckBox _checkBox_BackupRegistrysRun, CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry,
             CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, CheckBox _checkBox_RestorePoint,
-            CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,
-            RadioButton _radioButtonradioButtonConnectionRDP_Ativar, RadioButton _radioButtonCleanTemp_All, RadioButton _radioButtonDeleteRegistry_All, RadioButton _radioButtonBackupRegistrysRun_All
+            CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, 
+            RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,RadioButton _radioButtonradioButtonConnectionRDP_Ativar, 
+            RadioButton _radioButtonCleanTemp_All, RadioButton _radioButtonDeleteRegistry_All, RadioButton _radioButtonBackupRegistrysRun_All, RadioButton _radioButtonTaskbar_Ativar
             )
         {
             if (_instance == null)
             {
                 _instance = new WinApp_Mananger
                 {
+                    checkBox_Taskbar = _checkBox_Taskbar,
                     checkBox_UserUAC = _checkBox_UserUAC,
                     checkBox_CleanTask = _checkBox_CleanTask,
                     checkBox_CleanTrash = _checkBox_CleanTrash,
@@ -79,6 +83,7 @@ namespace MeuSuporte
                     radioButtonCleanTemp_All = _radioButtonCleanTemp_All,
                     radioButtonDeleteRegistry_All = _radioButtonDeleteRegistry_All,
                     radioButtonBackupRegistrysRun_All = _radioButtonBackupRegistrysRun_All,
+                    radioButtonTaskbar_Ativar = _radioButtonTaskbar_Ativar,
                 };
             }
         }
@@ -97,6 +102,26 @@ namespace MeuSuporte
             }
         }
 
+
+        #region notificacao de segurança ao usuario UAC
+
+        public async Task Taskbar()
+        {
+            WinTaskbar_Mananger Taskbar_Mananger = new WinTaskbar_Mananger();
+           
+
+            // Atualiza a UI antes da execução assíncrona
+            await WinGlobal_UIService.Instance.UpdateIfonUI("Otimiza Taskbar", checkBox_Taskbar, Resources.Taskbar_Black, "Optimiza Barra de Tarefas:\r\nOtimiza o espaço da Barra de Tarefas.");
+            await Task.Delay(800);
+
+            // Executa a função assíncrona sem bloquear a UI
+            await Taskbar_Mananger.Mananger(radioButtonTaskbar_Ativar.Checked);
+            await Task.Delay(1000);
+
+            checkBox_Taskbar.Font = new Font(checkBox_Taskbar.Font.FontFamily, checkBox_Taskbar.Font.Size, FontStyle.Strikeout);
+        }
+
+        #endregion
 
         #region notificacao de segurança ao usuario UAC
 
