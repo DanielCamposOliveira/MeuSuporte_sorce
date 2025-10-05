@@ -6,13 +6,17 @@ namespace MeuSuporte
 {
     internal class WinBackupBCD_ProcessController
     {
-        private  WinGlobal_DirectoryMananger DirectoryManange;
-        private  WinBackupBCD_ProcessInfo BCD_ProcessInfo;
+        private readonly  WinGlobal_DirectoryMananger DirectoryManange;
+        private readonly  WinBackupBCD_ProcessInfo BCD_ProcessInfo;
 
-        public async Task Create(int ValueUniProgressBar)
+        public WinBackupBCD_ProcessController()
         {
             DirectoryManange = new WinGlobal_DirectoryMananger();
             BCD_ProcessInfo = new WinBackupBCD_ProcessInfo();
+        }
+
+        public async Task Create(int ValueUniProgressBar)
+        {
             string NameFolder = "BCD_Backup";
 
             try
@@ -40,7 +44,7 @@ namespace MeuSuporte
                 }
 
                 WinGlobal_UIService.Instance.Sucesso++;
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
             }
             catch (Exception ex)
             {

@@ -5,16 +5,19 @@ namespace MeuSuporte
 {
     internal class WinBloatware_CheckInstallation
     {
-        private  WinBloatware_RenoveNewUser RenoveNewUser;
-        private  WinBloatware_RenoveAllUser RenoveAllUser;
-        private  WinBloatware_SearchInstallation SearchInstallation;
+        private readonly  WinBloatware_RenoveNewUser RenoveNewUser;
+        private readonly WinBloatware_RenoveAllUser RenoveAllUser;
+        private readonly WinBloatware_SearchInstallation SearchInstallation;
 
-        public async Task Check(WinBloatware_Format BloatApp)
+        public WinBloatware_CheckInstallation()
         {
             RenoveAllUser = new WinBloatware_RenoveAllUser();
             RenoveNewUser = new WinBloatware_RenoveNewUser();
             SearchInstallation = new WinBloatware_SearchInstallation();
+        }
 
+        public async Task Check(WinBloatware_Format BloatApp)
+        {
             bool isInstalled = await SearchInstallation.Search(BloatApp);
 
             if (!isInstalled)

@@ -4,6 +4,7 @@ using TaskScheduler;
 
 namespace MeuSuporte
 {
+    // 2
     internal class WinTask_Connection
     {
         public ITaskService taskService;
@@ -18,6 +19,7 @@ namespace MeuSuporte
                 taskService.Connect(); // conecta
 
                 rootFolder = taskService.GetFolder(@"\"); // passa o diretório raiz
+               // rootFolder = taskService.GetFolder(@"\Microsoft\Windows\UpdateOrchestrator"); // passa o diretório raiz
                 tasks = rootFolder.GetTasks(0);
                 return true;
             }

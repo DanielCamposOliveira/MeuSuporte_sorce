@@ -4,11 +4,15 @@ namespace MeuSuporte
 {
     internal class WinPageFile_Mananger
     {
-        private  WinPageFile_KeyRegistry KeyRegistry;
-                        
-        public async Task Mananger(bool state)
+        private readonly WinPageFile_KeyRegistry KeyRegistry;
+              
+        public WinPageFile_Mananger()
         {
             KeyRegistry = new WinPageFile_KeyRegistry();
+        }
+
+        public async Task Mananger(bool state)
+        {            
             KeyRegistry.State(state, WinGlobal_UIService.Instance.ValueUniProgressBar);       
         }
     }

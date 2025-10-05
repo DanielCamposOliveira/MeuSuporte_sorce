@@ -9,12 +9,15 @@ namespace MeuSuporte
         private  WinRemoteRDP_Service RemoteRDP_Service;
         private  WinRemoteRDP_Firewall RemoteRDP_Firewall;
     
-        public async Task Enable()
+        public WinRemoteRDP_Enable()
         {
             RemoteRDP_Registry = new WinRemoteRDP_Registry();
             RemoteRDP_Service = new WinRemoteRDP_Service();
             RemoteRDP_Firewall = new WinRemoteRDP_Firewall();
+        }
 
+        public async Task Enable()
+        {
             try
             {             
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar

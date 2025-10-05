@@ -1,11 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskScheduler;
 
 namespace MeuSuporte
 {
+    // 3
+
     internal class WinTask_Bin
-    {        
+    {
+        WinTask_State Task_State;
+        public WinTask_Bin() 
+        {
+            Task_State = new WinTask_State();
+        }
+
         public async Task Delete(ITaskFolder rootFolder, IRegisteredTask task, int ValueUniProgressBar)
         {
             try
@@ -23,7 +32,34 @@ namespace MeuSuporte
                 await Task.Delay(500);
             }
 
-            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+            await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
         }
+
+
+         
+
+        public async Task Desabilitar(ITaskFolder rootFolder, IRegisteredTask task, int ValueUniProgressBar)
+        {
+            // Define a lista de nomes de tarefas que você QUER desativar
+            var tasksToDisable = new List<string> {
+                "Schedule Scan",
+                "Reboot"
+            };
+
+            if (tasksToDisable.Contains(task.Name))
+            {
+                // 2. AÇÃO: Se estiver na lista, chama a função para desativar.
+              //  await WinTask_State.State(rootFolder, task, ValueUniProgressBar);
+            }
+            else
+            {
+                // 3. LOG: (Opcional) Registra que a tarefa foi ignorada, se necessário.
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Tarefa Ignorada: {task.Name} (Não está na lista de desativação)", true);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+            }
+
+        }
+
+
     }
 }

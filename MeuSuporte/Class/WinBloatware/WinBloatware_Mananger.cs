@@ -5,12 +5,14 @@ namespace MeuSuporte
 {
     internal class WinBloatware_Mananger
     {
-        private  WinBloatware_CheckInstallation CheckInstallation;
+        private readonly  WinBloatware_CheckInstallation CheckInstallation;
 
-        public async Task Mananger()
+        public WinBloatware_Mananger()
         {
             CheckInstallation = new WinBloatware_CheckInstallation();
-
+        }
+        public async Task Mananger()
+        {            
             var Bloatware_List = new WinBloatware_List();
             List<WinBloatware_Format> Bloatware_Format = Bloatware_List.List(); // carrega a lista para struct
             int loop = 0;

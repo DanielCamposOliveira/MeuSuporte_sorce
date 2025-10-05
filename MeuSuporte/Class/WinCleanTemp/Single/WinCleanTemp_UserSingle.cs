@@ -8,12 +8,15 @@ namespace MeuSuporte
         WinCleanTemp_ProfilePathSingle ProfilePathSingle;
         private WinDirectory_AssignsPathPermission AssignsPathPermission;
 
-        public async Task Clear()
+        public WinCleanTemp_UserSingle()
         {
             ProfilePathSingle = new WinCleanTemp_ProfilePathSingle();
             Directory_ListFiles = new WinDirectory_ListFiles();
             AssignsPathPermission = new WinDirectory_AssignsPathPermission();
+        }
 
+        public async Task Clear()
+        {
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
             string profilePath;

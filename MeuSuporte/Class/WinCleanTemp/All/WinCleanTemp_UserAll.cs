@@ -8,12 +8,16 @@ namespace MeuSuporte
         private WinDirectory_ListFiles Directory_ListFiles;
         private WinCleanTemp_ProfilePathAll CleanTemp_ProfilePath;
         private WinDirectory_AssignsPathPermission AssignsPathPermission;
-        public async Task Clear()
+
+        public WinCleanTemp_UserAll()
         {
-            CleanTemp_ProfilePath = new WinCleanTemp_ProfilePathAll();            
+            CleanTemp_ProfilePath = new WinCleanTemp_ProfilePathAll();
             Directory_ListFiles = new WinDirectory_ListFiles();
             AssignsPathPermission = new WinDirectory_AssignsPathPermission();
+        }
 
+        public async Task Clear()
+        {
             // Obtem a lista dos caminhos de perfis de todos os usuarios
             List<string> profilePaths = await CleanTemp_ProfilePath.GetUserProfilePathsAsync();
 

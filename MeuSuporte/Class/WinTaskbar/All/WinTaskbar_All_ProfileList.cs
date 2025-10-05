@@ -84,7 +84,7 @@ namespace MeuSuporte
                     }
                     catch (Exception ex)
                     {
-                        WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
+                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
                         WinGlobal_UIService.Instance.Erro++;
                     }
                     finally
@@ -95,7 +95,7 @@ namespace MeuSuporte
                 }
             }
 
-            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+            await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
         }
 
 

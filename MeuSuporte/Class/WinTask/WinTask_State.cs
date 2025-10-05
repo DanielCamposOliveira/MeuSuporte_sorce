@@ -4,6 +4,7 @@ using TaskScheduler;
 
 namespace MeuSuporte
 {
+    // 4
     internal class WinTask_State
     {
         public async Task State(ITaskFolder rootFolder, IRegisteredTask task, int ValueUniProgressBar)
@@ -41,7 +42,7 @@ namespace MeuSuporte
                 await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao Desativar Tarefa: {task.Name} - {e.Message}", true);
                 await Task.Delay(500);
             }
-            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+            await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
         }
     }
 }

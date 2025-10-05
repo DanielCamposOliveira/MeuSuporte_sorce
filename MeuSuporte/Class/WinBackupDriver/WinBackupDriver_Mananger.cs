@@ -7,15 +7,19 @@ namespace MeuSuporte
 {
     internal class WinBackupDriver_Mananger
     {
-        private  WinGlobal_DirectoryMananger DirectoryManange;
+        private readonly WinGlobal_DirectoryMananger DirectoryManange;
         private  WinBackupDriver_ProcessInfo _ProcessInfo;
         private  WinBackupDriver_DataReceived _DataReceived;
             
-        public async Task Mananger()
+        public WinBackupDriver_Mananger()
         {
             DirectoryManange = new WinGlobal_DirectoryMananger();
             _ProcessInfo = new WinBackupDriver_ProcessInfo();
             _DataReceived = new WinBackupDriver_DataReceived();
+        }
+
+        public async Task Mananger()
+        {
             string NameFolder = "DriversBackup";
 
             await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Driver: executando...", true);         

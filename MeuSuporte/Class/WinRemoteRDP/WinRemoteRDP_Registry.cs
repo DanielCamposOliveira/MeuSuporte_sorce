@@ -7,11 +7,11 @@ namespace MeuSuporte
     {
         public async Task Enable()
         {
-            HabilitarConexaoRemota();
-            DesativarAutenticacaoUsuario();
+           await HabilitarConexaoRemota();
+           await DesativarAutenticacaoUsuario();
         }
 
-        private void HabilitarConexaoRemota()
+        private async Task HabilitarConexaoRemota()
         {
             using (RegistryKey chave = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server", true))
             {
@@ -22,7 +22,7 @@ namespace MeuSuporte
             }
         }
 
-        private void DesativarAutenticacaoUsuario()
+        private async Task DesativarAutenticacaoUsuario()
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp", true))
             {

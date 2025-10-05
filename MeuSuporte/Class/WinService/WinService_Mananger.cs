@@ -9,10 +9,13 @@ namespace MeuSuporte
         private  WinService_Uninstall WinService_Uninstall;
         private  WinService_Disabled WinService_Disabled;
 
-        public async Task Mananger(string[] ListService, int ValueUniProgressBar, bool isDisableService)
+        public WinService_Mananger()
         {
             WinService_Uninstall = new WinService_Uninstall();
             WinService_Disabled = new WinService_Disabled();
+        }
+        public async Task Mananger(string[] ListService, int ValueUniProgressBar, bool isDisableService)
+        {
 
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
@@ -29,7 +32,7 @@ namespace MeuSuporte
                 int NewValor = await ValueUnit(valorUnidade);
                 if (NewValor >= 1)
                 {
-                    WinGlobal_UIService.Instance.ProgressBarADD(NewValor);
+                    await WinGlobal_UIService.Instance.ProgressBarADD(NewValor);
                     await Task.Delay(20);
                 }
 
@@ -48,7 +51,7 @@ namespace MeuSuporte
 
             if (!foundServices)
             {
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 await WinGlobal_UIService.Instance.Log_MensagemAsync("Serviço: No listings found!", true);
                 await Task.Delay(500);
             }

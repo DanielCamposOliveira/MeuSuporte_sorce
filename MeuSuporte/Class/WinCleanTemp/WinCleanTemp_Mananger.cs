@@ -7,16 +7,20 @@ namespace MeuSuporte
         private  WinCleanTemp_UserAll UserAll;
         private  WinCleanTemp_UserSingle UserSingle;
 
+        public WinCleanTemp_Mananger()
+        {
+            UserAll = new WinCleanTemp_UserAll();
+            UserSingle = new WinCleanTemp_UserSingle();
+        }
+
         public async Task Mananger(bool isAll)
         {
             if (isAll)
-            {
-                UserAll = new WinCleanTemp_UserAll();
+            {                
                await UserAll.Clear();
             }
             else 
-            {
-                UserSingle = new WinCleanTemp_UserSingle();
+            {                
                 await UserSingle.Clear();
             }
         }

@@ -7,12 +7,15 @@ namespace MeuSuporte
         private  WinRemoteRDP_Disable RemoteRDP_Disable;
         private  WinRemoteRDP_Enable RemoteRDP_Enable;
 
-        public async Task Mananger(bool state)
-        {             
+        public WinRemoteRDP_Mananger()
+        {
             RemoteRDP_Enable = new WinRemoteRDP_Enable();
             RemoteRDP_Disable = new WinRemoteRDP_Disable();
+        }
 
-            WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
+        public async Task Mananger(bool state)
+        {   
+            await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
 
             if (state)
             {
@@ -23,7 +26,7 @@ namespace MeuSuporte
                 await RemoteRDP_Disable.Disable();
             }
 
-            WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
+            await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
         }
 
     }

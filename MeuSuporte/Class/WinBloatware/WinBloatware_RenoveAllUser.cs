@@ -6,14 +6,17 @@ namespace MeuSuporte
 {
     internal class WinBloatware_RenoveAllUser
     {
-        private  WinBloatware_MessageErroList MessageErroList;
-        private  WinBloatware_SearchInstallation SearchInstallation;
+        private readonly WinBloatware_MessageErroList MessageErroList;
+        private readonly WinBloatware_SearchInstallation SearchInstallation;
 
-        public async Task Renove(WinBloatware_Format BloatApp)
+        public WinBloatware_RenoveAllUser()
         {
             MessageErroList = new WinBloatware_MessageErroList();
             SearchInstallation = new WinBloatware_SearchInstallation();
+        }
 
+        public async Task Renove(WinBloatware_Format BloatApp)
+        {
             ProcessStartInfo psi = new ProcessStartInfo()
             {
                 FileName = "powershell",

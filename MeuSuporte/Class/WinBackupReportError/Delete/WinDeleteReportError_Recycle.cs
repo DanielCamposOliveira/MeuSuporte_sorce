@@ -8,12 +8,15 @@ namespace MeuSuporte
         private WinDirectory_AssignsPathPermission AssignsPathPermission;
         private WinDirectory_ListFiles ListFiles;
 
-        public async Task Clean( string Path, string NameFolder, string TypeReport, int ValueUniProgressBar)
+        public WinDeleteReportError_Recycle()
         {
             DirectoryManange = new WinGlobal_DirectoryMananger();
             AssignsPathPermission = new WinDirectory_AssignsPathPermission();
             ListFiles = new WinDirectory_ListFiles();
+        }
 
+        public async Task Clean( string Path, string NameFolder, string TypeReport, int ValueUniProgressBar)
+        {
             // verifica se diretorio existe
             if (!DirectoryManange.Check(Path))
             {

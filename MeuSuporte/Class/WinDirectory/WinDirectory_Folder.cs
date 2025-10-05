@@ -6,9 +6,9 @@ namespace MeuSuporte
 {
     internal class WinDirectory_Folder
     {
+        private readonly DirectorySecurity _DirectorySecurity = new DirectorySecurity();
         private DirectoryInfo folder;
-        private DirectorySecurity _DirectorySecurity = new DirectorySecurity();
-
+        
         public async Task<bool> Delete(string txt ) // deleta o arquivo de forma assíncrona
         {
             folder = new System.IO.DirectoryInfo(txt); // atribui a pasta

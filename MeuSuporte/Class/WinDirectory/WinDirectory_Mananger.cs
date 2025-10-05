@@ -8,12 +8,15 @@ namespace MeuSuporte
         private  WinGlobal_DirectoryMananger DirectoryManange;
         private WinDirectory_AssignsPathPermission AssignsPathPermission;
 
-        public async Task Mananger(string applicant, string DirectoryFolder, string _NameFolder, int ValueUniProgressBar ) // Método principal assíncrono
+        public WinDirectory_Mananger()
         {
             ListFiles = new WinDirectory_ListFiles();
             DirectoryManange = new WinGlobal_DirectoryMananger();
             AssignsPathPermission = new WinDirectory_AssignsPathPermission();
+        }
 
+        public async Task Mananger(string applicant, string DirectoryFolder, string _NameFolder, int ValueUniProgressBar ) // Método principal assíncrono
+        {
             // verifica se diretorio existe
             if (!DirectoryManange.Check(DirectoryFolder))
             {

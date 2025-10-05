@@ -23,7 +23,7 @@ namespace MeuSuporte
         {
             try
             {
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
                 DirectoryEntry EntradaUsuario = new DirectoryEntry("WinNT://" + Environment.MachineName + ",Computer");
@@ -42,7 +42,7 @@ namespace MeuSuporte
                             await WinUser_State.State(child, false); // abilita usuario
                             child.Invoke("SetPassword", new Object[] { PasswordUser });   // altera a senha do usuario
 
-                            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                            await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Conta Atualizado com Sucesso", true);
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Senha: {PasswordUser}", true);

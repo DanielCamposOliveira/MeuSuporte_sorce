@@ -13,7 +13,7 @@ namespace MeuSuporte
                 int value = Convert.ToInt32(state);
 
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
 
                 Microsoft.Win32.RegistryKey PastaCurrentVersion = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager");
 
@@ -25,7 +25,7 @@ namespace MeuSuporte
                 WinGlobal_UIService.Instance.Sucesso++;
                 await WinGlobal_UIService.Instance.Log_MensagemAsync("PageFile.sys:  Limpesa altomatico: Ativado !", true);
                 await Task.Delay(500);
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
             }
             catch (Exception e)
             {

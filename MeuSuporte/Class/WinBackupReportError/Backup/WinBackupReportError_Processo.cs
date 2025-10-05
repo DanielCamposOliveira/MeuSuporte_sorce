@@ -5,15 +5,20 @@ namespace MeuSuporte
 {
     internal class WinBackupReportError_Processo
     {
-        private WinGlobal_DirectoryMananger DirectoryManange;
-        private WinBackupReportError_Zip BackupReportError_Zip;
-        private string NameFolder = "Backup Relatorio Sistema";
-        public async Task backup(string Path, string NameFile, string TypeReport)
+        private readonly WinGlobal_DirectoryMananger DirectoryManange;
+        private readonly WinBackupReportError_Zip BackupReportError_Zip;     
+
+        public WinBackupReportError_Processo()
         {
-            WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
             DirectoryManange = new WinGlobal_DirectoryMananger();
             BackupReportError_Zip = new WinBackupReportError_Zip();
+        }
 
+        public async Task backup(string Path, string NameFile, string TypeReport)
+        {
+            string NameFolder = "Backup Relatorio Sistema";
+
+            WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
             // verifica se diretorio dos relatorios existe
             if (!DirectoryManange.Check(Path))
@@ -42,9 +47,6 @@ namespace MeuSuporte
 
             // Compacta todos os arquivos do diretorio do relatorio
             await BackupReportError_Zip.Zip(Path, FullDestinationPath, TypeReport);
-
-        }
-
-      
+        }      
     }
 }

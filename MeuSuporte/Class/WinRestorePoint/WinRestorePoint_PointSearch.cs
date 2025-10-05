@@ -54,7 +54,7 @@ namespace MeuSuporte
             // Procura pelo Ponto de Restauração recém-criado
             if (await IsPointCreatedAsync(NamePoint))
             {
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Ponto [{NamePoint}] validado com sucesso.", true);
             }
             else

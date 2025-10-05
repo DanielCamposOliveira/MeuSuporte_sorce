@@ -7,7 +7,12 @@ namespace MeuSuporte
 {
     internal class WinCleanTemp_ProfilePathAll
     {
-        private WinGlobal_DirectoryMananger DirectoryManange;
+        private readonly WinGlobal_DirectoryMananger DirectoryManange;
+
+        public WinCleanTemp_ProfilePathAll()
+        {
+            DirectoryManange = new WinGlobal_DirectoryMananger();
+        }
 
         // Usuarios Ignorados
         private static readonly HashSet<string> IgnoredUserProfiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -23,8 +28,7 @@ namespace MeuSuporte
         //public List<string> GetUserProfilePaths()
         public async Task<List<string>> GetUserProfilePathsAsync()
         {
-            var PathListProfile = new List<string>();
-            DirectoryManange = new WinGlobal_DirectoryMananger();
+            var PathListProfile = new List<string>();            
 
             // Pega o caminho da pasta "Users", normalmente "C:\Users"
             string usersFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); // C:\Users\Usuario

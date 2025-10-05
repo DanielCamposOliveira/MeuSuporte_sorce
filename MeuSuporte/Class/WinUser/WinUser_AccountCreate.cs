@@ -20,7 +20,7 @@ namespace MeuSuporte
         {
             try
             {
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
                 // cria usuario
@@ -33,7 +33,7 @@ namespace MeuSuporte
                 await WinUser_GroupRemote.Add(EntradaDiretorioUsuarios);
                 await WinUser_GroupAdministrators.Add(EntradaDiretorioUsuarios);
 
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.Sucesso++;
                 await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Conta Criada com Sucesso", true);
                 await WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);

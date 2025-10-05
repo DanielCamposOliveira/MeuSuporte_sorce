@@ -7,16 +7,19 @@ namespace MeuSuporte
 {
     internal class WinDirectory_ListFiles
     {
-        private  WinDirectory_File _WinDirectory_File;
-        private  WinDirectory_Folder _WinDirectory_Folder;
+        private readonly WinDirectory_File _WinDirectory_File;
+        private readonly WinDirectory_Folder _WinDirectory_Folder;
         private int CountFileDeleted = 0;
         private int CountFoldersDeleted = 0;
                 
-        public async Task Remove(int ValueUniProgressBar, string PathFolder, string _NameFolder )
+        public WinDirectory_ListFiles()
         {
             _WinDirectory_File = new WinDirectory_File();
             _WinDirectory_Folder = new WinDirectory_Folder();
+        }
 
+        public async Task Remove(int ValueUniProgressBar, string PathFolder, string _NameFolder )
+        {
             try
             {
                 DirectoryInfo directory = new DirectoryInfo(PathFolder);
@@ -37,7 +40,7 @@ namespace MeuSuporte
                     valorAcumulado += valorUnidade;
                     if (valorAcumulado >= 1)
                     {
-                        WinGlobal_UIService.Instance.ProgressBarADD(1);
+                        await WinGlobal_UIService.Instance.ProgressBarADD(1);
                         valorAcumulado -= 1;
                         await WinGlobal_UIService.Instance.Log_MensagemAsyncSobrescrever($"Apagando arquivos {total} / {loop} da Pasta: {_NameFolder}");
                         await Task.Delay(20);
@@ -55,7 +58,7 @@ namespace MeuSuporte
                     valorAcumulado += valorUnidade;
                     if (valorAcumulado >= 1)
                     {
-                        WinGlobal_UIService.Instance.ProgressBarADD(1);
+                        await WinGlobal_UIService.Instance.ProgressBarADD(1);
                         valorAcumulado -= 1;
                         await WinGlobal_UIService.Instance.Log_MensagemAsyncSobrescrever($"Apagando arquivos {total} / {loop} da Pasta: {_NameFolder}");
                         await Task.Delay(20);

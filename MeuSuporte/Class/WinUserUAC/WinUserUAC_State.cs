@@ -24,12 +24,12 @@ namespace MeuSuporte
                     
                     await WinGlobal_UIService.Instance.Log_MensagemAsync("Notificações do Usuario UAC: Alterado", true);                 
                 }
-                WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
+                await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.Sucesso++;
             }
             catch (Exception)
             {
-                WinGlobal_UIService.Instance.Log_MensagemAsync("Notificações do Usuario UAC: Erro!", true);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("Notificações do Usuario UAC: Erro!", true);
                 WinGlobal_UIService.Instance.Erro++;
             }
         }

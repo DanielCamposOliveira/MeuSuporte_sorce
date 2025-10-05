@@ -5,11 +5,14 @@ namespace MeuSuporte
 {
     internal class WinDirectory_AssignsPathPermission
     {
-        WinDirectory_Security Directory_Security;
-        public async Task<bool> AssignsPermission(string tempPath)
+       private readonly WinDirectory_Security Directory_Security;
+        public WinDirectory_AssignsPathPermission()
         {
             Directory_Security = new WinDirectory_Security();
+        }
 
+        public async Task<bool> AssignsPermission(string tempPath)
+        {
             try
             {
                 bool success = Directory_Security.ForceFolderSecurity(tempPath);

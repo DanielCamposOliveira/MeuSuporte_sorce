@@ -5,12 +5,15 @@ namespace MeuSuporte
 {
     internal class WinBackupBCD_Mananger
     {
-        private  WinBackupBCD_ProcessController ProcessController;
+        private readonly  WinBackupBCD_ProcessController ProcessController;
 
-        public async Task Mananger()
+        public WinBackupBCD_Mananger()
         {
             ProcessController = new WinBackupBCD_ProcessController();
-            ProcessController.Create(WinGlobal_UIService.Instance.ValueUniProgressBar);
+        }
+        public async Task Mananger()
+        {
+            await ProcessController.Create(WinGlobal_UIService.Instance.ValueUniProgressBar);
         }       
     }  
     

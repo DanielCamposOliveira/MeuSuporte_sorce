@@ -26,7 +26,7 @@ namespace MeuSuporte
             try
             {
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
-                WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);                
+                await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);                
 
                 await WinGlobal_UIService.Instance.Log_MensagemAsync("Lixeira: Apagando...", true);
                 await Task.Delay(500);
@@ -41,7 +41,7 @@ namespace MeuSuporte
                     WinGlobal_UIService.Instance.Sucesso++;
                     await WinGlobal_UIService.Instance.Log_MensagemAsync("Lixeira: Apagada!", true);
                     await Task.Delay(500);
-                    WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
+                    await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
                 }
 
                 if (result == 2147549183) // Lixeira já estava vazia
@@ -49,7 +49,7 @@ namespace MeuSuporte
                     WinGlobal_UIService.Instance.Sucesso++;
                     await WinGlobal_UIService.Instance.Log_MensagemAsync("Lixeira: Já estava vazia", true);
                     await Task.Delay(500);
-                    WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
+                    await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
                 }         
             }
             catch (Exception e)

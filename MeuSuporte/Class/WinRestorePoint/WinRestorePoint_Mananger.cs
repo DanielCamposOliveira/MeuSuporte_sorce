@@ -4,6 +4,13 @@ namespace MeuSuporte
 {
     internal class WinRestorePoint_Mananger
     {
+        private readonly WinRestorePoint_IsSystemRestoreEnabled _IsSystemRestoreEnabled;
+        
+        public WinRestorePoint_Mananger()
+        {
+            _IsSystemRestoreEnabled = new WinRestorePoint_IsSystemRestoreEnabled();
+        }
+
         public async Task Mananger()
         {
             await CreateSystemPoint();
@@ -11,8 +18,6 @@ namespace MeuSuporte
 
         private async Task CreateSystemPoint()
         {
-            WinRestorePoint_IsSystemRestoreEnabled _IsSystemRestoreEnabled = new WinRestorePoint_IsSystemRestoreEnabled();
-
             //1° verifica se a configuração esta ativa
             if (!await _IsSystemRestoreEnabled.IsSystemRestoreEnabledAsync())
             {
