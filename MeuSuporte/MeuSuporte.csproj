@@ -224,6 +224,9 @@
     <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_All_Mananger.cs" />
     <Compile Include="Class\WinRegistry\Delete\All\Private\WinRegistryBinUserAll_HiveLoader.cs" />
     <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBinUserAll_Delete.cs" />
+    <Compile Include="Class\WinRegistry\Delete\Global\Cloud\WinRegistryBin_CloudManager.cs" />
+    <Compile Include="Class\WinRegistry\Delete\Global\Cloud\WinRegistryBin_IsGoogleDriveLoggedIn.cs" />
+    <Compile Include="Class\WinRegistry\Delete\Global\Cloud\WinRegistryBin_IsOneDriveSignedIn.cs" />
     <Compile Include="Class\WinRegistry\Delete\Global\WinRegistryBin_List.cs" />
     <Compile Include="Class\WinRegistry\Delete\Global\WinRegistryBin_MACHINE.cs" />
     <Compile Include="Class\WinRegistry\Delete\Single\WinRegistryBin_Single_Mananger.cs" />
@@ -281,6 +284,7 @@
     <Compile Include="Class\WinRestorePoint\WinRestorePoint_SystemPoints.cs" />
     <Compile Include="Class\WinTask\WinTask_Bin.cs" />
     <Compile Include="Class\WinUser\WinUser_State.cs" />
+    <Compile Include="Class_Temporaria.cs" />
     <Compile Include="Formulario\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

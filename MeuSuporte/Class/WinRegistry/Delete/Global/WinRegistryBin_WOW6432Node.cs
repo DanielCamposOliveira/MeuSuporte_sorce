@@ -38,7 +38,7 @@ namespace MeuSuporte
                         string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
 
                         // verifica se existe exeçoes
-                        if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        if (RegistryBin_List.KeyDirectory.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: WOW6432Node \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;

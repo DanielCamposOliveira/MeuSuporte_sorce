@@ -8,14 +8,19 @@
         // Diretorio + Executavel faz com que todas as chaves que não tenha o Executavel e que use o diretorio seja apagado
         //C:\Windows\System32\teste.exe   
 
-        public readonly string[] KeyData = {
+        public readonly string[] KeyDirectory = {
         @"C:\Windows\System32\DriverStore", //Driver do Windows
         @"C:\Program Files\NVIDIA Corporation",
         @"C:\Program Files\Realtek",  // Driver de Audio
-        @"C:\Program Files\Waves",
+        @"C:\Program Files\Wave",
         @"C:\Program Files\GO-Signer",
+        @"C:\Program Files\Leucotron Telecom",
+        @"C:\Program Files (x86)\Wave",        
         @"C:\Program Files (x86)\GO-Signer",
+        @"C:\Program Files (x86)\Leucotron Telecom",
         @"C:\Program Files (x86)\NVIDIA",   // Driver de Video   
+        @"C:\Program Files (x86)\AnyDesk",
+        @"C:\Program Files\AnyDesk",
         };
 
 
@@ -25,6 +30,8 @@
         "WebServicePortalFederal",
         "DANFEViewUniNFe",
         "Lightshot",
+        "Wave",
+        "AnyDesk",
         "GestaoPlugin",
         "GestaoPluginx64",
         "DANFEViewMon",
@@ -34,6 +41,12 @@
         "CriptoCNS",
         "Valid Agent Server", // auxilia na emissão de certificados digitais do tipo A1 através do navegador Google Chrome
         "AgenteExecucaoAssistente",
+        };
+
+        //
+        public readonly string[] KeyCloud = {
+            "OneDrive",
+            "GoogleDriveFS"
         };
     }
 }

@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Win32;
 
 namespace MeuSuporte
 {
@@ -10,15 +11,19 @@ namespace MeuSuporte
         /// <summary>
         /// Class responsavel por excluir os registros
         /// </summary>
-       private readonly WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+        private readonly WinRegistryBin_List RegistryBin_List; // = new WinRegistryBin_List();      
+        private WinRegistryBin_CloudManager CloudManager;
 
         public WinRegistryBin_UserSingle() 
         {
             RegistryBin_List = new WinRegistryBin_List();
+            CloudManager = new WinRegistryBin_CloudManager();
         }
 
         public async Task Delete(int ValueUniProgressBar)
         {
+
+
             using (RegistryKey Pasta_USER_Run = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run"))
             using (RegistryKey Pasta_USER_CurrentVersion = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true))
             {
@@ -35,7 +40,7 @@ namespace MeuSuporte
                         string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
 
                         // verifica se existe exeçoes
-                        if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        if (RegistryBin_List.KeyDirectory.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
@@ -48,9 +53,34 @@ namespace MeuSuporte
                             continue;
                         }
 
-                        // Deleta a chave do registro
+                        // verifica se os Apps estão logados, caso exteja não apaga a chave de registro
+                        if (RegistryBin_List.KeyCloud.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            if (NomeChave.ToString() == "GoogleDriveFS")
+                            {                        
+                                string basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+                                if (await CloudManager.GetGoogleDrive(basePath) == true)
+                                {
+                                    continue;
+                                }
+                            }
+
+                            if (NomeChave.ToString() == "OneDrive")
+                            {            
+                                RegistryKey chave = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\OneDrive\Accounts");
+
+                                if (await CloudManager.GetOneDrive(chave) == true)
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+
+                        
                         try
-                        {                            
+                        {
+                            // Deleta a chave do registro
                             Pasta_USER_CurrentVersion.DeleteValue(NomeChave);
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Sucesso++;
@@ -61,7 +91,7 @@ namespace MeuSuporte
                             WinGlobal_UIService.Instance.Erro++;
                         }
                     }
-                    WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                    await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 }
                 else
                 {

@@ -27,7 +27,7 @@ namespace MeuSuporte
                 RegistryBin_WOW6432Node.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
                 RegistryBin_MACHINE.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
                 RegistryBin_UserSingle.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
-               RegistryBin_All_SecurityRegistry.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4)
+                RegistryBin_All_SecurityRegistry.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4)
             );
         }
 

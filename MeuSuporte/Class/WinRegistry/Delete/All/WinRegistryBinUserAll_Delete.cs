@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,12 +12,14 @@ namespace MeuSuporte
     /// </summary>
     
     internal class WinRegistryBinUserAll_Delete
-    {     
-        private readonly WinRegistryBin_List RegistryBin_List = new WinRegistryBin_List();
+    {
+        private readonly WinRegistryBin_List RegistryBin_List;// = new WinRegistryBin_List();
+        private WinRegistryBin_CloudManager CloudManager;
 
         public WinRegistryBinUserAll_Delete()
         {
             RegistryBin_List = new WinRegistryBin_List();
+            CloudManager = new WinRegistryBin_CloudManager();
         }
 
         public async Task Delete(string tempHiveName, string Usuario, int ValueUniProgressBar)
@@ -39,24 +42,60 @@ namespace MeuSuporte
 
 
                         // verifica se existe exeçoes
-                        if (RegistryBin_List.KeyData.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        if (RegistryBin_List.KeyDirectory.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
 
+                        // verifica se existe exeçoes
                         if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
-                        
+
+
+                        // verifica se os Apps estão logados, caso exteja não apaga a chave de registro
+                        if (RegistryBin_List.KeyCloud.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            if (NomeChave.ToString() == "GoogleDriveFS")
+                            {
+                                string usersFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); // C:\Users\Usuario
+                                string baseUsersPath = Path.GetDirectoryName(usersFolderPath); // C:\Users
+
+                                // Monta o caminho para a pasta Temp do usuário específico
+                                string tempPath = Path.Combine(baseUsersPath, Usuario, "AppData", "Local");
+
+                                if (await CloudManager.GetGoogleDrive(tempPath) == true)
+                                {
+                                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada (App Conectado) - Nome chave: \"{NomeChave}\"", true);
+                                    continue;
+                                }
+
+                            }
+
+                            if (NomeChave.ToString() == "OneDrive")
+                            {   
+                                string searchKeyPathOneDrive = @$"{tempHiveName}\Software\Microsoft\OneDrive\Accounts";
+                                using (RegistryKey? Chave = Registry.Users.CreateSubKey(searchKeyPathOneDrive, true)) 
+                                {
+                                    if (await CloudManager.GetOneDrive(Chave) == true)
+                                    {
+                                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada (App Conectado) - Nome chave: \"{NomeChave}\"", true);
+                                        continue;
+                                    }
+                                }               
+                            }
+                        }
+
+
                         try
                         {
-                            // Deleta a chave do registro
+                           // Deleta a chave do registro
                             searchKey.DeleteValue(NomeChave);
 
-                            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                            await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Sucesso++;
                         }
@@ -69,7 +108,7 @@ namespace MeuSuporte
                 }
                 else
                 {
-                    WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                    await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                     await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Sem registro.", true);
                 }
             }
