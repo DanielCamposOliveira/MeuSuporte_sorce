@@ -523,6 +523,46 @@ namespace MeuSuporte.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ProfileEnergy_Black {
+            get {
+                object obj = ResourceManager.GetObject("ProfileEnergy_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProfileEnergy_White {
+            get {
+                object obj = ResourceManager.GetObject("ProfileEnergy_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProfileGraphic_Black {
+            get {
+                object obj = ResourceManager.GetObject("ProfileGraphic_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProfileGraphic_White {
+            get {
+                object obj = ResourceManager.GetObject("ProfileGraphic_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Remoto__White {
             get {
                 object obj = ResourceManager.GetObject("Remoto__White", resourceCulture);

@@ -60,19 +60,5 @@ namespace MeuSuporte
             await Task.Run(() => process.WaitForExit());
         }
 
-
-
-        //Abra as Opções avançadas de inicialização
-        //Execute o comando Bootrec /ScanOS para verificar os sistemas instalados
-        //Reinicie o computador
-        //Se o problema persistir, execute os seguintes comandos:
-        //bcdedit /export c:\bcdbackup
-        //attrib c:\boot\bcd -r -s -h
-        //ren c:\boot\bcd bcd.old
-        //bootrec /rebuildbcd
-        //Reinicie o sistema
-        //Se a ferramenta do Bootrec.exe não conseguir localizar uma instalação do Windows, pode ser necessário remover e recriar o BCD store. 
-        //O BCDBoot é uma ferramenta de linha de comando que configura os arquivos de inicialização para executar o sistema operacional Windows. O arquivo de registro BCD está localizado no diretório //\Boot\Bcd da partição ativa. 
-
     }
 }

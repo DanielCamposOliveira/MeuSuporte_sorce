@@ -16,8 +16,8 @@
             Credential_Priv = new Credential_Private();
 
 
-            user = Credential_Publ.User; //Credential_Priv.User;    Credential_Publ.User;
-            password = Credential_Publ.Password; //Credential_Priv.Password;   Credential_Publ.Password;
+            user = Credential_Priv.User; //Credential_Priv.User;    Credential_Publ.User;
+            password = Credential_Priv.Password; //Credential_Priv.Password;   Credential_Publ.Password;
 
         }
 

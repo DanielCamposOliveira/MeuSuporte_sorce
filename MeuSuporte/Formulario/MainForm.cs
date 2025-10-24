@@ -6,13 +6,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using MeuSuporte.Properties;
 using Microsoft.VisualBasic.Devices;
 using Control = System.Windows.Forms.Control;
 using Font = System.Drawing.Font;
 using Point = System.Drawing.Point;
-
 
 
 namespace MeuSuporte
@@ -26,75 +24,130 @@ namespace MeuSuporte
         private CancellationTokenSource cts;
         CancellationToken token;
 
+        private Dictionary<CheckBox, Panel> checkBoxPanelMap;
+        private Dictionary<CheckBox, PictureBox> checkBoxIconMap;
+
         public MainForm()
         {
             InitializeComponent();
 
+            #region WinApp_Form Initialize
+
             WinApp_Form.Initialize(
-    // 1. CheckBoxes
-    checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, checkBox_CleanProcess,
-    checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, checkBox_BackupRegistrysRun,
-    checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, checkBox_Usuario,
-    checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP,
-    checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError, checkBox_ExportInventory,
-    checkBox_Taskbar, checkBoxAll,
+                // 1. CheckBoxes
+                checkBox_UserUAC, checkBox_CleanTask, 
+                checkBox_CleanTrash, checkBox_CleanProcess, 
+                checkBox_CleanTemp, checkBox_CleanWindowsUpdate, 
+                checkBox_CleanGoogle, checkBox_BackupRegistrysRun,
+                checkBox_CleanPageFile, checkBox_DriversBackup, 
+                checkBox_DeleteRegistry, checkBox_Usuario,
+                checkBox_CleanPrefetch, checkBox_BackupBCD, 
+                checkBox_RestorePoint, checkBox_ConnectionRDP,
+                checkBox_Bloatware, checkBox_BackupReportError, 
+                checkBox_CleanReportError, checkBox_ExportInventory,
+                checkBox_Taskbar, checkBoxAll, 
+                checkBox_ProfileGraphic, checkBox_ProfileEnergy,
 
-    // 2. RadioButtons - Ativar/Desativar
-    radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar,
-    radioButtonUserUAC_Desativar, radioButtonCleanPageFile_Desativar, radioButtonConnectionRDP_Desativar,
+                // 2. RadioButtons - Ativar/Desativar
+                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, 
+                radioButtonConnectionRDP_Ativar, radioButtonUserUAC_Desativar, 
+                radioButtonCleanPageFile_Desativar, radioButtonConnectionRDP_Desativar,
+                radioButtonTaskbar_Ativar, radioButtonTaskbar_Desativar,
+                radioButtonDeleteRegistry_Single, radioButtonDeleteRegistry_All,
+                radioButtonCleanTemp_Single, radioButtonCleanTemp_All,
+                radioButtonBackupRegistrysRun_Atual, radioButtonBackupRegistrysRun_All,
+                radioButtonProfileGraphic_Performace, radioButtonProfileGraphic_Appearance,
+                radioButtonProfileEnergy_Desenpenho, radioButtonProfileEnergy_Equilibrado,
+                radioButtonProfileEnergy_Economia,
 
-    // 3. RadioButtons - Otimização/Limpeza (Atual/Todos)
-    radioButtonTaskbar_Ativar, radioButtonTaskbar_Desativar,
-    radioButtonDeleteRegistry_Single, radioButtonDeleteRegistry_All,
-    radioButtonCleanTemp_Single, radioButtonCleanTemp_All,
-    radioButtonBackupRegistrysRun_Atual, radioButtonBackupRegistrysRun_All,
+                // 4. PictureBoxes
+                pictureBox_UserUAC, pictureBox_CleanTask,
+                pictureBox_CleanTrash, pictureBox_CleanProcess,
+                pictureBox_CleanTemp, pictureBox_CleanWindowsUpdate, 
+                pictureBox_CleanGoogle, pictureBox_BackupRegistrysRun,
+                pictureBox_CleanPageFile, pictureBox_DriversBackup, 
+                pictureBox_DeleteRegistry, pictureBox_Usuario,
+                pictureBox_CleanPrefetch, pictureBox_BackupBCD, 
+                pictureBox_RestorePoint, pictureBox_ConnectionRDP,
+                pictureBox_Bloatware, pictureBox_BackupReportError, 
+                pictureBox_CleanReportError, pictureBoxInfoDescricao,
+                pictureBox_ExportInventory, pictureBox_Taskbar,
+                pictureBox_ProfileGraphic, pictureBox_ProfileEnergy,
 
-    // 4. PictureBoxes
-    pictureBox_UserUAC, pictureBox_CleanTask, pictureBox_CleanTrash, pictureBox_CleanProcess,
-    pictureBox_CleanTemp, pictureBox_CleanWindowsUpdate, pictureBox_CleanGoogle, pictureBox_BackupRegistrysRun,
-    pictureBox_CleanPageFile, pictureBox_DriversBackup, pictureBox_DeleteRegistry, pictureBox_Usuario,
-    pictureBox_CleanPrefetch, pictureBox_BackupBCD, pictureBox_RestorePoint, pictureBox_ConnectionRDP,
-    pictureBox_Bloatware, pictureBox_BackupReportError, pictureBox_CleanReportError, pictureBoxInfoDescricao,
-    pictureBox_ExportInventory, pictureBox_Taskbar,
+                // 5. Panels
+                panelBoton, panelDivisoria, 
+                panel_UserUAC, panelLog, 
+                panel_ConnectionRDP, panel_CleanPageFile,
+                panel1, panel_CleanTemp, 
+                panel_BackupRegistrysRun, panel_DeleteRegistry, 
+                panel_OptimizeBar, panel_ProfileGraphic, 
+                panel_ProfileEnergy,
 
-    // 5. Panels
-    panelBoton, panelDivisoria, panel_UserUAC, panelLog, panel_ConnectionRDP, panel_CleanPageFile,
-    panel1, panel_CleanTemp, panel_BackupRegistrysRun, panel_DeleteRegistry, panel_OptimizeBar,
+                // 6. Labels
+                label1, labelInfoDescricao, labelInfoTitulo, Label_NameMachine,
 
-    // 6. Labels
-    label1, labelInfoDescricao, labelInfoTitulo, Label_NameMachine,
+                // 7. Buttons
+                Btn_Canselar, btn_IniciarProcesso,
 
-    // 7. Buttons
-    Btn_Canselar, btn_IniciarProcesso,
+                // 8. Controles Únicos / Form
+                progressBar1, txt_Log, this  // 'this' é usado para representar o próprio Form (MainForm)
+            );
+            #endregion
 
-    // 8. Controles Únicos / Form
-    progressBar1, txt_Log, this  // 'this' é usado para representar o próprio Form (MainForm)
-);
+            ScreenResolucao(); // Aplaca a resolução do App de acordo com tamanho da Tela
 
-             ScreenResolucao(); // Aplaca a resolução do App de acordo com tamanho da Tela
+            CheckForIllegalCrossThreadCalls = false;
 
-            CheckForIllegalCrossThreadCalls = false;            
-            WinGlobal_UIService.Initialize(this, txt_Log, progressBar1, labelInfoTitulo, checkBox_UserUAC, labelInfoDescricao, pictureBoxInfoDescricao, token); // envia os componete para interface
-                       
-            WinApp_Mananger.Initialize(checkBox_Taskbar,checkBox_UserUAC, checkBox_CleanTask, checkBox_CleanTrash, 
-                checkBox_CleanProcess, checkBox_CleanTemp, checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, 
-                checkBox_BackupRegistrysRun, checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry, 
-                checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, checkBox_BackupReportError, checkBox_CleanReportError,
-                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar, radioButtonCleanTemp_All, radioButtonDeleteRegistry_All, radioButtonBackupRegistrysRun_All, radioButtonTaskbar_Ativar
+            #region WinGlobal_UIService Initialize
+
+            // envia os componete para interface
+            WinGlobal_UIService.Initialize(
+                this, txt_Log, progressBar1, labelInfoTitulo, checkBox_UserUAC, labelInfoDescricao, pictureBoxInfoDescricao, token
                 );
 
+            #endregion
+
+            #region  WinApp_Mananger Initialize
+
+            WinApp_Mananger.Initialize(
+                // 1. CheckBoxes
+                checkBox_Taskbar, checkBox_UserUAC, checkBox_CleanTask, 
+                checkBox_CleanTrash, checkBox_CleanProcess, checkBox_CleanTemp, 
+                checkBox_CleanWindowsUpdate, checkBox_CleanGoogle, checkBox_BackupRegistrysRun, 
+                checkBox_CleanPageFile, checkBox_DriversBackup, checkBox_DeleteRegistry,
+                checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, 
+                checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, 
+                checkBox_BackupReportError, checkBox_CleanReportError, checkBox_ProfileGraphic,
+                checkBox_ProfileEnergy,
+
+                // 2. RadioButtons
+                radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar, 
+                radioButtonCleanTemp_All, radioButtonDeleteRegistry_All, radioButtonBackupRegistrysRun_All, 
+                radioButtonTaskbar_Ativar, radioButtonProfileGraphic_Performace, radioButtonProfileEnergy_Desenpenho,
+                radioButtonProfileEnergy_Equilibrado, radioButtonProfileEnergy_Economia
+                );
+
+            #endregion
+
+            #region  CheckBoxPanelMap
 
             // Mapeia cada checkbox ao seu painel correspondente
             checkBoxPanelMap = new Dictionary<CheckBox, Panel>
              {
-                 { checkBox_UserUAC, panel_UserUAC },
-                 { checkBox_CleanPageFile, panel_CleanPageFile },
-                 { checkBox_ConnectionRDP, panel_ConnectionRDP },
-                 { checkBox_CleanTemp, panel_CleanTemp},
-                 { checkBox_BackupRegistrysRun, panel_BackupRegistrysRun },
-                 { checkBox_DeleteRegistry, panel_DeleteRegistry },
-                 { checkBox_Taskbar, panel_OptimizeBar }
+                {checkBox_UserUAC, panel_UserUAC },
+                {checkBox_CleanPageFile, panel_CleanPageFile },
+                {checkBox_ConnectionRDP, panel_ConnectionRDP },
+                {checkBox_CleanTemp, panel_CleanTemp},
+                {checkBox_BackupRegistrysRun, panel_BackupRegistrysRun },
+                {checkBox_DeleteRegistry, panel_DeleteRegistry },
+                {checkBox_Taskbar, panel_OptimizeBar },
+                {checkBox_ProfileGraphic, panel_ProfileGraphic },
+                {checkBox_ProfileEnergy, panel_ProfileEnergy },
             };
+
+            #endregion
+
+            #region CheckBoxIconMap
 
             // NOVO: Mapeia cada checkbox ao seu PictureBox (ícone) correspondente
             checkBoxIconMap = new Dictionary<CheckBox, PictureBox>
@@ -119,9 +172,12 @@ namespace MeuSuporte
                 {checkBox_Bloatware, pictureBox_Bloatware },
                 {checkBox_BackupReportError, pictureBox_BackupReportError },
                 {checkBox_CleanReportError, pictureBox_CleanReportError },
-                {checkBox_ExportInventory, pictureBox_ExportInventory }
+                {checkBox_ExportInventory, pictureBox_ExportInventory },
+                {checkBox_ProfileGraphic, pictureBox_ProfileGraphic },
+                {checkBox_ProfileEnergy, pictureBox_ProfileEnergy },
             };
 
+            #endregion
 
         }
 
@@ -211,17 +267,6 @@ namespace MeuSuporte
         #endregion
        
         
-    
-
-
-
-
-
-
-        // Adicione esta variável no topo da sua classe do Formulário
-        private Dictionary<CheckBox, Panel> checkBoxPanelMap;
-        private Dictionary<CheckBox, PictureBox> checkBoxIconMap;
-
 
         private void AtualizarLayoutDinamico()
         {
@@ -301,19 +346,6 @@ namespace MeuSuporte
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-     
 
         #region Funçoes dos Botões UI
 
@@ -397,9 +429,16 @@ namespace MeuSuporte
         {
             AtualizarLayoutDinamico();
         }
-
+        private void checkBox_ProfileGraphic_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
+        private void checkBox_ProfileEnergy_Click(object sender, EventArgs e)
+        {
+            AtualizarLayoutDinamico();
+        }
         #endregion
-         
+
         #region Politica de Seguraça do Software
 
         //Verifica Versão do GitHub
@@ -505,17 +544,36 @@ namespace MeuSuporte
 
         #region Executa todas as tarefas dos CheckBox selecionado
 
+
         //Processa opções marcadas pelo usuário
         private async Task ExecuteProcesses()
         {
             // Dicionário associando CheckBox com métodos
             Dictionary<CheckBox, Func<Task>> checkBoxActions = new Dictionary<CheckBox, Func<Task>>
-                {
-                  {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPoint}, { checkBox_Taskbar,WinApp_Mananger.Instance.Taskbar}, {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC}, {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},  {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},  {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},  {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
-                  {checkBox_CleanWindowsUpdate, WinApp_Mananger.Instance.CleanWindowsUpdate},  {checkBox_CleanGoogle, WinApp_Mananger.Instance.CleanGoogle}, {checkBox_BackupRegistrysRun, WinApp_Mananger.Instance.BackupRegistrysRun}, {checkBox_CleanPageFile, WinApp_Mananger.Instance.CleanPageFile},
-                  {checkBox_DriversBackup, WinApp_Mananger.Instance.DriversBackup}, {checkBox_DeleteRegistry, WinApp_Mananger.Instance.DeleteRegistry}, {checkBox_Usuario, WinApp_Mananger.Instance.UsuarioSuporte},{checkBox_CleanPrefetch, WinApp_Mananger.Instance.CleanPrefetch},  {checkBox_BackupBCD, WinApp_Mananger.Instance.BackupBCD},
-                  {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP}, {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware }, {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError }, {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError }
-                };
+            {
+                {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPoint},
+                { checkBox_Taskbar,WinApp_Mananger.Instance.Taskbar},
+                {checkBox_UserUAC, WinApp_Mananger.Instance.UserUAC},
+                {checkBox_CleanTask, WinApp_Mananger.Instance.CleanTask},
+                {checkBox_CleanTrash, WinApp_Mananger.Instance.CleanTrash},
+                {checkBox_CleanProcess, WinApp_Mananger.Instance.CleanProcess},
+                {checkBox_CleanTemp, WinApp_Mananger.Instance.CleanTemp},
+                {checkBox_CleanWindowsUpdate, WinApp_Mananger.Instance.CleanWindowsUpdate},
+                {checkBox_CleanGoogle, WinApp_Mananger.Instance.CleanGoogle},
+                {checkBox_BackupRegistrysRun, WinApp_Mananger.Instance.BackupRegistrysRun},
+                {checkBox_CleanPageFile, WinApp_Mananger.Instance.CleanPageFile},
+                {checkBox_DriversBackup, WinApp_Mananger.Instance.DriversBackup},
+                {checkBox_DeleteRegistry, WinApp_Mananger.Instance.DeleteRegistry},
+                {checkBox_Usuario, WinApp_Mananger.Instance.UsuarioSuporte},
+                {checkBox_CleanPrefetch, WinApp_Mananger.Instance.CleanPrefetch},
+                {checkBox_BackupBCD, WinApp_Mananger.Instance.BackupBCD},
+                {checkBox_ConnectionRDP, WinApp_Mananger.Instance.RemoteRDP},
+                {checkBox_Bloatware, WinApp_Mananger.Instance.RenoveBloatware },
+                {checkBox_BackupReportError, WinApp_Mananger.Instance.BackupReportError },
+                {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError },
+                {checkBox_ProfileGraphic, WinApp_Mananger.Instance.ProfileGraphic},
+                {checkBox_ProfileEnergy, WinApp_Mananger.Instance.ProfileEnergy},
+            };
 
             try
             {
@@ -526,14 +584,14 @@ namespace MeuSuporte
                 await EnableDisableCheckBox(checkBoxActions, false);
 
                 // Fraciona o valor em 100
-               // ValueUniProgressBar = 100 / checkBoxActions.Keys.Count(cb => cb.Checked);
+                // ValueUniProgressBar = 100 / checkBoxActions.Keys.Count(cb => cb.Checked);
                 WinGlobal_UIService.Instance.ValueUniProgressBar = 100 / checkBoxActions.Keys.Count(cb => cb.Checked);
 
 
                 //Lista uma Variavel com todo os processo que sera executado
                 foreach (var item in checkBoxActions)
                 {
-                    if (item.Key.Checked == true) 
+                    if (item.Key.Checked == true)
                     {
                         WinGlobal_UIService.Instance.ProcessoSelecionados.Add(item.Key.Text); // adiciona na lista somente os que estiver marcado pelo usuario
                     }
@@ -541,18 +599,18 @@ namespace MeuSuporte
 
                 // executa todos os processo que estiver selecionados
                 foreach (var item in checkBoxActions)
-                {                   
+                {
                     // Interrompe o loop imediatamente, caso alguma função não tenha passado CancellationToken em sua função então encerra por aqui
                     if (token.IsCancellationRequested)
                     {
                         token.ThrowIfCancellationRequested();
                     }
-                    
+
                     //Execulta a função do CheckBox marcado
                     if (item.Key.Checked)
                     {
                         WinGlobal_UIService.Instance.CurrentProcess = item.Key.Text; // adiciona na variavel o processa que ira ser executado 
-                        await item.Value();                                                
+                        await item.Value();
                     }
                 }
 
@@ -560,7 +618,7 @@ namespace MeuSuporte
                 await EnableDisableCheckBox(checkBoxActions, true);
             }
             catch (OperationCanceledException ex)
-            {      
+            {
                 MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);// Mensagem informativa de canselamento
 
                 await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);
@@ -619,8 +677,10 @@ namespace MeuSuporte
 
 
 
+
+
         #endregion
 
-
+ 
     }
 }

@@ -90,6 +90,10 @@
             this.pictureBox_BackupReportError = new System.Windows.Forms.PictureBox();
             this.pictureBox_CleanReportError = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox_ProfileEnergy = new System.Windows.Forms.PictureBox();
+            this.checkBox_ProfileEnergy = new System.Windows.Forms.CheckBox();
+            this.pictureBox_ProfileGraphic = new System.Windows.Forms.PictureBox();
+            this.checkBox_ProfileGraphic = new System.Windows.Forms.CheckBox();
             this.pictureBox_ExportInventory = new System.Windows.Forms.PictureBox();
             this.checkBox_ExportInventory = new System.Windows.Forms.CheckBox();
             this.checkBox_Taskbar = new System.Windows.Forms.CheckBox();
@@ -106,6 +110,13 @@
             this.panel_OptimizeBar = new System.Windows.Forms.Panel();
             this.radioButtonTaskbar_Ativar = new System.Windows.Forms.RadioButton();
             this.radioButtonTaskbar_Desativar = new System.Windows.Forms.RadioButton();
+            this.panel_ProfileGraphic = new System.Windows.Forms.Panel();
+            this.radioButtonProfileGraphic_Performace = new System.Windows.Forms.RadioButton();
+            this.radioButtonProfileGraphic_Appearance = new System.Windows.Forms.RadioButton();
+            this.panel_ProfileEnergy = new System.Windows.Forms.Panel();
+            this.radioButtonProfileEnergy_Economia = new System.Windows.Forms.RadioButton();
+            this.radioButtonProfileEnergy_Desenpenho = new System.Windows.Forms.RadioButton();
+            this.radioButtonProfileEnergy_Equilibrado = new System.Windows.Forms.RadioButton();
             this.panelBoton.SuspendLayout();
             this.panelLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoDescricao)).BeginInit();
@@ -132,12 +143,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_BackupReportError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CleanReportError)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfileEnergy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfileGraphic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ExportInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Taskbar)).BeginInit();
             this.panel_CleanTemp.SuspendLayout();
             this.panel_BackupRegistrysRun.SuspendLayout();
             this.panel_DeleteRegistry.SuspendLayout();
             this.panel_OptimizeBar.SuspendLayout();
+            this.panel_ProfileGraphic.SuspendLayout();
+            this.panel_ProfileEnergy.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_Log
@@ -316,7 +331,7 @@
             this.Btn_Canselar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Canselar.Enabled = false;
             this.Btn_Canselar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Canselar.Location = new System.Drawing.Point(672, 2);
+            this.Btn_Canselar.Location = new System.Drawing.Point(677, 2);
             this.Btn_Canselar.Name = "Btn_Canselar";
             this.Btn_Canselar.Size = new System.Drawing.Size(138, 31);
             this.Btn_Canselar.TabIndex = 16;
@@ -344,14 +359,14 @@
             this.panelBoton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBoton.Location = new System.Drawing.Point(0, 648);
             this.panelBoton.Name = "panelBoton";
-            this.panelBoton.Size = new System.Drawing.Size(966, 37);
+            this.panelBoton.Size = new System.Drawing.Size(971, 37);
             this.panelBoton.TabIndex = 52;
             // 
             // btn_IniciarProcesso
             // 
             this.btn_IniciarProcesso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_IniciarProcesso.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_IniciarProcesso.Location = new System.Drawing.Point(816, 2);
+            this.btn_IniciarProcesso.Location = new System.Drawing.Point(821, 2);
             this.btn_IniciarProcesso.Name = "btn_IniciarProcesso";
             this.btn_IniciarProcesso.Size = new System.Drawing.Size(138, 31);
             this.btn_IniciarProcesso.TabIndex = 17;
@@ -695,7 +710,7 @@
             this.radioButtonConnectionRDP_Ativar.AutoSize = true;
             this.radioButtonConnectionRDP_Ativar.Checked = true;
             this.radioButtonConnectionRDP_Ativar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonConnectionRDP_Ativar.Location = new System.Drawing.Point(3, 4);
+            this.radioButtonConnectionRDP_Ativar.Location = new System.Drawing.Point(3, 3);
             this.radioButtonConnectionRDP_Ativar.Name = "radioButtonConnectionRDP_Ativar";
             this.radioButtonConnectionRDP_Ativar.Size = new System.Drawing.Size(54, 19);
             this.radioButtonConnectionRDP_Ativar.TabIndex = 67;
@@ -707,7 +722,7 @@
             // 
             this.radioButtonConnectionRDP_Desativar.AutoSize = true;
             this.radioButtonConnectionRDP_Desativar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonConnectionRDP_Desativar.Location = new System.Drawing.Point(62, 4);
+            this.radioButtonConnectionRDP_Desativar.Location = new System.Drawing.Point(62, 3);
             this.radioButtonConnectionRDP_Desativar.Name = "radioButtonConnectionRDP_Desativar";
             this.radioButtonConnectionRDP_Desativar.Size = new System.Drawing.Size(76, 19);
             this.radioButtonConnectionRDP_Desativar.TabIndex = 66;
@@ -805,6 +820,10 @@
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 3);
             this.panel1.AutoScrollMinSize = new System.Drawing.Size(0, 5);
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.pictureBox_ProfileEnergy);
+            this.panel1.Controls.Add(this.checkBox_ProfileEnergy);
+            this.panel1.Controls.Add(this.pictureBox_ProfileGraphic);
+            this.panel1.Controls.Add(this.checkBox_ProfileGraphic);
             this.panel1.Controls.Add(this.pictureBox_ExportInventory);
             this.panel1.Controls.Add(this.checkBox_ExportInventory);
             this.panel1.Controls.Add(this.checkBox_Taskbar);
@@ -847,10 +866,54 @@
             this.panel1.Controls.Add(this.checkBox_RestorePoint);
             this.panel1.Controls.Add(this.checkBox_BackupRegistrysRun);
             this.panel1.Controls.Add(this.checkBox_DeleteRegistry);
-            this.panel1.Location = new System.Drawing.Point(0, 60);
+            this.panel1.Location = new System.Drawing.Point(2, 60);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(296, 563);
             this.panel1.TabIndex = 84;
+            // 
+            // pictureBox_ProfileEnergy
+            // 
+            this.pictureBox_ProfileEnergy.Image = global::MeuSuporte.Properties.Resources.ProfileEnergy_Black;
+            this.pictureBox_ProfileEnergy.Location = new System.Drawing.Point(7, 664);
+            this.pictureBox_ProfileEnergy.Name = "pictureBox_ProfileEnergy";
+            this.pictureBox_ProfileEnergy.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_ProfileEnergy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_ProfileEnergy.TabIndex = 90;
+            this.pictureBox_ProfileEnergy.TabStop = false;
+            // 
+            // checkBox_ProfileEnergy
+            // 
+            this.checkBox_ProfileEnergy.AutoSize = true;
+            this.checkBox_ProfileEnergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_ProfileEnergy.Location = new System.Drawing.Point(40, 666);
+            this.checkBox_ProfileEnergy.Name = "checkBox_ProfileEnergy";
+            this.checkBox_ProfileEnergy.Size = new System.Drawing.Size(144, 24);
+            this.checkBox_ProfileEnergy.TabIndex = 89;
+            this.checkBox_ProfileEnergy.Text = "Perfil de Energia";
+            this.checkBox_ProfileEnergy.UseVisualStyleBackColor = true;
+            this.checkBox_ProfileEnergy.Click += new System.EventHandler(this.checkBox_ProfileEnergy_Click);
+            // 
+            // pictureBox_ProfileGraphic
+            // 
+            this.pictureBox_ProfileGraphic.Image = global::MeuSuporte.Properties.Resources.ProfileGraphic_Black;
+            this.pictureBox_ProfileGraphic.Location = new System.Drawing.Point(8, 635);
+            this.pictureBox_ProfileGraphic.Name = "pictureBox_ProfileGraphic";
+            this.pictureBox_ProfileGraphic.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_ProfileGraphic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_ProfileGraphic.TabIndex = 88;
+            this.pictureBox_ProfileGraphic.TabStop = false;
+            // 
+            // checkBox_ProfileGraphic
+            // 
+            this.checkBox_ProfileGraphic.AutoSize = true;
+            this.checkBox_ProfileGraphic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_ProfileGraphic.Location = new System.Drawing.Point(40, 635);
+            this.checkBox_ProfileGraphic.Name = "checkBox_ProfileGraphic";
+            this.checkBox_ProfileGraphic.Size = new System.Drawing.Size(123, 24);
+            this.checkBox_ProfileGraphic.TabIndex = 87;
+            this.checkBox_ProfileGraphic.Text = "Perfil Graphic";
+            this.checkBox_ProfileGraphic.UseVisualStyleBackColor = true;
+            this.checkBox_ProfileGraphic.Click += new System.EventHandler(this.checkBox_ProfileGraphic_Click);
             // 
             // pictureBox_ExportInventory
             // 
@@ -1037,12 +1100,96 @@
             this.radioButtonTaskbar_Desativar.Text = "Desativar";
             this.radioButtonTaskbar_Desativar.UseVisualStyleBackColor = true;
             // 
+            // panel_ProfileGraphic
+            // 
+            this.panel_ProfileGraphic.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel_ProfileGraphic.Controls.Add(this.radioButtonProfileGraphic_Performace);
+            this.panel_ProfileGraphic.Controls.Add(this.radioButtonProfileGraphic_Appearance);
+            this.panel_ProfileGraphic.Location = new System.Drawing.Point(996, 461);
+            this.panel_ProfileGraphic.Name = "panel_ProfileGraphic";
+            this.panel_ProfileGraphic.Size = new System.Drawing.Size(189, 27);
+            this.panel_ProfileGraphic.TabIndex = 89;
+            this.panel_ProfileGraphic.Visible = false;
+            // 
+            // radioButtonProfileGraphic_Performace
+            // 
+            this.radioButtonProfileGraphic_Performace.AutoSize = true;
+            this.radioButtonProfileGraphic_Performace.Checked = true;
+            this.radioButtonProfileGraphic_Performace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonProfileGraphic_Performace.Location = new System.Drawing.Point(3, 0);
+            this.radioButtonProfileGraphic_Performace.Name = "radioButtonProfileGraphic_Performace";
+            this.radioButtonProfileGraphic_Performace.Size = new System.Drawing.Size(100, 19);
+            this.radioButtonProfileGraphic_Performace.TabIndex = 65;
+            this.radioButtonProfileGraphic_Performace.TabStop = true;
+            this.radioButtonProfileGraphic_Performace.Text = "Desempenho";
+            this.radioButtonProfileGraphic_Performace.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonProfileGraphic_Appearance
+            // 
+            this.radioButtonProfileGraphic_Appearance.AutoSize = true;
+            this.radioButtonProfileGraphic_Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonProfileGraphic_Appearance.Location = new System.Drawing.Point(107, 4);
+            this.radioButtonProfileGraphic_Appearance.Name = "radioButtonProfileGraphic_Appearance";
+            this.radioButtonProfileGraphic_Appearance.Size = new System.Drawing.Size(80, 19);
+            this.radioButtonProfileGraphic_Appearance.TabIndex = 64;
+            this.radioButtonProfileGraphic_Appearance.Text = "Aparência";
+            this.radioButtonProfileGraphic_Appearance.UseVisualStyleBackColor = true;
+            // 
+            // panel_ProfileEnergy
+            // 
+            this.panel_ProfileEnergy.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel_ProfileEnergy.Controls.Add(this.radioButtonProfileEnergy_Economia);
+            this.panel_ProfileEnergy.Controls.Add(this.radioButtonProfileEnergy_Desenpenho);
+            this.panel_ProfileEnergy.Controls.Add(this.radioButtonProfileEnergy_Equilibrado);
+            this.panel_ProfileEnergy.Location = new System.Drawing.Point(999, 494);
+            this.panel_ProfileEnergy.Name = "panel_ProfileEnergy";
+            this.panel_ProfileEnergy.Size = new System.Drawing.Size(158, 69);
+            this.panel_ProfileEnergy.TabIndex = 90;
+            this.panel_ProfileEnergy.Visible = false;
+            // 
+            // radioButtonProfileEnergy_Economia
+            // 
+            this.radioButtonProfileEnergy_Economia.AutoSize = true;
+            this.radioButtonProfileEnergy_Economia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonProfileEnergy_Economia.Location = new System.Drawing.Point(3, 45);
+            this.radioButtonProfileEnergy_Economia.Name = "radioButtonProfileEnergy_Economia";
+            this.radioButtonProfileEnergy_Economia.Size = new System.Drawing.Size(140, 19);
+            this.radioButtonProfileEnergy_Economia.TabIndex = 91;
+            this.radioButtonProfileEnergy_Economia.Text = "Economia de Bateria";
+            this.radioButtonProfileEnergy_Economia.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonProfileEnergy_Desenpenho
+            // 
+            this.radioButtonProfileEnergy_Desenpenho.AutoSize = true;
+            this.radioButtonProfileEnergy_Desenpenho.Checked = true;
+            this.radioButtonProfileEnergy_Desenpenho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonProfileEnergy_Desenpenho.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonProfileEnergy_Desenpenho.Name = "radioButtonProfileEnergy_Desenpenho";
+            this.radioButtonProfileEnergy_Desenpenho.Size = new System.Drawing.Size(121, 19);
+            this.radioButtonProfileEnergy_Desenpenho.TabIndex = 65;
+            this.radioButtonProfileEnergy_Desenpenho.TabStop = true;
+            this.radioButtonProfileEnergy_Desenpenho.Text = "Alto desempenho";
+            this.radioButtonProfileEnergy_Desenpenho.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonProfileEnergy_Equilibrado
+            // 
+            this.radioButtonProfileEnergy_Equilibrado.AutoSize = true;
+            this.radioButtonProfileEnergy_Equilibrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonProfileEnergy_Equilibrado.Location = new System.Drawing.Point(3, 24);
+            this.radioButtonProfileEnergy_Equilibrado.Name = "radioButtonProfileEnergy_Equilibrado";
+            this.radioButtonProfileEnergy_Equilibrado.Size = new System.Drawing.Size(88, 19);
+            this.radioButtonProfileEnergy_Equilibrado.TabIndex = 64;
+            this.radioButtonProfileEnergy_Equilibrado.Text = "Equilibrado";
+            this.radioButtonProfileEnergy_Equilibrado.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(966, 685);
+            this.ClientSize = new System.Drawing.Size(971, 685);
+            this.Controls.Add(this.panel_ProfileEnergy);
+            this.Controls.Add(this.panel_ProfileGraphic);
             this.Controls.Add(this.panel_OptimizeBar);
             this.Controls.Add(this.panel_DeleteRegistry);
             this.Controls.Add(this.panel_BackupRegistrysRun);
@@ -1103,6 +1250,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CleanReportError)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfileEnergy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfileGraphic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ExportInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Taskbar)).EndInit();
             this.panel_CleanTemp.ResumeLayout(false);
@@ -1113,6 +1262,10 @@
             this.panel_DeleteRegistry.PerformLayout();
             this.panel_OptimizeBar.ResumeLayout(false);
             this.panel_OptimizeBar.PerformLayout();
+            this.panel_ProfileGraphic.ResumeLayout(false);
+            this.panel_ProfileGraphic.PerformLayout();
+            this.panel_ProfileEnergy.ResumeLayout(false);
+            this.panel_ProfileEnergy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1196,6 +1349,17 @@
         private System.Windows.Forms.RadioButton radioButtonTaskbar_Desativar;
         private System.Windows.Forms.PictureBox pictureBox_ExportInventory;
         private System.Windows.Forms.CheckBox checkBox_ExportInventory;
+        private System.Windows.Forms.PictureBox pictureBox_ProfileGraphic;
+        private System.Windows.Forms.CheckBox checkBox_ProfileGraphic;
+        private System.Windows.Forms.Panel panel_ProfileGraphic;
+        private System.Windows.Forms.RadioButton radioButtonProfileGraphic_Performace;
+        private System.Windows.Forms.RadioButton radioButtonProfileGraphic_Appearance;
+        private System.Windows.Forms.Panel panel_ProfileEnergy;
+        private System.Windows.Forms.RadioButton radioButtonProfileEnergy_Desenpenho;
+        private System.Windows.Forms.RadioButton radioButtonProfileEnergy_Equilibrado;
+        private System.Windows.Forms.RadioButton radioButtonProfileEnergy_Economia;
+        private System.Windows.Forms.PictureBox pictureBox_ProfileEnergy;
+        private System.Windows.Forms.CheckBox checkBox_ProfileEnergy;
     }
 }
 

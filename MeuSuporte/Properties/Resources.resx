@@ -307,4 +307,16 @@
   <data name="windows_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\windows-2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ProfileEnergy_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProfileEnergy_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProfileEnergy_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProfileEnergy_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProfileGraphic_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProfileGraphic_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProfileGraphic_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProfileGraphic_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

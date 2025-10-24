@@ -28,19 +28,17 @@
         "AgenteExecucaoAssistente",
         "ConsultaNF-e_SEFAZ_RS",
         "WebServicePortalFederal",
-        "DANFEViewUniNFe",
         "Lightshot",
         "Wave",
-        "AnyDesk",
         "GestaoPlugin",
         "GestaoPluginx64",
         "DANFEViewMon",
         "DANFEViewWatch",
+        "DANFEViewUniNFe",
         "Tecnobyte Agenda",
         "Agente de Execução do Assistente Virtual",
         "CriptoCNS",
         "Valid Agent Server", // auxilia na emissão de certificados digitais do tipo A1 através do navegador Google Chrome
-        "AgenteExecucaoAssistente",
         };
 
         //

@@ -57,7 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>windows-2.ico</ApplicationIcon>
+    <ApplicationIcon>windows.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -201,6 +201,10 @@
     <Compile Include="Class\WinGlobal\WinGlobal_UIService.cs" />
     <Compile Include="Class\WinGlobal\WinGlobal_ValidNameFolde.cs" />
     <Compile Include="Class\WinPageFile\WinPageFile_KeyRegistry.cs" />
+    <Compile Include="Class\WinProfileEnergy\WinProfileEnergy_Mananger.cs" />
+    <Compile Include="Class\WinProfileEnergy\WinProfileEnergy_State.cs" />
+    <Compile Include="Class\WinProfileGraphic\WinProfileGraphic_State.cs" />
+    <Compile Include="Class\WinProfileGraphic\WinProfileGraphic_Mananger.cs" />
     <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_ProcessSubkey.cs" />
     <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_ProfileList.cs" />
     <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_Mananger.cs" />
@@ -372,6 +376,7 @@
     <None Include="Resources\ExportInventory_Black.png" />
     <None Include="Resources\ExportInventory_White.png" />
     <Content Include="windows-2.ico" />
+    <Content Include="windows.ico" />
     <Content Include="wine-winecfg.ico" />
   </ItemGroup>
   <ItemGroup>

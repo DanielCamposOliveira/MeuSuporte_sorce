@@ -12,6 +12,7 @@ namespace MeuSuporte
 
         private static WinApp_Mananger _instance;
 
+        // 1. CheckBoxes
         private CheckBox checkBox_Taskbar;
         private CheckBox checkBox_UserUAC;
         private CheckBox checkBox_CleanTask;
@@ -32,7 +33,10 @@ namespace MeuSuporte
         private CheckBox checkBox_Bloatware;
         private CheckBox checkBox_BackupReportError;
         private CheckBox checkBox_CleanReportError;
+        private CheckBox checkBox_ProfileGraphic;
+        private CheckBox checkBox_ProfileEnergy;
 
+        // 2. RadioButtons
         private RadioButton radioButtonUserUAC_Ativar;
         private RadioButton radioButtonCleanPageFile_Ativar;
         private RadioButton radioButtonradioButtonConnectionRDP_Ativar;
@@ -40,23 +44,37 @@ namespace MeuSuporte
         private RadioButton radioButtonDeleteRegistry_All;
         private RadioButton radioButtonBackupRegistrysRun_All;
         private RadioButton radioButtonTaskbar_Ativar;
+        private RadioButton radioButtonProfileGraphic_Performace;
+        private RadioButton radioButtonProfileEnergy_Desenpenho;
+        private RadioButton radioButtonProfileEnergy_Equilibrado;
+        private RadioButton radioButtonProfileEnergy_Economia;
 
         #endregion
 
         #region instância
-        public static void Initialize(CheckBox _checkBox_Taskbar, CheckBox _checkBox_UserUAC, CheckBox _checkBox_CleanTask, CheckBox _checkBox_CleanTrash,
-            CheckBox _checkBox_CleanProcess, CheckBox _checkBox_CleanTemp, CheckBox _checkBox_CleanWindowsUpdate, CheckBox _checkBox_CleanGoogle,
-            CheckBox _checkBox_BackupRegistrysRun, CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry,
-            CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, CheckBox _checkBox_RestorePoint,
-            CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, 
-            RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar,RadioButton _radioButtonradioButtonConnectionRDP_Ativar, 
-            RadioButton _radioButtonCleanTemp_All, RadioButton _radioButtonDeleteRegistry_All, RadioButton _radioButtonBackupRegistrysRun_All, RadioButton _radioButtonTaskbar_Ativar
-            )
+        public static void Initialize(
+            // 1. CheckBoxes
+            CheckBox _checkBox_Taskbar, CheckBox _checkBox_UserUAC, CheckBox _checkBox_CleanTask, 
+            CheckBox _checkBox_CleanTrash, CheckBox _checkBox_CleanProcess, CheckBox _checkBox_CleanTemp, 
+            CheckBox _checkBox_CleanWindowsUpdate, CheckBox _checkBox_CleanGoogle, CheckBox _checkBox_BackupRegistrysRun, 
+            CheckBox _checkBox_CleanPageFile, CheckBox _checkBox_DriversBackup, CheckBox _checkBox_DeleteRegistry,
+            CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, 
+            CheckBox _checkBox_RestorePoint, CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, 
+            CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, CheckBox _checkBox_ProfileGraphic,
+            CheckBox _checkBox_ProfileEnergy,
+
+            // 2. RadioButtons
+            RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar, RadioButton _radioButtonradioButtonConnectionRDP_Ativar,
+            RadioButton _radioButtonCleanTemp_All, RadioButton _radioButtonDeleteRegistry_All, RadioButton _radioButtonBackupRegistrysRun_All, 
+            RadioButton _radioButtonTaskbar_Ativar, RadioButton _radioButtonProfileGraphic_Performace, RadioButton _radioButtonProfileEnergy_Desenpenho,
+            RadioButton _radioButtonProfileEnergy_Equilibrado, RadioButton _radioButtonProfileEnergy_Economia
+        )
         {
             if (_instance == null)
             {
                 _instance = new WinApp_Mananger
                 {
+                    // 1. CheckBoxes
                     checkBox_Taskbar = _checkBox_Taskbar,
                     checkBox_UserUAC = _checkBox_UserUAC,
                     checkBox_CleanTask = _checkBox_CleanTask,
@@ -77,6 +95,10 @@ namespace MeuSuporte
                     checkBox_Bloatware = _checkBox_Bloatware,
                     checkBox_BackupReportError = _checkBox_BackupReportError,
                     checkBox_CleanReportError = _checkBox_CleanReportError,
+                    checkBox_ProfileGraphic = _checkBox_ProfileGraphic,
+                    checkBox_ProfileEnergy = _checkBox_ProfileEnergy,
+
+                    // 2. RadioButtons
                     radioButtonUserUAC_Ativar = _radioButtonUserUAC_Ativar,
                     radioButtonCleanPageFile_Ativar = _radioButtonCleanPageFile_Ativar,
                     radioButtonradioButtonConnectionRDP_Ativar = _radioButtonradioButtonConnectionRDP_Ativar,
@@ -84,12 +106,17 @@ namespace MeuSuporte
                     radioButtonDeleteRegistry_All = _radioButtonDeleteRegistry_All,
                     radioButtonBackupRegistrysRun_All = _radioButtonBackupRegistrysRun_All,
                     radioButtonTaskbar_Ativar = _radioButtonTaskbar_Ativar,
+                    radioButtonProfileGraphic_Performace = _radioButtonProfileGraphic_Performace,
+                    radioButtonProfileEnergy_Desenpenho = _radioButtonProfileEnergy_Desenpenho,
+                    radioButtonProfileEnergy_Equilibrado = _radioButtonProfileEnergy_Equilibrado,
+                    radioButtonProfileEnergy_Economia = _radioButtonProfileEnergy_Economia
                 };
             }
         }
 
+
         #endregion
-        
+
         // Acesso à instância
         public static WinApp_Mananger Instance
         {
@@ -511,5 +538,67 @@ namespace MeuSuporte
 
         }
         #endregion
+
+        #region Perfil de Graphic
+
+        public async Task ProfileGraphic()
+        {
+            //MELHOR DESEMPENHO = true
+            //MELHOR APARÊNCIA = false
+
+            WinProfileGraphic_Mananger ProfileGraphic_Mananger = new WinProfileGraphic_Mananger();
+
+            // Atualiza a UI antes da execução assíncrona
+            await WinGlobal_UIService.Instance.UpdateIfonUI("Perfil Graphic", checkBox_ProfileGraphic, Resources.ProfileGraphic_Black, "Perfil Graphic:\n\rAjuste para obter melhor Desempenho ou Aparência do computador.");
+            await Task.Delay(800);
+
+            await Task.Run(() => ProfileGraphic_Mananger.Mananger(radioButtonProfileGraphic_Performace.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Delay(1000);
+
+            checkBox_ProfileGraphic.Font = new Font(checkBox_ProfileGraphic.Font.FontFamily, checkBox_ProfileGraphic.Font.Size, FontStyle.Strikeout);
+        }
+
+        #endregion
+
+        #region Perfil de energia
+
+
+
+    
+
+        public async Task ProfileEnergy()
+        {
+            // Perfil "Alto desempenho" = 0
+            // Perfil "Balanceado" = 1
+            // Perfil "Minima" = 2
+            int option = 0;
+
+            if (radioButtonProfileEnergy_Desenpenho.Checked == true)
+            {
+                option = 0;
+            }
+            if (radioButtonProfileEnergy_Equilibrado.Checked == true)
+            {
+                option = 1;
+            }
+            if (radioButtonProfileEnergy_Economia.Checked == true)
+            {
+                option = 2;
+            }
+
+            WinProfileEnergy_Mananger ProfileEnergy_Mananger = new WinProfileEnergy_Mananger();
+
+            // Atualiza a UI antes da execução assíncrona
+            await WinGlobal_UIService.Instance.UpdateIfonUI("Perfil Energetico", checkBox_ProfileEnergy, Resources.CleanTrash_Black, "Perfil Energetico:\n\rPlanos de Energia ajuda a equilibrar entre Desempenho e Eficiência do computador.");
+            await Task.Delay(800);
+
+            await Task.Run(() => ProfileEnergy_Mananger.Mananger(option), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Delay(1000);
+
+            checkBox_ProfileEnergy.Font = new Font(checkBox_ProfileEnergy.Font.FontFamily, checkBox_ProfileEnergy.Font.Size, FontStyle.Strikeout);
+        }
+
+        #endregion
+
     }
 }
