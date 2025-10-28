@@ -4,7 +4,7 @@ using Microsoft.Win32;
 
 namespace MeuSuporte
 {
-    // 3
+    // 2
     /// <summary>
     /// Class responsavel por montar o arquivo StringBuilder regFile com as informacoes dos registros
     /// </summary>

@@ -4,23 +4,29 @@ namespace MeuSuporte
 {
     internal class WinRegistryBin_Mananger
     {
-        WinRegistryBin_All_Mananger RegistryBin_All_Mananger;
-        WinRegistryBin_Single_Mananger RegistryBin_Single_Mananger;
-
+        private WinRegistryBin_Single_Mananger Single_Mananger;
+        private WinRegistryBin_All_Mananger All_Mananger;
+        private WinRegistryBin_MACHINE_Mananger MACHINE_Mananger;
+            
         public WinRegistryBin_Mananger()
-        {
-            RegistryBin_All_Mananger = new WinRegistryBin_All_Mananger();
-            RegistryBin_Single_Mananger = new WinRegistryBin_Single_Mananger();
+        {           
+            Single_Mananger = new WinRegistryBin_Single_Mananger();
+            MACHINE_Mananger = new WinRegistryBin_MACHINE_Mananger();
+            All_Mananger = new WinRegistryBin_All_Mananger();
         }
-        public async Task Delete(bool isAll)
+        public async Task Mananger(bool isAll)
         {
             if (isAll)
-            {                
-                await RegistryBin_All_Mananger.Delete();
+            {
+                await MACHINE_Mananger.Mananger(WinGlobal_UIService.Instance.ValueUniProgressBar / 3);
+                await Single_Mananger.Mananger(WinGlobal_UIService.Instance.ValueUniProgressBar / 3);
+
+                await All_Mananger.Mananger(WinGlobal_UIService.Instance.ValueUniProgressBar / 3);
             }
-            else 
-            {                
-                await RegistryBin_Single_Mananger.Delete();
+            else
+            {
+                await MACHINE_Mananger.Mananger(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
+                await Single_Mananger.Mananger(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
             }
         }
 

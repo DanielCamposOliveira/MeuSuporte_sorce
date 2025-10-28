@@ -1,35 +1,31 @@
 ﻿using System.Threading.Tasks;
 
 namespace MeuSuporte
-{
-    /// <summary>
-    /// Class responsavel por chamar as class de exclusao da chaves de registro
-    /// </summary>
-    /// 
+{    
     internal class WinRegistryBin_All_Mananger
     {
-        private WinRegistryBin_WOW6432Node RegistryBin_WOW6432Node;
-        private WinRegistryBin_MACHINE RegistryBin_MACHINE;
-        private WinRegistryBin_UserSingle RegistryBin_UserSingle;
-        private WinRegistryBin_All_SecurityRegistry RegistryBin_All_SecurityRegistry;
+        private readonly WinRegistryBin_All_ProfileList RegistryBin_All_ProfileList;
+        private readonly WinTaskbar_All_Security All_Security;
 
         public WinRegistryBin_All_Mananger()
         {
-            RegistryBin_WOW6432Node = new WinRegistryBin_WOW6432Node();
-            RegistryBin_MACHINE = new WinRegistryBin_MACHINE();
-            RegistryBin_UserSingle = new WinRegistryBin_UserSingle();
-            RegistryBin_All_SecurityRegistry = new WinRegistryBin_All_SecurityRegistry();
+            RegistryBin_All_ProfileList = new WinRegistryBin_All_ProfileList();
+            All_Security = new WinTaskbar_All_Security();
         }
-
-        public async Task Delete()
+          
+        public async Task Mananger(int ValueUniProgressBar)
         {
-            await Task.WhenAll(
-                RegistryBin_WOW6432Node.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
-                RegistryBin_MACHINE.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
-                RegistryBin_UserSingle.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4),
-                RegistryBin_All_SecurityRegistry.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 4)
-            );
+            if (await All_Security.Privilege(true))
+            {
+                try
+                {
+                    await RegistryBin_All_ProfileList.ProfilesMananger(ValueUniProgressBar);
+                }
+                finally
+                {
+                    await All_Security.Privilege(false);
+                }
+            }
         }
-
     }
 }

@@ -12,7 +12,7 @@ namespace MeuSuporte
 
     internal class WinTaskbar_TaskView
     {
-        public async Task State(bool State, RegistryKey rootKey, string subKeyPath, string usuario, int ValueUniProgressBar)
+        public async Task Changes(bool State, RegistryKey rootKey, string subKeyPath, string usuario, int ValueUniProgressBar)
         {
             int _state = State ? 0 : 1;
 

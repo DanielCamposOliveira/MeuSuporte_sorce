@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MeuSuporte
@@ -40,10 +41,14 @@ namespace MeuSuporte
 
                 // funcao de apagar os arquivos
                 // await ListFiles.Remove(ValueUniProgressBar, DirectoryFolder, _NameFolder);
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Temp: limpando diretorio: {path}", true);
+
+                await Task.Delay(500);
                 
-                await Directory_ListFiles.Remove(ValueUniProgressBar, path, "%Temp% Users");          
+                await Directory_ListFiles.Remove(ValueUniProgressBar, path, "%Temp% Users");
+                await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", false);
                 //  await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);
-                //  await WinGlobal_UIService.Instance.Log_MensagemAsync($"{applicant}: Limpeza da pasta {_NameFolder} : {ListFiles.countFoldersDeleted} Pasta(s) Apagada(s) e {ListFiles.countFileDeleted} Arquivo(s) Apagado(s)", false);
+
 
             }            
         }

@@ -19,13 +19,13 @@ namespace MeuSuporte
         public async Task Changes(bool State, int ValueUniProgressBar)
         {  
             string PathSearchbox = @"Software\Microsoft\Windows\CurrentVersion\Search";
-            await Searchbox.State(State, Registry.CurrentUser, PathSearchbox, Environment.UserName, ValueUniProgressBar / 3);
+            await Searchbox.Changes(State, Registry.CurrentUser, PathSearchbox, Environment.UserName, ValueUniProgressBar / 3);
 
             string TaskViewPath = @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced";
-            await TaskView.State(State, Registry.CurrentUser, TaskViewPath, Environment.UserName, ValueUniProgressBar / 3);
+            await TaskView.Changes(State, Registry.CurrentUser, TaskViewPath, Environment.UserName, ValueUniProgressBar / 3);
 
             string IconLearnPath = @"Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
-            await IconLearn.State(State, Registry.CurrentUser, IconLearnPath, Environment.UserName, ValueUniProgressBar / 3);
+            await IconLearn.Changes(State, Registry.CurrentUser, IconLearnPath, Environment.UserName, ValueUniProgressBar / 3);
 
             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Optimiza Barra de Tarefas: User \"{Environment.UserName}\" - Configurações Alteradas", true);
         }

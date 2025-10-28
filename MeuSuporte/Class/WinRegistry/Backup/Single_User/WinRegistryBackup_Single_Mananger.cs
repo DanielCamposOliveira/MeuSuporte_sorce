@@ -1,38 +1,40 @@
 ﻿using Microsoft.Win32;
-using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
     // 1
     /// <summary>
-    /// Class responsavel por chamar a Class que realiza a montagem do registro e a gravação no disco
+    /// Class Responsavel por
+    /// Criar o arquivo do registro
+    /// Chamada do metado de adicionar os regsitro no arquivo 
+    /// Chamada do metado de gravar o arquivo no Disco
     /// </summary>
+
     internal class WinRegistryBackup_Single_Mananger
     {
-        private WinRegistryBackup_Single_Key RegistryBackup_Key;
-        private WinRegistryBackup_LOCAL_MACHINE_Mananger Backup_LOCAL_MACHINE_Mananger;
-
-        public WinRegistryBackup_Single_Mananger()
+        private WinRegistryBackup_Single_RegistryWriteFile RegistryBackup_RegistryWriteFile;
+        private WinRegistryBackup_Single_ProcessSubkey RegistryBackup_ProcessSubkey;
+        public WinRegistryBackup_Single_Mananger() 
         {
-            RegistryBackup_Key = new WinRegistryBackup_Single_Key();
-            Backup_LOCAL_MACHINE_Mananger = new WinRegistryBackup_LOCAL_MACHINE_Mananger();
+            RegistryBackup_RegistryWriteFile = new WinRegistryBackup_Single_RegistryWriteFile();
+            RegistryBackup_ProcessSubkey = new WinRegistryBackup_Single_ProcessSubkey();
         }
-
-        public async Task Mananger()
-        {            
+        public async Task Mananger(string NameFolder, RegistryKey RegistryCurrent, int ValueUniProgressBar)
+        {
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-            string NameUserRun = Environment.UserName;
-            RegistryKey RegistryCurrentUserRun = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+            // cria uma nova instância de StringBuilder.
+            StringBuilder regFile = new StringBuilder();
+            regFile.AppendLine("Windows Registry Editor Version 5.00");
+            regFile.AppendLine("");
 
-            // Salva os Registros da Maquina Local
-            await Backup_LOCAL_MACHINE_Mananger.Backup(WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
+            //passa a REFERÊNCIA desse objeto(regFile) para o Subkey.
+            await RegistryBackup_ProcessSubkey.Subkey(RegistryCurrent, regFile);
 
-            // Salvar o Registros do Usuario
-            await RegistryBackup_Key.Backup(NameUserRun, RegistryCurrentUserRun, WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
-
-            await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Registry concluído", true);
+            // Grava o objeto(regFile) em um arquivo no Disco
+            await RegistryBackup_RegistryWriteFile.Write(NameFolder, regFile, ValueUniProgressBar);  // Chama a Função de grava a chave no Disco            
         }
     }
 }

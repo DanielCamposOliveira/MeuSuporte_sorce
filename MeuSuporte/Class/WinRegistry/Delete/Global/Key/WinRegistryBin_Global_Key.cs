@@ -1,55 +1,53 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
-    internal class WinRegistryBin_UserSingle
+    internal class WinRegistryBin_Global_Key
     {
-        /// <summary>
-        /// Class responsavel por excluir os registros
-        /// </summary>
-        private readonly WinRegistryBin_List RegistryBin_List; // = new WinRegistryBin_List();      
+        WinRegistryBin_List RegistryBin_List;
         private WinRegistryBin_CloudManager CloudManager;
-
-        public WinRegistryBin_UserSingle() 
+        public WinRegistryBin_Global_Key()
         {
             RegistryBin_List = new WinRegistryBin_List();
             CloudManager = new WinRegistryBin_CloudManager();
         }
 
-        public async Task Delete(int ValueUniProgressBar)
+        public async Task Delete(string RegistryName, RegistryKey rootKey, int ValueUniProgressBar)
         {
-
-
-            using (RegistryKey Pasta_USER_Run = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run"))
-            using (RegistryKey Pasta_USER_CurrentVersion = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true))
+            // Usando o método OpenSubKey para acessar as chaves do registro
+          //  using (RegistryKey Pasta_Node_Run = Registry.LocalMachine.OpenSubKey(@"Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Run"))
+            using (RegistryKey? searchKey = rootKey)
             {
-                if (Pasta_USER_Run?.ValueCount > 0)
+                if (searchKey?.ValueCount > 0)
                 {
-                    foreach (string NomeChave in Pasta_USER_Run.GetValueNames())
+                    // Itera sobre todas as chaves dentro da pasta Run
+                    foreach (string NomeChave in searchKey.GetValueNames())
                     {
                         WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
-                                             
-                        object conteudoChave = Pasta_USER_Run.GetValue(NomeChave);                        
+
+
+                        object conteudoChave = searchKey.GetValue(NomeChave);
                         string caminhoRegistro = conteudoChave?.ToString() ?? string.Empty; // Converte o valor para string
 
-                        RegistryValueKind tipoChaveEnum = Pasta_USER_Run.GetValueKind(NomeChave);
+                        RegistryValueKind tipoChaveEnum = searchKey.GetValueKind(NomeChave);
                         string tipoChave = tipoChaveEnum.ToString(); // Converte o tipo para string
 
                         // verifica se existe exeçoes
                         if (RegistryBin_List.KeyDirectory.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {RegistryName} \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
 
                         // verifica se existe exeçoes
                         if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {RegistryName} \"{Environment.UserName}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             continue;
                         }
 
@@ -57,7 +55,7 @@ namespace MeuSuporte
                         if (RegistryBin_List.KeyCloud.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
                             if (NomeChave.ToString() == "GoogleDriveFS")
-                            {                        
+                            {
                                 string basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
                                 if (await CloudManager.GetGoogleDrive(basePath) == true)
@@ -67,7 +65,7 @@ namespace MeuSuporte
                             }
 
                             if (NomeChave.ToString() == "OneDrive")
-                            {            
+                            {
                                 RegistryKey chave = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\OneDrive\Accounts");
 
                                 if (await CloudManager.GetOneDrive(chave) == true)
@@ -77,28 +75,27 @@ namespace MeuSuporte
                             }
                         }
 
-                        
+                        // Deleta a chave do registro
                         try
                         {
-                            // Deleta a chave do registro
-                            Pasta_USER_CurrentVersion.DeleteValue(NomeChave);
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            searchKey.DeleteValue(NomeChave);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {RegistryName} \"{Environment.UserName}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Sucesso++;
                         }
                         catch (Exception e)
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {RegistryName} \"{Environment.UserName}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
                             WinGlobal_UIService.Instance.Erro++;
                         }
                     }
-                    await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+                    WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
                 }
                 else
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Sem registro.", true);
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: {RegistryName} - Sem registro.", true);
+                    WinGlobal_UIService.Instance.Sucesso++;
                 }
             }
         }
-
     }
 }

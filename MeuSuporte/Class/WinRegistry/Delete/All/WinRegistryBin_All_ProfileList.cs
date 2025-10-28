@@ -6,27 +6,24 @@ using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
-    //  3
+    //  2
     /// <summary>
     /// Essa class sera responsavel por 
     /// Lista todos os Usuarios
-    /// Repassar o caminho do perfil do usuario para class de WinRegistryBackup_All_Key
+    /// Repassar o caminho do perfil do usuario para class
     /// </summary>
-
 
     internal class WinRegistryBin_All_ProfileList
     {
         private const string PROFILE_LIST_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList";
-
-        // Dependências injetadas
-        private readonly WinRegistryBinUserAll_HiveLoader RegistryBackup_All_HiveLoader;
+           
+        private readonly WinTaskbar_HiveLoader RegistryBackup_All_HiveLoader;
         private readonly WinRegistryBinUserAll_Delete RegistryBinUserAll_Delete;
         private readonly WinGlobal_FileCheck FileCheck;
 
-        // Construtor para RECEBER as dependências do orquestrador
-        public WinRegistryBin_All_ProfileList(WinRegistryBinUserAll_HiveLoader _hiveLoader)
+        public WinRegistryBin_All_ProfileList( )
         {
-            RegistryBackup_All_HiveLoader = _hiveLoader;
+            RegistryBackup_All_HiveLoader = new WinTaskbar_HiveLoader();
             RegistryBinUserAll_Delete = new WinRegistryBinUserAll_Delete();
             FileCheck = new WinGlobal_FileCheck();
         }
@@ -38,8 +35,6 @@ namespace MeuSuporte
 
             using (RegistryKey? profileListKey = Registry.LocalMachine.OpenSubKey(PROFILE_LIST_PATH))
             {
-                if (profileListKey == null) return;
-
                 //Divide o valor ValueUniProgressBar pela QTD de Usuarios
                 int _ValueUniProgressBar = ValueUniProgressBar / profileListKey.ValueCount;
 
@@ -47,8 +42,11 @@ namespace MeuSuporte
                 {
                     WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-                    // verifica se o usuario é do sistema ou do usuario logado
-                    if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid) continue;
+                    // verifica se o usuario é do sistema ou do usuario logado    
+                    if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid)
+                    {
+                        continue;
+                    }
 
                     string tempHiveName = $"TempHive_{sid}";
                     string? ntUserDatPath = null;
@@ -64,7 +62,7 @@ namespace MeuSuporte
                         // Verifica o caminho do perfil se ele existe, caso contrário, pula este SID
                         if (string.IsNullOrEmpty(ntUserDatPath) || !Directory.Exists(ntUserDatPath)) continue;
 
-                        string usuario = Path.GetFileName(ntUserDatPath);
+                        string UserName = Path.GetFileName(ntUserDatPath);
                         ntUserDatPath = Path.Combine(ntUserDatPath, "NTUSER.DAT");
 
                         // Verifia se arquivo NTUSER.DAT existe
@@ -77,11 +75,11 @@ namespace MeuSuporte
                         RegistryBackup_All_HiveLoader.LoadHive(tempHiveName, ntUserDatPath);
 
                         // 6. Aplica as configurações                        
-                        await RegistryBinUserAll_Delete.Delete(tempHiveName, usuario, _ValueUniProgressBar);
+                        await RegistryBinUserAll_Delete.Delete(tempHiveName, UserName, _ValueUniProgressBar);
                     }
                     catch (Exception ex)
                     {
-                        WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
+                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
                         WinGlobal_UIService.Instance.Erro++;
                     }
                     finally
@@ -92,7 +90,7 @@ namespace MeuSuporte
                 }
             }
 
-            WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
+            await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
         }
 
     }

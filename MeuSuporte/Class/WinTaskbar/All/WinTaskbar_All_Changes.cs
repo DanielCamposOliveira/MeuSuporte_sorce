@@ -1,19 +1,18 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
     // 3
     /// <summary>
-    /// Class responsavel por Alterar todos os registro do Usuario
+    /// Class responsavel por chamar todas as alterações no registro do Usuario
     /// </summary>
     
     internal class WinTaskbar_All_Changes
     {
-        WinTaskbar_Searchbox Searchbox;
-        WinTaskbar_TaskView TaskView;
-        WinTaskbar_IconLearn IconLearn;
+        private readonly WinTaskbar_Searchbox Searchbox;
+        private readonly WinTaskbar_TaskView TaskView;
+        private readonly WinTaskbar_IconLearn IconLearn;
         public WinTaskbar_All_Changes() 
         {
             Searchbox = new WinTaskbar_Searchbox();
@@ -24,13 +23,13 @@ namespace MeuSuporte
         public async Task Changes(bool State, string tempHiveName, string usuario, int ValueUniProgressBar)
         {
             string SearchboxPath = $@"{tempHiveName}\Software\Microsoft\Windows\CurrentVersion\Search";
-            await Searchbox.State(State, Registry.Users, SearchboxPath, usuario, ValueUniProgressBar / 3);
+            await Searchbox.Changes(State, Registry.Users, SearchboxPath, usuario, ValueUniProgressBar / 3);
 
             string TaskViewPath = $@"{tempHiveName}\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced";            
-            await TaskView.State(State, Registry.Users, TaskViewPath, usuario, ValueUniProgressBar / 3);
+            await TaskView.Changes(State, Registry.Users, TaskViewPath, usuario, ValueUniProgressBar / 3);
 
             string IconLearnPath = $@"{tempHiveName}\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
-            await IconLearn.State(State, Registry.Users, IconLearnPath, usuario, ValueUniProgressBar / 3);
+            await IconLearn.Changes(State, Registry.Users, IconLearnPath, usuario, ValueUniProgressBar / 3);
 
             await WinGlobal_UIService.Instance.Log_MensagemAsync($"Optimiza Barra de Tarefas: User \"{usuario}\" - Configurações Alteradas", true);
         }

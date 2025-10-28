@@ -43,7 +43,7 @@ namespace MeuSuporte
                         await WinGlobal_UIService.Instance.ProgressBarADD(1);
                         valorAcumulado -= 1;
                         await WinGlobal_UIService.Instance.Log_MensagemAsyncSobrescrever($"Apagando arquivos {total} / {loop} da Pasta: {_NameFolder}");
-                        await Task.Delay(20);
+                        await Task.Delay(100);
                     }                    
                     // apaga o arquivo, se retorna = true converta para 1 e false para 0
                     CountFileDeleted += await _WinDirectory_File.Delete(file.FullName) ? 1 : 0;
@@ -61,7 +61,7 @@ namespace MeuSuporte
                         await WinGlobal_UIService.Instance.ProgressBarADD(1);
                         valorAcumulado -= 1;
                         await WinGlobal_UIService.Instance.Log_MensagemAsyncSobrescrever($"Apagando arquivos {total} / {loop} da Pasta: {_NameFolder}");
-                        await Task.Delay(20);
+                        await Task.Delay(100);
                     }
                     // apaga o arquivo, se retorna = true converta para 1 e false para 0
                     CountFoldersDeleted += await _WinDirectory_Folder.Delete(folder.FullName) ? 1 : 0;

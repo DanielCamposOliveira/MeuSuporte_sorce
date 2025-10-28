@@ -5,7 +5,7 @@ namespace MeuSuporte
     internal class WinCleanTemp_UserSingle
     {
         private WinDirectory_ListFiles Directory_ListFiles;
-        WinCleanTemp_ProfilePathSingle ProfilePathSingle;
+        private WinCleanTemp_ProfilePathSingle ProfilePathSingle;
         private WinDirectory_AssignsPathPermission AssignsPathPermission;
 
         public WinCleanTemp_UserSingle()
@@ -34,12 +34,11 @@ namespace MeuSuporte
                 return;
             }
 
-            // funcao de apagar os arquivos
-            // await ListFiles.Remove(ValueUniProgressBar, DirectoryFolder, _NameFolder);
-            await Directory_ListFiles.Remove(WinGlobal_UIService.Instance.ValueUniProgressBar, profilePath, "%Temp%");
+            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Temp: limpando diretorio: {profilePath}", true);
+            await Task.Delay(500);
 
-            //  await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);
-            //  await WinGlobal_UIService.Instance.Log_MensagemAsync($"{applicant}: Limpeza da pasta {_NameFolder} : {ListFiles.countFoldersDeleted} Pasta(s) Apagada(s) e {ListFiles.countFileDeleted} Arquivo(s) Apagado(s)", false);
+            // funcao de apagar os arquivos
+            await Directory_ListFiles.Remove(WinGlobal_UIService.Instance.ValueUniProgressBar, profilePath, "%Temp%");
 
         }
     }

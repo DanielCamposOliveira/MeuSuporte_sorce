@@ -17,22 +17,17 @@ namespace MeuSuporte
     {
         private const string PROFILE_LIST_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList";
 
-        // Dependências injetadas
         private readonly WinTaskbar_HiveLoader RegistryBackup_All_HiveLoader;
-
         private readonly WinGlobal_FileCheck FileCheck;
-
         private readonly WinTaskbar_All_Changes Taskbar_All_Changes;
 
-        public WinTaskbar_All_ProfileList(WinTaskbar_HiveLoader _hiveLoader)
+        public WinTaskbar_All_ProfileList()
         {
-            RegistryBackup_All_HiveLoader = _hiveLoader;
-
+            RegistryBackup_All_HiveLoader = new WinTaskbar_HiveLoader();
             FileCheck = new WinGlobal_FileCheck();
             Taskbar_All_Changes = new WinTaskbar_All_Changes();
         }
-
-    
+            
         public async Task ProfilesMananger(bool state, int ValueUniProgressBar)
         {
             // Obtém o Security Identifier (SID) do usuário que está executando o script, para evitar tentar carregar e modificar seu próprio perfil de registro.
@@ -40,8 +35,6 @@ namespace MeuSuporte
 
             using (RegistryKey? profileListKey = Registry.LocalMachine.OpenSubKey(PROFILE_LIST_PATH))
             {
-                if (profileListKey == null) return;
-
                 //Divide o valor ValueUniProgressBar pela QTD de Usuarios
                 int _ValueUniProgressBar = ValueUniProgressBar / profileListKey.ValueCount;
 
@@ -49,9 +42,7 @@ namespace MeuSuporte
                 {
                     WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-                    // verifica se o usuario é do sistema ou do usuario logado
-                    //if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid) continue;
-
+                    // verifica se o usuario é do sistema ou do usuario logado    
                     if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid)
                     {
                         continue;
@@ -71,7 +62,7 @@ namespace MeuSuporte
                         // Verifica o caminho do perfil se ele existe, caso contrário, pula este SID
                         if (string.IsNullOrEmpty(ntUserDatPath) || !Directory.Exists(ntUserDatPath)) continue;
 
-                        string usuario = Path.GetFileName(ntUserDatPath);
+                        string UserName = Path.GetFileName(ntUserDatPath);
                         ntUserDatPath = Path.Combine(ntUserDatPath, "NTUSER.DAT");
 
                         // Verifia se arquivo NTUSER.DAT existe
@@ -83,9 +74,8 @@ namespace MeuSuporte
                         // 5. Usa a instância do HiveLoader para carregar
                         RegistryBackup_All_HiveLoader.LoadHive(tempHiveName, ntUserDatPath);
 
-                        // 6. Aplica as configurações                        
-                       // await RegistryBinUserAll_Delete.Delete(tempHiveName, usuario, _ValueUniProgressBar);
-                        await Taskbar_All_Changes.Changes(state,tempHiveName, usuario, _ValueUniProgressBar);
+                        // 6. Aplica as configurações              
+                        await Taskbar_All_Changes.Changes(state,tempHiveName, UserName, _ValueUniProgressBar);
                     }
                     catch (Exception ex)
                     {
@@ -99,10 +89,7 @@ namespace MeuSuporte
                     }
                 }
             }
-
             await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using System.Threading.Tasks;
 
 namespace MeuSuporte
 {
@@ -7,23 +8,18 @@ namespace MeuSuporte
         /// <summary>
         /// Class responsavel por chamar as class de exclusao da chaves de registro
         /// </summary>
-        private WinRegistryBin_WOW6432Node RegistryBin_WOW6432Node;
-        private WinRegistryBin_MACHINE RegistryBin_MACHINE;
-        private WinRegistryBin_UserSingle RegistryBin_UserSingle;
+        WinRegistryBin_Global_Key LOCAL_MACHINE_Key;
 
         public WinRegistryBin_Single_Mananger()
         {
-            RegistryBin_WOW6432Node = new WinRegistryBin_WOW6432Node();
-            RegistryBin_MACHINE = new WinRegistryBin_MACHINE();
-            RegistryBin_UserSingle = new WinRegistryBin_UserSingle();
+            LOCAL_MACHINE_Key = new WinRegistryBin_Global_Key();
         }
-        public async Task Delete()
+
+        public async Task Mananger(int ValueUniProgressBar)
         {
-            await Task.WhenAll(
-                RegistryBin_WOW6432Node.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 3),
-                RegistryBin_MACHINE.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 3),
-                RegistryBin_UserSingle.Delete(WinGlobal_UIService.Instance.ValueUniProgressBar / 3)
-            );
+            string NameCurrent_User = "USER";                        
+            RegistryKey RegistrCurrent_User = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+            await LOCAL_MACHINE_Key.Delete(NameCurrent_User, RegistrCurrent_User, ValueUniProgressBar);
         }
     }
 }

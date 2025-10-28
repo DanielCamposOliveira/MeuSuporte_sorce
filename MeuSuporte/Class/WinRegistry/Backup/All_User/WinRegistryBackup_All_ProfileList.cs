@@ -19,14 +19,15 @@ namespace MeuSuporte
         private const string PROFILE_LIST_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList";
 
         // Dependências injetadas
-        private readonly WinRegistryBackup_All_HiveLoader RegistryBackup_All_HiveLoader;
+        private readonly WinTaskbar_HiveLoader RegistryBackup_All_HiveLoader;
         private readonly WinRegistryBackup_All_Key RegistryBackup_All_Key;
         private readonly WinGlobal_FileCheck FileCheck;
 
         // Construtor para RECEBER as dependências do orquestrador
-        public WinRegistryBackup_All_ProfileList(WinRegistryBackup_All_HiveLoader hiveLoader)
+        public WinRegistryBackup_All_ProfileList()
         {
-            RegistryBackup_All_HiveLoader = hiveLoader;
+            RegistryBackup_All_HiveLoader = new WinTaskbar_HiveLoader();
+
             RegistryBackup_All_Key = new WinRegistryBackup_All_Key();
             FileCheck = new WinGlobal_FileCheck();
         }

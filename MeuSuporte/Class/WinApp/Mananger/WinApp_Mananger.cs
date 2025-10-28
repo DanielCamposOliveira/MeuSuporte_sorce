@@ -362,7 +362,7 @@ namespace MeuSuporte
             await WinGlobal_UIService.Instance.UpdateIfonUI("Delete Registry", checkBox_DeleteRegistry, Resources.CleanRegistry_Black, "Limpar Registro:\n\rRemove entradas inválidas do registro, ajudando na estabilidade do sistema.");
             await Task.Delay(800);
                        
-            await Task.Run(() => _ClassCleanRegistry.Delete(radioButtonDeleteRegistry_All.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => _ClassCleanRegistry.Mananger(radioButtonDeleteRegistry_All.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
 
             await Task.Delay(1000);
 
