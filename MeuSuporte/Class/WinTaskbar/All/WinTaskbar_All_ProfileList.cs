@@ -50,7 +50,12 @@ namespace MeuSuporte
                     WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
                     // verifica se o usuario é do sistema ou do usuario logado
-                    if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid) continue;
+                    //if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid) continue;
+
+                    if (!sid.StartsWith("S-1-5-21-") || sid == currentUserSid)
+                    {
+                        continue;
+                    }
 
                     string tempHiveName = $"TempHive_{sid}";
                     string? ntUserDatPath = null;

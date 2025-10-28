@@ -236,6 +236,9 @@
     <Compile Include="Class\WinRegistry\Delete\Single\WinRegistryBin_Single_Mananger.cs" />
     <Compile Include="Class\WinRegistry\Delete\Single\WinRegistryBin_UserSingle.cs" />
     <Compile Include="Class\WinRegistry\Delete\Global\WinRegistryBin_WOW6432Node.cs" />
+    <Compile Include="Class\WinTaskbar\Global\WinTaskbar_IconLearn.cs" />
+    <Compile Include="Class\WinTaskbar\Global\WinTaskbar_Searchbox.cs" />
+    <Compile Include="Class\WinTaskbar\Global\WinTaskbar_TaskView.cs" />
     <Compile Include="Class\WinTaskbar\Private\WinTaskbar_HiveLoader.cs" />
     <Compile Include="Class\WinTaskbar\Private\WinTaskbar_Privilege.cs" />
     <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Changes.cs" />
