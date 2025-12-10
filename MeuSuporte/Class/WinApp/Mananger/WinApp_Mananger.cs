@@ -138,7 +138,7 @@ namespace MeuSuporte
            
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Otimiza Taskbar", checkBox_Taskbar, Resources.Taskbar_Black, "Optimiza Barra de Tarefas:\r\nOtimiza o espaço da Barra de Tarefas.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Otimiza Taskbar", checkBox_Taskbar, Resources.Taskbar_Black, "Optimiza Barra de Tarefas:\r\nOtimiza o espaço da Barra de Tarefas.");
             await Task.Delay(800);
 
             // Executa a função assíncrona sem bloquear a UI
@@ -157,7 +157,7 @@ namespace MeuSuporte
             WinUserUAC_Mananger UAC_Mananger = new WinUserUAC_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Segurança do Usuario UAC", checkBox_UserUAC, Resources.UserUAC_Black, "Notificações ao Usuário (UAC):\r\nGerencia os alertas do Controle de Conta de Usuário (UAC), que ajudam a proteger o sistema contra alterações não autorizadas.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Segurança do Usuario UAC", checkBox_UserUAC, Resources.UserUAC_Black, "Notificações ao Usuário (UAC):\r\nGerencia os alertas do Controle de Conta de Usuário (UAC), que ajudam a proteger o sistema contra alterações não autorizadas.");
             await Task.Delay(800);
 
             // Executa a função assíncrona sem bloquear a UI
@@ -177,7 +177,7 @@ namespace MeuSuporte
             WinTask_Mananger Task_Mananger = new WinTask_Mananger();
 
             // Atualiza a UI antes da execução assíncrona            
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Task", checkBox_CleanTask, Resources.CleanTask_Black, "Limpar Tarefas Agendadas:\n\rRemove tarefas desnecessárias programadas no sistema, melhorando o desempenho.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Task", checkBox_CleanTask, Resources.CleanTask_Black, "Limpar Tarefas Agendadas:\n\rRemove tarefas desnecessárias programadas no sistema, melhorando o desempenho.");
 
             await Task.Delay(800);
             await Task.Run(() => Task_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -196,7 +196,7 @@ namespace MeuSuporte
             WinTrash_Mananger Trash_Mananger = new WinTrash_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Trash", checkBox_CleanTrash, Resources.CleanTrash_Black, "Limpar Lixeira:\n\rEsvazia arquivos excluídos permanentemente para liberar espaço no disco.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Trash", checkBox_CleanTrash, Resources.CleanTrash_Black, "Limpar Lixeira:\n\rEsvazia arquivos excluídos permanentemente para liberar espaço no disco.");
             await Task.Delay(800);
 
             await Task.Run(() => Trash_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -215,7 +215,7 @@ namespace MeuSuporte
             WinService_List Service_List = new WinService_List();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Process", checkBox_CleanProcess, Resources.CleanProcess_Black, "Desativar Processos:\n\rEncerra processos desnecessários em execução para reduzir o consumo de memória e CPU.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Process", checkBox_CleanProcess, Resources.CleanProcess_Black, "Desativar Processos:\n\rEncerra processos desnecessários em execução para reduzir o consumo de memória e CPU.");
             await Task.Delay(800);
 
             await Task.Run(() => Service_Mananger.Mananger(Service_List.All, WinGlobal_UIService.Instance.ValueUniProgressBar, false), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -233,7 +233,7 @@ namespace MeuSuporte
         {
             WinCleanTemp_Mananger CleanTemp_Mananger = new WinCleanTemp_Mananger();
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Temp", checkBox_CleanTemp, Resources.CleanDirectorry_Black, "Limpar Pasta %Temp%:\n\rApaga arquivos temporários do sistema e dos aplicativos para liberar espaço.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Temp", checkBox_CleanTemp, Resources.CleanDirectorry_Black, "Limpar Pasta %Temp%:\n\rApaga arquivos temporários do sistema e dos aplicativos para liberar espaço.");
             await Task.Delay(800);
 
             await Task.Run(() => CleanTemp_Mananger.Mananger(radioButtonCleanTemp_All.Checked));
@@ -254,7 +254,7 @@ namespace MeuSuporte
             WinService_List Service_List = new WinService_List();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Windows", checkBox_CleanWindowsUpdate, Resources.CleanTask_Black, "Desativar Update Windows:\n\rRemove atualizações antigas e corrompidas para evitar erros e liberar espaço e Desativa o serviço de Update");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Windows", checkBox_CleanWindowsUpdate, Resources.CleanTask_Black, "Desativar Update Windows:\n\rRemove atualizações antigas e corrompidas para evitar erros e liberar espaço e Desativa o serviço de Update");
             await Task.Delay(800);
 
             string DiretorioPasta = @"C:\Windows\SoftwareDistribution\Download";
@@ -277,7 +277,7 @@ namespace MeuSuporte
             WinService_List Service_List = new WinService_List();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Google", checkBox_CleanGoogle, Resources.CleanGoogle_Black, "Limpra Google Update:\n\rApaga caches e dados temporários do navegador para melhorar o desempenho.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Google", checkBox_CleanGoogle, Resources.CleanGoogle_Black, "Limpra Google Update:\n\rApaga caches e dados temporários do navegador para melhorar o desempenho.");
             await Task.Delay(800);
 
             await Task.Run(() => Service_Mananger.Mananger(Service_List.Google, WinGlobal_UIService.Instance.ValueUniProgressBar / 2, false), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -300,7 +300,7 @@ namespace MeuSuporte
             WinRegistryBackup_Mananger RegistryBackup_Mananger = new WinRegistryBackup_Mananger();
           
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Backup Registrys Run", checkBox_BackupRegistrysRun, Resources.BackupRegistrys_Black, "Backup Registro:\r\nSalva uma cópia dos registro, para facilitar a restauração em caso de problemas.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Backup Registrys Run", checkBox_BackupRegistrysRun, Resources.BackupRegistrys_Black, "Backup Registro:\r\nSalva uma cópia dos registro, para facilitar a restauração em caso de problemas.");
             await Task.Delay(800);
 
             await Task.Run(() => RegistryBackup_Mananger.Mananger(radioButtonBackupRegistrysRun_All.Checked), WinGlobal_UIService.Instance.token);
@@ -321,7 +321,7 @@ namespace MeuSuporte
             WinPageFile_Mananger PageFile_Mananger = new WinPageFile_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean PageFile", checkBox_CleanPageFile, Resources.CleanPageFile_Black, "Pagefile.sys:\n\rApaga o arquivo de paginação do Windows ao desligar, garantindo segurança e desempenho.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean PageFile", checkBox_CleanPageFile, Resources.CleanPageFile_Black, "Pagefile.sys:\n\rApaga o arquivo de paginação do Windows ao desligar, garantindo segurança e desempenho.");
             await Task.Delay(800);
 
             // Executa a função assíncrona sem bloquear a UI
@@ -340,7 +340,7 @@ namespace MeuSuporte
             WinBackupDriver_Mananger BackupDriver_Mananger = new WinBackupDriver_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Drivers Backup", checkBox_DriversBackup, Resources.BackupDriver_Black, "Backup Drivers:\n\rSalva uma cópia dos drivers instalados para facilitar a restauração em caso de problemas.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Drivers Backup", checkBox_DriversBackup, Resources.BackupDriver_Black, "Backup Drivers:\n\rSalva uma cópia dos drivers instalados para facilitar a restauração em caso de problemas.");
             await Task.Delay(800);
 
             await Task.Run(() => BackupDriver_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -359,7 +359,7 @@ namespace MeuSuporte
             WinRegistryBin_Mananger _ClassCleanRegistry = new WinRegistryBin_Mananger();     
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Delete Registry", checkBox_DeleteRegistry, Resources.CleanRegistry_Black, "Limpar Registro:\n\rRemove entradas inválidas do registro, ajudando na estabilidade do sistema.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Delete Registry", checkBox_DeleteRegistry, Resources.CleanRegistry_Black, "Limpar Registro:\n\rRemove entradas inválidas do registro, ajudando na estabilidade do sistema.");
             await Task.Delay(800);
                        
             await Task.Run(() => _ClassCleanRegistry.Mananger(radioButtonDeleteRegistry_All.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -378,7 +378,7 @@ namespace MeuSuporte
             WinUser_Mananger User_Mananger = new WinUser_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI($"Manutenção de usuario {WinGlobal_UIService.Instance.UserName}", checkBox_Usuario, Resources.UpdateUser_Black, $"Usuario {WinGlobal_UIService.Instance.UserName}:\r\nConfiguração do usuário \"{WinGlobal_UIService.Instance.UserName}\" para eventuais manutenção preventiva das estações gerenciados pela empresa. ");
+            await WinGlobal_UIService.Instance.UpdateInfoUI($"Manutenção de usuario {WinGlobal_UIService.Instance.UserName}", checkBox_Usuario, Resources.UpdateUser_Black, $"Usuario {WinGlobal_UIService.Instance.UserName}:\r\nConfiguração do usuário \"{WinGlobal_UIService.Instance.UserName}\" para eventuais manutenção preventiva das estações gerenciados pela empresa. ");
             await Task.Delay(800);
 
             await Task.Run(() => User_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -396,7 +396,7 @@ namespace MeuSuporte
             WinDirectory_Mananger Directory_Mananger = new WinDirectory_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Prefetch", checkBox_CleanPrefetch, Resources.ClearPrefetch_Black, "Limpar Prefetch:\r\nExclui arquivos de pré-carregamento do sistema para otimizar o tempo de inicialização.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Prefetch", checkBox_CleanPrefetch, Resources.ClearPrefetch_Black, "Limpar Prefetch:\r\nExclui arquivos de pré-carregamento do sistema para otimizar o tempo de inicialização.");
             await Task.Delay(800);
 
             await Task.Run(() => Directory_Mananger.Mananger("Clean Prefetch", @"C:\Windows\Prefetch", "Prefetch", WinGlobal_UIService.Instance.ValueUniProgressBar), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -415,7 +415,7 @@ namespace MeuSuporte
             WinBackupBCD_Mananger BackupBCD_Mananger = new WinBackupBCD_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Backup BCD", checkBox_BackupBCD, Resources.BackupBootBCD_Black, "Backup BootBCD:\r\nFaz cópia de segurança da configuração de inicialização do Windows para evitar falhas no boot.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Backup BCD", checkBox_BackupBCD, Resources.BackupBootBCD_Black, "Backup BootBCD:\r\nFaz cópia de segurança da configuração de inicialização do Windows para evitar falhas no boot.");
             await Task.Delay(800);
 
             await Task.Run(() => BackupBCD_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -433,7 +433,7 @@ namespace MeuSuporte
         {
             WinRestorePoint_Mananger RestorePoint_Mananger = new WinRestorePoint_Mananger();
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Proteção do Sistema", checkBox_RestorePoint, Resources.restore_Black, checkBox_RestorePoint.Text + "Ponto de Restauração\n\rpermite reverter o sistema para um estado anterior, revertendo configurações, programas e arquivos do sistema");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Proteção do Sistema", checkBox_RestorePoint, Resources.restore_Black, checkBox_RestorePoint.Text + "Ponto de Restauração\n\rpermite reverter o sistema para um estado anterior, revertendo configurações, programas e arquivos do sistema");
             await Task.Delay(800);
 
             await Task.Run(() => RestorePoint_Mananger.Mananger(), WinGlobal_UIService.Instance.token);
@@ -453,7 +453,7 @@ namespace MeuSuporte
         {
             WinRemoteRDP_Mananger RemoteRDP_Mananger = new WinRemoteRDP_Mananger();    
             // Atualiza a UI antes da execução assíncrona
-            WinGlobal_UIService.Instance.UpdateIfonUI("Remote Desktop Connection", checkBox_ConnectionRDP, Resources.Remoto_Black, "Remote Desktop Connection RDP\r\nPermite outros computadores na mesma rede se conecta via TS em sua maquina para manutenções remota");
+            WinGlobal_UIService.Instance.UpdateInfoUI("Remote Desktop Connection", checkBox_ConnectionRDP, Resources.Remoto_Black, "Remote Desktop Connection RDP\r\nPermite outros computadores na mesma rede se conecta via TS em sua maquina para manutenções remota");
             await Task.Delay(800);
 
             await Task.Run(() => RemoteRDP_Mananger.Mananger(radioButtonradioButtonConnectionRDP_Ativar.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -470,7 +470,7 @@ namespace MeuSuporte
         public async Task RenoveBloatware()
         {
             WinBloatware_Mananger RemoveBloatware = new WinBloatware_Mananger();
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Remover Bloatware", checkBox_Bloatware, Resources.Store_Black, "Bloatware:\r\nSoftwares pré-instalados que nem sempre são úteis para o usuário, como alguns jogos ou versões de teste de programas pagos.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Remover Bloatware", checkBox_Bloatware, Resources.Store_Black, "Bloatware:\r\nSoftwares pré-instalados que nem sempre são úteis para o usuário, como alguns jogos ou versões de teste de programas pagos.");
             await Task.Delay(800);
 
             await Task.Run(() => RemoveBloatware.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -513,7 +513,7 @@ namespace MeuSuporte
             WinBackupReportError_Mananger BackupReportError_Mananger = new WinBackupReportError_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Backup Report Error", checkBox_BackupReportError, Resources.BackupReportError_Black, "Backup Relatorios de Error:\n\rRealiza Backup dos Realatorios de Erros do Windows.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Backup Report Error", checkBox_BackupReportError, Resources.BackupReportError_Black, "Backup Relatorios de Error:\n\rRealiza Backup dos Realatorios de Erros do Windows.");
             await Task.Delay(800);
 
             await Task.Run(() => BackupReportError_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -528,7 +528,7 @@ namespace MeuSuporte
             WinDeleteReportError_Mananger DeleteReportError_Mananger = new WinDeleteReportError_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Clean Report Error", checkBox_CleanReportError, Resources.CleanReportError_Black, "Limpar Relatorios de Error:\n\rRealiza Limpeza dos Realatorios de Erros antigos do Windows.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Report Error", checkBox_CleanReportError, Resources.CleanReportError_Black, "Limpar Relatorios de Error:\n\rRealiza Limpeza dos Realatorios de Erros antigos do Windows.");
             await Task.Delay(800);
 
             await Task.Run(() => DeleteReportError_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -549,7 +549,7 @@ namespace MeuSuporte
             WinProfileGraphic_Mananger ProfileGraphic_Mananger = new WinProfileGraphic_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Perfil Graphic", checkBox_ProfileGraphic, Resources.ProfileGraphic_Black, "Perfil Graphic:\n\rAjuste para obter melhor Desempenho ou Aparência do computador.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Perfil Graphic", checkBox_ProfileGraphic, Resources.ProfileGraphic_Black, "Perfil Graphic:\n\rAjuste para obter melhor Desempenho ou Aparência do computador.");
             await Task.Delay(800);
 
             await Task.Run(() => ProfileGraphic_Mananger.Mananger(radioButtonProfileGraphic_Performace.Checked), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
@@ -589,7 +589,7 @@ namespace MeuSuporte
             WinProfileEnergy_Mananger ProfileEnergy_Mananger = new WinProfileEnergy_Mananger();
 
             // Atualiza a UI antes da execução assíncrona
-            await WinGlobal_UIService.Instance.UpdateIfonUI("Perfil Energetico", checkBox_ProfileEnergy, Resources.CleanTrash_Black, "Perfil Energetico:\n\rPlanos de Energia ajuda a equilibrar entre Desempenho e Eficiência do computador.");
+            await WinGlobal_UIService.Instance.UpdateInfoUI("Perfil Energetico", checkBox_ProfileEnergy, Resources.CleanTrash_Black, "Perfil Energetico:\n\rPlanos de Energia ajuda a equilibrar entre Desempenho e Eficiência do computador.");
             await Task.Delay(800);
 
             await Task.Run(() => ProfileEnergy_Mananger.Mananger(option), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread

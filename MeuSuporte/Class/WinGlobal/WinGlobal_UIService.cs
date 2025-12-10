@@ -123,14 +123,15 @@ namespace MeuSuporte
             }
         }
 
-        public async Task UpdateIfonUI(string _Log, CheckBox _CheckBox, Image _icon, string _description)
+        public async Task UpdateInfoUI(string _Log, CheckBox _CheckBox, Image _icon, string _description)
         {
             await Log_MensagemAsync("\r\n", true);
             await Log_MensagemAsync($"======= {_Log} =======", true);
             await Log_MensagemAsync(" ", false);
            labelInfoTitulo.Text = _CheckBox.Text;
-            
-            _CheckBox.Font = new Font(checkBox_UserUAC.Font.FontFamily, checkBox_UserUAC.Font.Size, FontStyle.Bold);
+
+            // usar o negrito do checkBox_UserUAC para manter o padrão visual
+            _CheckBox.Font = new Font(checkBox_UserUAC.Font.FontFamily, checkBox_UserUAC.Font.Size, FontStyle.Bold);    
             pictureBoxInfoDescricao.Image = _icon;
             labelInfoDescricao.Text = _description;
         }

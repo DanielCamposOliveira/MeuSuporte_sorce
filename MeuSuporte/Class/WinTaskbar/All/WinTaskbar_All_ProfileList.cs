@@ -17,13 +17,13 @@ namespace MeuSuporte
     {
         private const string PROFILE_LIST_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList";
 
-        private readonly WinTaskbar_HiveLoader RegistryBackup_All_HiveLoader;
+        private readonly WinGlobal_Registre_HiveLoader RegistryBackup_All_HiveLoader;
         private readonly WinGlobal_FileCheck FileCheck;
         private readonly WinTaskbar_All_Changes Taskbar_All_Changes;
 
         public WinTaskbar_All_ProfileList()
         {
-            RegistryBackup_All_HiveLoader = new WinTaskbar_HiveLoader();
+            RegistryBackup_All_HiveLoader = new WinGlobal_Registre_HiveLoader();
             FileCheck = new WinGlobal_FileCheck();
             Taskbar_All_Changes = new WinTaskbar_All_Changes();
         }

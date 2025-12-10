@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace MeuSuporte
 {
-    internal class WinTaskbar_HiveLoader
+    internal class WinGlobal_Registre_HiveLoader
     {
         private static readonly IntPtr HKEY_USERS = new IntPtr(unchecked((int)0x80000003));
 

@@ -233,8 +233,8 @@
     <Compile Include="Class\WinTaskbar\Global\WinTaskbar_IconLearn.cs" />
     <Compile Include="Class\WinTaskbar\Global\WinTaskbar_Searchbox.cs" />
     <Compile Include="Class\WinTaskbar\Global\WinTaskbar_TaskView.cs" />
-    <Compile Include="Class\WinTaskbar\Private\WinTaskbar_HiveLoader.cs" />
-    <Compile Include="Class\WinTaskbar\Private\WinTaskbar_Privilege.cs" />
+    <Compile Include="Class\WinGlobal\Registry\WinGlobal_Registre_HiveLoader.cs" />
+    <Compile Include="Class\WinGlobal\Registry\WinGlobal_Registre_Privilege.cs" />
     <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Changes.cs" />
     <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_ProfileList.cs" />
     <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Mananger.cs" />
@@ -371,6 +371,7 @@
     <None Include="Resources\CleanReportError_White.png" />
     <None Include="Resources\ExportInventory_Black.png" />
     <None Include="Resources\ExportInventory_White.png" />
+    <None Include="Resources\CleanTask_White1.png" />
     <Content Include="windows-2.ico" />
     <Content Include="windows.ico" />
     <Content Include="wine-winecfg.ico" />

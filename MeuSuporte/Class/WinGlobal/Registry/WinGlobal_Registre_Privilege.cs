@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace MeuSuporte
 {
-    internal class WinTaskbar_Privilege
+    internal class WinGlobal_Registre_Privilege
     {
         // Constantes para os privilégios mais usados
         public const string SE_RESTORE_NAME = "SeRestorePrivilege";

@@ -121,50 +121,128 @@
   <data name="abort_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\abort_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="abort_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\abort_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ExportInventory_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportInventory_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Alert_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Alert_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Alert_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Alert_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackupBootBCD_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupBootBCD_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackupBootBCD_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupBootBCD_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackupDriver_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupDriver_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackupDriver_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupDriver_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackupRegistrys_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupRegistrys_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Taskbar_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Taskbar_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BackupRegistrys_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackupRegistrys_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackupReportError_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupReportError_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClearPrefetch_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClearPrefetch_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackupReportError_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupReportError_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="windows_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\windows-2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanTrash_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanTrash_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserUAC_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserUAC_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanReportError_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanReportError_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dawnload_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dawnload_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserUAC_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserUAC_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UpdateUser_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UpdateUser_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="closed_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\closed_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportInventory_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExportInventory_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CleanDirectorry_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CleanDirectorry_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CleanDirectorry_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanDirectorry_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClearPrefetch_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClearPrefetch_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CleanGoogle_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanGoogle_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Security_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Security_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CleanGoogle_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanGoogle_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Info_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupBootBCD_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupBootBCD_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProfileEnergy_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProfileEnergy_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanWindows_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanWindows_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Offline_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Offline_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanReportError_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanReportError_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanTask_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanTask_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Alert_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Alert_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanTrash_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanTrash_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UpdateUser_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UpdateUser_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GitHub" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GitHub.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dawnload_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dawnload_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanRegistry_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanRegistry_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Code_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Code_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vscode_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vscode_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupDriver_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupDriver_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Store_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Store_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupReportError_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupReportError_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupDriver_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupDriver_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="restore_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\restore_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Github_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Github_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Remoto__White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remoto__White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Code_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Code_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Remoto_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remoto_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CleanPageFile_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CleanPageFile_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,151 +250,73 @@
   <data name="CleanPageFile_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CleanPageFile_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CleanProcess_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanProcess_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CleanProcess_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CleanProcess_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CleanRegistry_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanRegistry_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanRegistry_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanRegistry_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanReportError_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanReportError_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanReportError_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanReportError_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanTask_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanTask_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanTask_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanTask_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanTrash_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanTrash_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanTrash_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanTrash_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanWindows_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanWindows_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CleanWindows_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CleanWindows_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ClearPrefetch_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClearPrefetch_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ClearPrefetch_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClearPrefetch_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="closed_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\closed_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Code_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Code_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Code_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Code_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dawnload_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dawnload_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dawnload_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dawnload_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ExportInventory_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ExportInventory_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ExportInventory_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ExportInventory_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GitHub" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GitHub.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Github_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Github_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Github_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Github_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Info_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Info_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Offline_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Offline_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Offline_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Offline_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Taskbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Taskbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Taskbar_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Taskbar_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Remoto_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Remoto_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Remoto__White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Remoto__White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="restore_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\restore_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="restore__White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\restore__White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Security_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Security_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Security_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Security_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Store_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Store_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Store_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Store_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UpdateUser_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UpdateUser_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UpdateUser_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UpdateUser_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UserUAC_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UserUAC_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UserUAC_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UserUAC_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="vscode_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vscode_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="vscode_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vscode_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="windows_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\windows-2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ProfileEnergy_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ProfileEnergy_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ProfileEnergy_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ProfileEnergy_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Alert_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Alert_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ProfileGraphic_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ProfileGraphic_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CleanDirectorry_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanDirectorry_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Github_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Github_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="abort_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abort_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanRegistry_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanRegistry_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanGoogle_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanGoogle_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Security_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Security_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="restore__White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\restore__White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupRegistrys_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupRegistrys_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanGoogle_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanGoogle_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Offline_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Offline_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ProfileGraphic_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ProfileGraphic_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanProcess_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanProcess_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Taskbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Taskbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupBootBCD_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupBootBCD_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackupReportError_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupReportError_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanWindows_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanWindows_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Store_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Store_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vscode_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vscode_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CleanTask_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CleanTask_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProfileEnergy_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProfileEnergy_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

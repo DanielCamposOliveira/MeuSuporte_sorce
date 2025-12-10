@@ -490,9 +490,26 @@ namespace MeuSuporte
 
         #region Funcao de Encerramento do Programa
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e) // evento antes de fechar o Programa
-        {
-            GravaLog();
+        private async void Form1_FormClosing(object sender, FormClosingEventArgs e) // evento antes de fechar o Programa
+        {      
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    cts?.Cancel(); // cansela as trarefas 
+                    WinGlobal_UIService.Instance.token = token;
+
+                    await GravaLog();
+
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true; // Cancela o fechamento
+                }
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
