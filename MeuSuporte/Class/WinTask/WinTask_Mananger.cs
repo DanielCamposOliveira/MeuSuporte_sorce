@@ -20,7 +20,7 @@ namespace MeuSuporte
             WinTask_Connection = new WinTask_Connection();
         }
 
-        public async Task Mananger()
+        public async Task Mananger(string[] ListTask)
         {
             WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
@@ -40,7 +40,7 @@ namespace MeuSuporte
             int ValueUniProgressBar = WinGlobal_UIService.Instance.ValueUniProgressBar / WinTask_Connection.tasks.Count;
             foreach (IRegisteredTask task in WinTask_Connection.tasks) // Verifica a quantidade de tarefas no diretório
             {
-                await WinTask_Bin.Delete(WinTask_Connection.rootFolder, task, ValueUniProgressBar); // apaga a tarefa                                                                                                    
+                await WinTask_Bin.Delete(ListTask,WinTask_Connection.rootFolder, task, ValueUniProgressBar); // apaga a tarefa                                                                                                    
                 // await WinTask_State.State(WinTask_Connection.rootFolder, task, ValueUniProgressBar); // desabilita a tarefa para uso futuro
             }
             WinGlobal_UIService.Instance.Sucesso++;

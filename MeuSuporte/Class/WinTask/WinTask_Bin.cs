@@ -15,15 +15,51 @@ namespace MeuSuporte
             Task_State = new WinTask_State();
         }
 
-        public async Task Delete(ITaskFolder rootFolder, IRegisteredTask task, int ValueUniProgressBar)
+        public async Task Delete(string[] ListTask, ITaskFolder rootFolder, IRegisteredTask task, int ValueUniProgressBar)
         {
             try
             {
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
 
-                rootFolder.DeleteTask(task.Name, 0); // deleta a tarefa
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Task: Tarefa Apagada - {task.Name}", true);
-                await Task.Delay(500);
+
+
+                bool isProtected = false;
+
+                // Percorre todas as ações da tarefa
+                foreach (IAction action in task.Definition.Actions)
+                {
+                    // Verifica se a ação é de execução de executável (TASK_ACTION_EXEC = 0)
+                    if (action.Type == _TASK_ACTION_TYPE.TASK_ACTION_EXEC)
+                    {
+                        var execAction = (IExecAction)action;
+
+                        // Compara o caminho do executável sem diferenciar maiúsculas/minúsculas
+                        foreach (string protectedPath in ListTask)
+                        {
+                            if (!string.IsNullOrEmpty(execAction.Path) &&
+                                execAction.Path.Equals(protectedPath, StringComparison.OrdinalIgnoreCase))
+                            {
+                                isProtected = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (isProtected) 
+                        break;
+                }
+                // Condição para ignorar ou apagar
+                if (isProtected)
+                {
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Task: Tarefa Protegida Ignorada - {task.Name}", true);
+                }
+                else
+                {
+                    rootFolder.DeleteTask(task.Name, 0); // deleta a tarefa
+                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Task: Tarefa Apagada - {task.Name}", true);
+                    await Task.Delay(500);
+                } 
+               
             }
             catch (Exception e)
             {

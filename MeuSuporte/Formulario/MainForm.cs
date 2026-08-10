@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MeuSuporte.Class.WinApp;
+using MeuSuporte.Properties;
+using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,8 +9,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MeuSuporte.Properties;
-using Microsoft.VisualBasic.Devices;
 using Control = System.Windows.Forms.Control;
 using Font = System.Drawing.Font;
 using Point = System.Drawing.Point;
@@ -243,7 +244,8 @@ namespace MeuSuporte
 
         //Evento Load do Formulario
         private void FormPreventiva_Load(object sender, EventArgs e)
-        {           
+        {
+            CheckAdmin();
             Label_NameMachine.Text = Environment.MachineName;
             ExecutionPath(); // verifica o local da execução do programa
             CheckBuild();   // verifica a versão do programa
@@ -448,6 +450,18 @@ namespace MeuSuporte
             _Class_BuildView.Build();
         }
 
+        // verifica se esta rodando como Administrador
+        async Task CheckAdmin()
+        {
+            EnsureAdministrator _EnsureAdministrator = new EnsureAdministrator();
+            if(! _EnsureAdministrator.IsAdministrator())
+            {
+                MessageBox.Show("O programa precisa ser executado com previlegio de Administrador !");
+                Environment.Exit(0); // Força o fechamento imediato
+                return;
+            }
+        }
+
         // função que desativa os checkbox chamado atraves da Class_BuildView
         public void checkBoxAllState(bool state)
         {
@@ -485,6 +499,8 @@ namespace MeuSuporte
             WinGlobal_UIService.Instance.UserName = CurrentUser.User;
             checkBox_Usuario.Text = "Usuario " + CurrentUser.User;
         }
+
+
 
         #endregion
 

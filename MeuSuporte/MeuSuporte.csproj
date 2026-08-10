@@ -14,6 +14,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <LangVersion>preview</LangVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,8 +28,8 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.4</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,7 +61,16 @@
     <ApplicationIcon>windows.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1A3B198E51006D02D0481FFA560783EB537DE79A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MeuSuporte_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.TaskScheduler">
@@ -162,6 +172,7 @@
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetGitHub.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetVersion.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Process.cs" />
+    <Compile Include="Class\WinApp\EnsureAdministrator.cs" />
     <Compile Include="Class\WinApp\Mananger\WinApp_Form.cs" />
     <Compile Include="Class\WinApp\Mananger\WinApp_Mananger.cs" />
     <Compile Include="Class\WinBackupBCD\WinBackupBCD_Mananger.cs" />
@@ -247,6 +258,7 @@
     <Compile Include="Class\WinRestorePoint\WinRestorePoint_Mananger.cs" />
     <Compile Include="Class\WinService\WinService_List.cs" />
     <Compile Include="Class\WinTaskbar\Single\WinTaskbar_Single_Mananger.cs" />
+    <Compile Include="Class\WinTask\WinTask_List.cs" />
     <Compile Include="Class\WinTask\WinTask_State.cs" />
     <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />
     <Compile Include="Class\WinUser\Credential_Public.cs" />
@@ -311,6 +323,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="MeuSuporte_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

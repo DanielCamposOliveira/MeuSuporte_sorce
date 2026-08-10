@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MeuSuporte.Class.WinTask;
+using MeuSuporte.Properties;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MeuSuporte.Properties;
 
 namespace MeuSuporte
 {
@@ -175,12 +176,13 @@ namespace MeuSuporte
         public async Task CleanTask()
         {
             WinTask_Mananger Task_Mananger = new WinTask_Mananger();
+            WinTask_List Task_list = new WinTask_List();
 
             // Atualiza a UI antes da execução assíncrona            
             await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Task", checkBox_CleanTask, Resources.CleanTask_Black, "Limpar Tarefas Agendadas:\n\rRemove tarefas desnecessárias programadas no sistema, melhorando o desempenho.");
 
             await Task.Delay(800);
-            await Task.Run(() => Task_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Run(() => Task_Mananger.Mananger(Task_list.bypass), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
 
             await Task.Delay(1000);
             checkBox_CleanTask.Font = new Font(checkBox_CleanTask.Font.FontFamily, checkBox_CleanTask.Font.Size, FontStyle.Strikeout);
