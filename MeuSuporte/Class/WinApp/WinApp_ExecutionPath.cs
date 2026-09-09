@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace MeuSuporte
@@ -7,15 +8,18 @@ namespace MeuSuporte
     { 
         public bool getDiscoverNetwork()
         {
-            string exePath = Assembly.GetExecutingAssembly().Location;
-            string rootPath = Path.GetPathRoot(exePath);
+            //string exePath = Assembly.GetExecutingAssembly().Location;      
+            //string rootPath = Path.GetPathRoot(exePath);
 
-            if (exePath.StartsWith(@"\\"))
+            string appPath = Environment.ProcessPath ?? AppContext.BaseDirectory;
+            string root = Path.GetPathRoot(appPath);
+
+            if (appPath.StartsWith(@"\\"))
             {
                 return true; // Executado a partir pasta compartilhamentos de rede (\\servidor\pasta\)             
             }
 
-            DriveInfo drive = new DriveInfo(rootPath);
+            DriveInfo drive = new DriveInfo(root);
             if (drive.DriveType == DriveType.Network)
             {
                 return true; // Executado a partir de um Drive de rede ex. Z:\

@@ -1,401 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5E2ED1B-B059-4DF8-83CB-63378476FDE1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MeuSuporte</RootNamespace>
-    <AssemblyName>MeuSuporte</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.4</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>preview</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <UseWinFormsOutOfProcDesigner>False</UseWinFormsOutOfProcDesigner>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <UseWinFormsOutOfProcDesigner>False</UseWinFormsOutOfProcDesigner>
-  </PropertyGroup>
-  <PropertyGroup>
+
+    <!-- Resolve o erro MSB3823 e MSB3822 com ícones/recursos -->
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+
+    <!-- Configuração de Executável Único Nativo -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+
+    <!-- Ícones e Manifesto -->
+    <ApplicationIcon>windows.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>windows.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
+
+  <!-- Pacotes necessários para Windows e Recursos no .NET moderno -->
+  <ItemGroup>
+    <PackageReference Include="Core.System.ServiceProcess" Version="2.0.1" />
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.DirectoryServices" Version="8.0.0" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="8.0.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.0" />
+    <PackageReference Include="System.CodeDom" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Interop local do TaskScheduler -->
   <ItemGroup>
     <Reference Include="Interop.TaskScheduler">
       <HintPath>dll\Interop.TaskScheduler.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.CodeDom, Version=9.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.CodeDom.9.0.3\lib\net462\System.CodeDom.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Configuration.Install" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.DirectoryServices.AccountManagement" />
-    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.IO.Pipelines, Version=9.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Pipelines.9.0.3\lib\net462\System.IO.Pipelines.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Management" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.9.0.3\lib\net462\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json, Version=9.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.9.0.3\lib\net462\System.Text.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Class\WinApp\CheckBuild\CheckBuild_BuildView.cs" />
-    <Compile Include="Class\WinApp\CheckBuild\CheckBuild_CheckNetwork.cs" />
-    <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetGitHub.cs" />
-    <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetVersion.cs" />
-    <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Process.cs" />
-    <Compile Include="Class\WinApp\Mananger\WinApp_Form.cs" />
-    <Compile Include="Class\WinApp\Mananger\WinApp_Mananger.cs" />
-    <Compile Include="Class\WinBackupBCD\WinBackupBCD_Mananger.cs" />
-    <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Mananger.cs" />
-    <Compile Include="Class\WinBackupBCD\WinBackupBCD_ProcessController.cs" />
-    <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Mananger.cs" />
-    <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Processo.cs" />
-    <Compile Include="Class\WinBackupReportError\Backup\WinBackupReportError_Zip.cs" />
-    <Compile Include="Class\WinBackupReportError\Delete\WinDeleteReportError_Mananger.cs" />
-    <Compile Include="Class\WinBackupReportError\Delete\WinDeleteReportError_Recycle.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_CheckInstallation.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_Format.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_List.cs" />
-    <Compile Include="Class\WinBackupBCD\WinBackupBCD_ProcessInfo.cs" />
-    <Compile Include="Class\WinBackupDriver\WinBackupDriver_ExtractData.cs" />
-    <Compile Include="Class\WinBackupDriver\WinBackupDriver_ProcessInfo.cs" />
-    <Compile Include="Class\WinBackupDriver\WinBackupDriver_DataReceived.cs" />
-    <Compile Include="Class\WinBackupDriver\WinBackupDriver_ValueUnit.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_MessageErroList.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_RenoveAllUser.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_RenoveNewUser.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_SearchInstallation.cs" />
-    <Compile Include="Class\WinCleanTemp\All\WinCleanTemp_ProfilePathAll.cs" />
-    <Compile Include="Class\WinCleanTemp\Single\WinCleanTemp_ProfilePathSingle.cs" />
-    <Compile Include="Class\WinDirectory\WinDirectory_AssignsPathPermission.cs" />
-    <Compile Include="Class\WinCleanTemp\WinCleanTemp_Mananger.cs" />
-    <Compile Include="Class\WinCleanTemp\All\WinCleanTemp_UserAll.cs" />
-    <Compile Include="Class\WinCleanTemp\Single\WinCleanTemp_UserSingle.cs" />
-    <Compile Include="Class\WinDirectory\WinDirectory_File.cs" />
-    <Compile Include="Class\WinDirectory\WinDirectory_Folder.cs" />
-    <Compile Include="Class\WinDirectory\WinDirectory_ListFiles.cs" />
-    <Compile Include="Class\WinExportInventory_Mananger.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_DirectoryCheck.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_DirectoryCreate.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_DirectoryMananger.cs" />
-    <Compile Include="Class\WinDirectory\WinDirectory_Security.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_FileCheck.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_UIService.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_ValidNameFolde.cs" />
-    <Compile Include="Class\WinPageFile\WinPageFile_KeyRegistry.cs" />
-    <Compile Include="Class\WinProfileEnergy\WinProfileEnergy_Mananger.cs" />
-    <Compile Include="Class\WinProfileEnergy\WinProfileEnergy_State.cs" />
-    <Compile Include="Class\WinProfileGraphic\WinProfileGraphic_State.cs" />
-    <Compile Include="Class\WinProfileGraphic\WinProfileGraphic_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_ProcessSubkey.cs" />
-    <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_ProfileList.cs" />
-    <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_Key.cs" />
-    <Compile Include="Class\WinRegistry\Backup\All_User\WinRegistryBackup_All_RegistryWriteFile.cs" />
-    <Compile Include="Class\WinRegistry\Backup\Global\WinRegistryBackup_FormatRegister.cs" />
-    <Compile Include="Class\WinRegistry\Backup\LOCAL_MACHINE\WinRegistryBackup_LOCAL_MACHINE_Key.cs" />
-    <Compile Include="Class\WinRegistry\Backup\LOCAL_MACHINE\WinRegistryBackup_LOCAL_MACHINE_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Backup\LOCAL_MACHINE\WinRegistryBackup_LOCAL_MACHINE_ProcessSubkey.cs" />
-    <Compile Include="Class\WinRegistry\Backup\LOCAL_MACHINE\WinRegistryBackup_LOCAL_MACHINE_RegistryWriteFile.cs" />
-    <Compile Include="Class\WinRegistry\Backup\Single_User\WinRegistryBackup_Single_RegistryWriteFile.cs" />
-    <Compile Include="Class\WinRegistry\Backup\Single_User\WinRegistryBackup_Single_ProcessSubkey.cs" />
-    <Compile Include="Class\WinRegistry\Backup\Single_User\WinRegistryBackup_Single_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Backup\WinRegistryBackup_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_All_ProfileList.cs" />
-    <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBin_All_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Delete\All\WinRegistryBinUserAll_Delete.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Global\Key\WinRegistryBin_Global_Key.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Global\Cloud\WinRegistryBin_CloudManager.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Global\Cloud\WinRegistryBin_IsGoogleDriveLoggedIn.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Global\Cloud\WinRegistryBin_IsOneDriveSignedIn.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Global\WinRegistryBin_List.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Global\MACHINE\WinRegistryBin_MACHINE_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Delete\Single\WinRegistryBin_Single_Mananger.cs" />
-    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Security.cs" />
-    <Compile Include="Class\WinTaskbar\Global\WinTaskbar_IconLearn.cs" />
-    <Compile Include="Class\WinTaskbar\Global\WinTaskbar_Searchbox.cs" />
-    <Compile Include="Class\WinTaskbar\Global\WinTaskbar_TaskView.cs" />
-    <Compile Include="Class\WinGlobal\Registry\WinGlobal_Registre_HiveLoader.cs" />
-    <Compile Include="Class\WinGlobal\Registry\WinGlobal_Registre_Privilege.cs" />
-    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Changes.cs" />
-    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_ProfileList.cs" />
-    <Compile Include="Class\WinTaskbar\All\WinTaskbar_All_Mananger.cs" />
-    <Compile Include="Class\WinTaskbar\WinTaskbar_Mananger.cs" />
-    <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Disable.cs" />
-    <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Enable.cs" />
-    <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Firewall.cs" />
-    <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Registry.cs" />
-    <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Service.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_Mananger.cs" />
-    <Compile Include="Class\WinService\WinService_List.cs" />
-    <Compile Include="Class\WinTaskbar\Single\WinTaskbar_Single_Mananger.cs" />
-    <Compile Include="Class\WinTask\WinTask_State.cs" />
-    <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />
-    <Compile Include="Class\WinUser\Credential_Public.cs" />
-    <Compile Include="Class\WinRemoteRDP\WinRemoteRDP_Mananger.cs" />
-    <Compile Include="Class\WinApp\WinApp_ExecutionPath.cs" />
-    <Compile Include="Class\WinGlobal\WinGlobal_CreateNameFolde.cs" />
-    <Compile Include="Class\WinApp\WinApp_Log.cs" />
-    <Compile Include="Class\WinUser\Credential_Private.cs" />
-    <Compile Include="Class\WinBloatware\WinBloatware_Mananger.cs" />
-    <Compile Include="Class\WinService\WinService_Disabled.cs" />
-    <Compile Include="Class\WinService\WinService_Stop.cs" />
-    <Compile Include="Class\WinService\WinService_Uninstall.cs" />
-    <Compile Include="Class\WinUserUAC\WinUserUAC_Mananger.cs" />
-    <Compile Include="Class\WinUser\WinUser_Account.cs" />
-    <Compile Include="Class\WinUser\WinUser_AccountCreate.cs" />
-    <Compile Include="Class\WinUser\WinUser_AccountUpdate.cs" />
-    <Compile Include="Class\WinUser\WinUser_CurrentUser.cs" />
-    <Compile Include="Class\WinUser\WinUser_GroupAdministrators.cs" />
-    <Compile Include="Class\WinUser\WinUser_GroupRemote.cs" />
-    <Compile Include="Class\WinUser\WinUser_Mananger.cs" />
-    <Compile Include="Class\WinBackupDriver\WinBackupDriver_Mananger.cs" />
-    <Compile Include="Class\WinTask\WinTask_Connection.cs" />
-    <Compile Include="Class\WinTask\WinTask_Mananger.cs" />
-    <Compile Include="Class\WinTrash\WinTrash_Mananger.cs" />
-    <Compile Include="Class\WinService\WinService_Mananger.cs" />
-    <Compile Include="Class\WinRegistry\Delete\WinRegistryBin_Mananger.cs" />
-    <Compile Include="Class\WinPageFile\WinPageFile_Mananger.cs" />
-    <Compile Include="Class\WinDirectory\WinDirectory_Mananger.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_Create.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_EnableProtection.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_IsSystemRestoreEnabled.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_PointName.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_PointSearch.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_Item.cs" />
-    <Compile Include="Class\WinRestorePoint\WinRestorePoint_SystemPoints.cs" />
-    <Compile Include="Class\WinTask\WinTask_Bin.cs" />
-    <Compile Include="Class\WinUser\WinUser_State.cs" />
-    <Compile Include="Class_Temporaria.cs" />
-    <Compile Include="Formulario\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formulario\FormSelecaoUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulario\FormSelecaoUsuario.Designer.cs">
-      <DependentUpon>FormSelecaoUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formulario\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulario\FormSelecaoUsuario.resx">
-      <DependentUpon>FormSelecaoUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="app.manifest" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\backup.png" />
-    <None Include="Resources\UserUAC_Black.png" />
-    <None Include="Resources\windows.png" />
-    <None Include="Resources\GitHub.ico" />
-    <None Include="Resources\windows-2.ico" />
-    <None Include="Resources\JetBrainsMono Nerd Font Regular - oct alert fill.png" />
-    <None Include="Resources\Alert_White.png" />
-    <None Include="Resources\BackupBootBCD_White.png" />
-    <None Include="Resources\BackupDriver_White.png" />
-    <None Include="Resources\BackupRegistrys_White.png" />
-    <None Include="Resources\CleanDirectorry_White.png" />
-    <None Include="Resources\CleanGoogle_White.png" />
-    <None Include="Resources\CleanPageFile_White.png" />
-    <None Include="Resources\CleanProcess_White.png" />
-    <None Include="Resources\CleanRegistry_White.png" />
-    <None Include="Resources\CleanTask_White.png" />
-    <None Include="Resources\CleanTrash_White.png" />
-    <None Include="Resources\CleanWindows_White.png" />
-    <None Include="Resources\ClearPrefetch_White.png" />
-    <None Include="Resources\Code_White.png" />
-    <None Include="Resources\Dawnload_White.png" />
-    <None Include="Resources\Github_White.png" />
-    <None Include="Resources\Info_White.png" />
-    <None Include="Resources\Offline_White.png" />
-    <None Include="Resources\Remoto__White.png" />
-    <None Include="Resources\restore__White.png" />
-    <None Include="Resources\Security_White.png" />
-    <None Include="Resources\Store_White.png" />
-    <None Include="Resources\UpdateUser_White.png" />
-    <None Include="Resources\UserUAC_White.png" />
-    <None Include="Resources\vscode_White.png" />
-    <None Include="Resources\abort_Black.png" />
-    <None Include="Resources\abort_White.png" />
-    <None Include="Resources\BackupReportError_Black.png" />
-    <None Include="Resources\BackupReportError_White.png" />
-    <None Include="Resources\CleanReportError_Black.png" />
-    <None Include="Resources\DeleteReportError_White.png" />
-    <None Include="Resources\CleanReportError_White.png" />
-    <None Include="Resources\ExportInventory_Black.png" />
-    <None Include="Resources\ExportInventory_White.png" />
-    <None Include="Resources\CleanTask_White1.png" />
-    <Content Include="windows-2.ico" />
-    <Content Include="windows.ico" />
-    <Content Include="wine-winecfg.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 e x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

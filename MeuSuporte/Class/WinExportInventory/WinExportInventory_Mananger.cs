@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace MeuSuporte
 {
@@ -11,6 +11,8 @@ namespace MeuSuporte
         {
             try
             {
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"ExportInventory: Colentando dados....", true);
+
                 // 1. Instancia o acumulador de linhas
                 var inventario = new WinExportInventory_AdicionarLinha();
 
@@ -61,11 +63,13 @@ namespace MeuSuporte
                 ProgramInstalled.Coletar(inventario);
 
                 // 3. Define o caminho e passa tudo para o gravador de PDF
-                string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Relatorio_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+                //string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Relatorio_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
 
                 var pdfWriter = new EscreverPdfNativo();
-                pdfWriter.Gerar(caminhoArquivo, inventario);
-               
+               await pdfWriter.Gerar(inventario);
+
+                await WinGlobal_UIService.Instance.Log_MensagemAsync($"ExportInventory: pdf gerado", true);
+
             }
             catch (Exception ex)
             {
