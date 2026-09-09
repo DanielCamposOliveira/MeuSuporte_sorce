@@ -14,7 +14,8 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <LangVersion>preview</LangVersion>
+    <PublishUrl>D:\Backup\Area de Trabalho\Teste\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,8 +28,8 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.4</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,7 +61,16 @@
     <ApplicationIcon>windows.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1A3B198E51006D02D0481FFA560783EB537DE79A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MeuSuporte_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.TaskScheduler">
@@ -162,6 +172,7 @@
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetGitHub.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_GetVersion.cs" />
     <Compile Include="Class\WinApp\CheckBuild\CheckBuild_Process.cs" />
+    <Compile Include="Class\WinApp\EnsureAdministrator.cs" />
     <Compile Include="Class\WinApp\Mananger\WinApp_Form.cs" />
     <Compile Include="Class\WinApp\Mananger\WinApp_Mananger.cs" />
     <Compile Include="Class\WinBackupBCD\WinBackupBCD_Mananger.cs" />
@@ -193,7 +204,22 @@
     <Compile Include="Class\WinDirectory\WinDirectory_File.cs" />
     <Compile Include="Class\WinDirectory\WinDirectory_Folder.cs" />
     <Compile Include="Class\WinDirectory\WinDirectory_ListFiles.cs" />
-    <Compile Include="Class\WinExportInventory_Mananger.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetProgramInstalled.cs" />
+    <Compile Include="Class\WinExportInventory\EscreverPdfNativo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetBatteryInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetCpuInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetDriveInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetGpuInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetMachineUUID.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetMonitorCount.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetMotherboardInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetNetworkInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetOsInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetRamInfo.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetSystemUptime.cs" />
+    <Compile Include="Class\WinExportInventory\Data\GetInformacaoDoUsuario.cs" />
+    <Compile Include="Class\WinExportInventory\WinExportInventory_AdicionarLinha.cs" />
+    <Compile Include="Class\WinExportInventory\WinExportInventory_Mananger.cs" />
     <Compile Include="Class\WinGlobal\WinGlobal_DirectoryCheck.cs" />
     <Compile Include="Class\WinGlobal\WinGlobal_DirectoryCreate.cs" />
     <Compile Include="Class\WinGlobal\WinGlobal_DirectoryMananger.cs" />
@@ -248,6 +274,7 @@
     <Compile Include="Class\WinRestorePoint\WinRestorePoint_Mananger.cs" />
     <Compile Include="Class\WinService\WinService_List.cs" />
     <Compile Include="Class\WinTaskbar\Single\WinTaskbar_Single_Mananger.cs" />
+    <Compile Include="Class\WinTask\WinTask_List.cs" />
     <Compile Include="Class\WinTask\WinTask_State.cs" />
     <Compile Include="Class\WinUserUAC\WinUserUAC_State.cs" />
     <Compile Include="Class\WinUser\Credential_Public.cs" />
@@ -312,6 +339,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="MeuSuporte_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

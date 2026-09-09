@@ -36,6 +36,7 @@ namespace MeuSuporte
         private CheckBox checkBox_CleanReportError;
         private CheckBox checkBox_ProfileGraphic;
         private CheckBox checkBox_ProfileEnergy;
+        private CheckBox checkBox_ExportInventory;
 
         // 2. RadioButtons
         private RadioButton radioButtonUserUAC_Ativar;
@@ -62,7 +63,7 @@ namespace MeuSuporte
             CheckBox _checkBox_Usuario, CheckBox _checkBox_CleanPrefetch, CheckBox _checkBox_BackupBCD, 
             CheckBox _checkBox_RestorePoint, CheckBox _checkBox_ConnectionRDP, CheckBox _checkBox_Bloatware, 
             CheckBox _checkBox_BackupReportError, CheckBox _checkBox_CleanReportError, CheckBox _checkBox_ProfileGraphic,
-            CheckBox _checkBox_ProfileEnergy,
+            CheckBox _checkBox_ProfileEnergy, CheckBox _checkBox_ExportInventory,
 
             // 2. RadioButtons
             RadioButton _radioButtonUserUAC_Ativar, RadioButton _radioButtonCleanPageFile_Ativar, RadioButton _radioButtonradioButtonConnectionRDP_Ativar,
@@ -98,6 +99,7 @@ namespace MeuSuporte
                     checkBox_CleanReportError = _checkBox_CleanReportError,
                     checkBox_ProfileGraphic = _checkBox_ProfileGraphic,
                     checkBox_ProfileEnergy = _checkBox_ProfileEnergy,
+                    checkBox_ExportInventory = _checkBox_ExportInventory,
 
                     // 2. RadioButtons
                     radioButtonUserUAC_Ativar = _radioButtonUserUAC_Ativar,
@@ -259,9 +261,17 @@ namespace MeuSuporte
             await WinGlobal_UIService.Instance.UpdateInfoUI("Clean Windows", checkBox_CleanWindowsUpdate, Resources.CleanTask_Black, "Desativar Update Windows:\n\rRemove atualizações antigas e corrompidas para evitar erros e liberar espaço e Desativa o serviço de Update");
             await Task.Delay(800);
 
-            string DiretorioPasta = @"C:\Windows\SoftwareDistribution\Download";
-            await Task.Run(() => Directory_Mananger.Mananger("Clean Windows", DiretorioPasta, "Windows Update", WinGlobal_UIService.Instance.ValueUniProgressBar / 2), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
-            await Task.Run(() => Service_Mananger.Mananger(Service_List.WindowsUpdate, WinGlobal_UIService.Instance.ValueUniProgressBar / 2, true), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            string DiretorioPastaDownload = @"C:\Windows\SoftwareDistribution\Download";
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Windows", DiretorioPastaDownload, "Windows Update", WinGlobal_UIService.Instance.ValueUniProgressBar / 3), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+
+            await Task.Delay(800);
+
+            string DiretorioPastaCache = @"C:\Windows\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization\Cache";
+            await Task.Run(() => Directory_Mananger.Mananger("Clean Windows", DiretorioPastaCache, "Otimização de Entrega", WinGlobal_UIService.Instance.ValueUniProgressBar / 3), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+
+            await Task.Delay(1000);
+
+            await Task.Run(() => Service_Mananger.Mananger(Service_List.WindowsUpdate, WinGlobal_UIService.Instance.ValueUniProgressBar / 3, true), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
             await Task.Delay(1000);
 
             // Atualiza a UI após a execução assíncrona
@@ -539,6 +549,26 @@ namespace MeuSuporte
             checkBox_CleanReportError.Font = new Font(checkBox_CleanReportError.Font.FontFamily, checkBox_CleanReportError.Font.Size, FontStyle.Strikeout);
 
         }
+        #endregion
+
+        #region Export Inventory
+
+        public async Task ExportInventory()
+        {
+            WinExportInventory_Mananger ExportInventory_Mananger = new WinExportInventory_Mananger();
+
+            // Atualiza a UI antes da execução assíncrona
+            WinGlobal_UIService.Instance.UpdateInfoUI("Export Inventory", checkBox_ExportInventory, Resources.ExportInventory_Black, "Export Inventory\r\nGera Relatorio do Computador");
+            await Task.Delay(800);
+
+            await Task.Run(() => ExportInventory_Mananger.Mananger(), WinGlobal_UIService.Instance.token); // Executa a tarefa async em uma nova thread
+            await Task.Delay(1000);
+
+            // Atualiza a UI após a execução assíncrona
+            checkBox_ExportInventory.Font = new Font(checkBox_ExportInventory.Font.FontFamily, checkBox_ExportInventory.Font.Size, FontStyle.Strikeout);
+        }
+
+
         #endregion
 
         #region Perfil de Graphic

@@ -119,7 +119,7 @@ namespace MeuSuporte
                 checkBox_Usuario, checkBox_CleanPrefetch, checkBox_BackupBCD, 
                 checkBox_RestorePoint, checkBox_ConnectionRDP, checkBox_Bloatware, 
                 checkBox_BackupReportError, checkBox_CleanReportError, checkBox_ProfileGraphic,
-                checkBox_ProfileEnergy,
+                checkBox_ProfileEnergy, checkBox_ExportInventory,
 
                 // 2. RadioButtons
                 radioButtonUserUAC_Ativar, radioButtonCleanPageFile_Ativar, radioButtonConnectionRDP_Ativar, 
@@ -606,6 +606,7 @@ namespace MeuSuporte
                 {checkBox_CleanReportError, WinApp_Mananger.Instance.CleanReportError },
                 {checkBox_ProfileGraphic, WinApp_Mananger.Instance.ProfileGraphic},
                 {checkBox_ProfileEnergy, WinApp_Mananger.Instance.ProfileEnergy},
+                {checkBox_ExportInventory, WinApp_Mananger.Instance.ExportInventory }
             };
 
             try

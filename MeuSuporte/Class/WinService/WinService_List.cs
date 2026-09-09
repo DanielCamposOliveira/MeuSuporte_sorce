@@ -19,7 +19,8 @@
             "wuauserv",  // Serviço de Windows Update
             "WSearch",        // Se não usa a pesquisa do Windows com frequência, pode desativar para reduzir o uso do disco.
             "WaaSMedicSvc",   // Permite a correção e a proteção dos componentes do Windows Update.
-            "UsoSvc"
+            "UsoSvc",
+            "DoSvc"  // Delivery Optimization uma tecnologia peer-to-peer (P2P) criada pela Microsoft para distribuir atualizações do Windows Update, da Microsoft Store e do Xbox App.
 
         };
 
