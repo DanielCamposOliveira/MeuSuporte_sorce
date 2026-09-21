@@ -41,12 +41,13 @@ namespace MeuSuporte
 
                 // funcao de apagar os arquivos
                 // await ListFiles.Remove(ValueUniProgressBar, DirectoryFolder, _NameFolder);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Temp: limpando diretorio: {path}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Clean Temp: limpando diretorio: {path}");
+                await WinGlobal_UIService.Instance.AddMessage("");
 
                 await Task.Delay(500);
                 
                 await Directory_ListFiles.Remove(ValueUniProgressBar, path, "%Temp% Users");
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", false);
+               
                 //  await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);
 
 

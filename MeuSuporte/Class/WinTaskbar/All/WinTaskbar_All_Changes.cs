@@ -31,7 +31,7 @@ namespace MeuSuporte
             string IconLearnPath = $@"{tempHiveName}\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
             await IconLearn.Changes(State, Registry.Users, IconLearnPath, usuario, ValueUniProgressBar / 3);
 
-            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Optimiza Barra de Tarefas: User \"{usuario}\" - Configurações Alteradas", true);
+            await WinGlobal_UIService.Instance.AddMessage($"Optimiza Barra de Tarefas: User \"{usuario}\" - Configurações Alteradas");
         }
 
     }

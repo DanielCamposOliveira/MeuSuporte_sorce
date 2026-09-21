@@ -22,14 +22,14 @@ namespace MeuSuporte
                     key.SetValue("PromptOnSecureDesktop", promptOnSecureDesktop, RegistryValueKind.DWord); // Ativa a Área de Trabalho Segura = Ativado(1) Desativado(0)
                     key.SetValue("EnableLUA", enableLUA, RegistryValueKind.DWord); // Ativa o UAC = Ativado(1) Desativado(0)
                     
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Notificações do Usuario UAC: Alterado", true);                 
+                    await WinGlobal_UIService.Instance.AddMessage("Notificações do Usuario UAC: Alterado");                 
                 }
                 await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.Sucesso++;
             }
             catch (Exception)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Notificações do Usuario UAC: Erro!", true);
+                await WinGlobal_UIService.Instance.AddMessage("Notificações do Usuario UAC: Erro!");
                 WinGlobal_UIService.Instance.Erro++;
             }
         }

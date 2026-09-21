@@ -27,7 +27,7 @@ namespace MeuSuporte
                 // Cria o diretorio
                 if (!DirectoryManange.Create("BackupRegistry"))
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Ocorreu um erro ao tentar criar Pasta BackupRegistry", true);
+                    await WinGlobal_UIService.Instance.AddMessage("Ocorreu um erro ao tentar criar Pasta BackupRegistry");
                     return;
                 }
           
@@ -36,7 +36,7 @@ namespace MeuSuporte
                 // Salva o arquivo 
                 File.WriteAllText(DirectoryManange.GetDirectory("BackupRegistry") + "\\" + NameFile, regFile.ToString(), Encoding.Unicode);
                 WinGlobal_UIService.Instance.Sucesso++;   
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: User \"{NameUser}\" - Backup Chave Criada", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Backup Registry: User \"{NameUser}\" - Backup Chave Criada");
 
                 WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
 
@@ -44,7 +44,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: User \"{NameUser}\" - Ocorreu um erro ao tentar criar Backup da chave", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Backup Registry: User \"{NameUser}\" - Ocorreu um erro ao tentar criar Backup da chave");
             }
         }
     }

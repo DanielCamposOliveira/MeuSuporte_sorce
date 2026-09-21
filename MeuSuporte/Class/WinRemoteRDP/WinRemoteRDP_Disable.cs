@@ -13,18 +13,18 @@ namespace MeuSuporte
                 WinGlobal_UIService.Instance.token.ThrowIfCancellationRequested(); // Checa se o cancelamento foi solicitado antes de começar
              
                 // Habilita o Remote Desktop no registro
-                using (RegistryKey chave = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server", true))
+                using (RegistryKey chave = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server"))
                 {
                     if (chave != null)
                     {
                         chave.SetValue("fDenyTSConnections", 1, RegistryValueKind.DWord); // 1 = Desabilita
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Acesso Remoto Desativado", true);
+                        await WinGlobal_UIService.Instance.AddMessage($"Acesso Remoto Desativado");
                     }
                 }                        
             }
             catch (Exception ex)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro: " + ex.Message, true);
+                await WinGlobal_UIService.Instance.AddMessage($"Erro: " + ex.Message);
             }
         }
     }

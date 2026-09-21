@@ -82,7 +82,7 @@ namespace MeuSuporte
                     }
                     catch (Exception ex)
                     {
-                        WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Registry: USER - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
+                        WinGlobal_UIService.Instance.AddMessage($"Backup Registry: USER - Ocorreu um Erro ao tentar acessar registro do  SID {sid}");
                         WinGlobal_UIService.Instance.Erro++;
                     }
                     finally

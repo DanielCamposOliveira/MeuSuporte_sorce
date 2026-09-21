@@ -30,7 +30,7 @@ namespace MeuSuporte
 
             if (!isServiceStopped)
             {                
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} não pode ser desabilitado devido ainda está em execução.", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Serviço: {service.DisplayName} não pode ser desabilitado devido ainda está em execução.");
                 await Task.Delay(500);
                 WinGlobal_UIService.Instance.Erro++;
                 return;
@@ -50,13 +50,13 @@ namespace MeuSuporte
                             );
                     }
 
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço:  {service.DisplayName} - Disabled", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Serviço:  {service.DisplayName} - Disabled");
                     await Task.Delay(500);
                     WinGlobal_UIService.Instance.Sucesso++;
                 }
                 catch (Exception ex)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: Ocorreu um Erro ao tentar mudar o Modo de Inicialização do Serviço - {service.DisplayName}", true);                  
+                    await WinGlobal_UIService.Instance.AddMessage($"Serviço: Ocorreu um Erro ao tentar mudar o Modo de Inicialização do Serviço - {service.DisplayName}");                  
                     await Task.Delay(500);
                     WinGlobal_UIService.Instance.Erro++;
                 }

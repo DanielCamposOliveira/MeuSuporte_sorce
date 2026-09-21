@@ -23,11 +23,11 @@ namespace MeuSuporte
 
                 if (processo.ExitCode == 0)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Regra [Remote Desktop - TCP] adicionada com sucesso.", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Regra [Remote Desktop - TCP] adicionada com sucesso.");
                 }
                 else
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao tentar adicionar a regra [Remote Desktop - TCP] no firewall.", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Erro ao tentar adicionar a regra [Remote Desktop - TCP] no firewall.");
                 }
             }
         }

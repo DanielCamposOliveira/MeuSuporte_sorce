@@ -31,7 +31,7 @@ namespace MeuSuporte
             // verifica se existe tarefas
             if (WinTask_Connection.tasks.Count == 0)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Clean Task: Nenhuma Tarefa foi encontrada ", true);
+                await WinGlobal_UIService.Instance.AddMessage("Clean Task: Nenhuma Tarefa foi encontrada ");
                 await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar);
                 return;
             }

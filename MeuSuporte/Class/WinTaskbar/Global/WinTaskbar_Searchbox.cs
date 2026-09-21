@@ -35,7 +35,7 @@ namespace MeuSuporte
             }
             catch (Exception)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Optimiza Barra de Tarefas: Ocorreu um Erro ao tentar alterar a Barra de Pesquisa para o usuário {usuario}.", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Optimiza Barra de Tarefas: Ocorreu um Erro ao tentar alterar a Barra de Pesquisa para o usuário {usuario}.");
                 WinGlobal_UIService.Instance.Erro++;
             }
         }

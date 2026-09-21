@@ -51,12 +51,12 @@ namespace MeuSuporte
             if (resultado == 0) // O código de retorno 0 (ERROR_SUCCESS) indica sucesso.
             {
                 WinGlobal_UIService.Instance.Sucesso++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Profile Energy: Ajustando o Plano de Energia para {choice}", true); 
+                await WinGlobal_UIService.Instance.AddMessage($"Profile Energy: Ajustando o Plano de Energia para {choice}"); 
             }
             else
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Profile Energy: Ocorreu um Erro ao tentar Ajustar o Plano de Energia para {choice}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Profile Energy: Ocorreu um Erro ao tentar Ajustar o Plano de Energia para {choice}");
             }
         }
     }

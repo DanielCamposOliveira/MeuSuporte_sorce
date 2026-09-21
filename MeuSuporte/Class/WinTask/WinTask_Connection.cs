@@ -26,7 +26,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Clean Task: Ocorreu um erro ao tentar se conectar com Agendador de Tarefas do Windows", true);
+                await WinGlobal_UIService.Instance.AddMessage("Clean Task: Ocorreu um erro ao tentar se conectar com Agendador de Tarefas do Windows");
                 return false;
             }
         }

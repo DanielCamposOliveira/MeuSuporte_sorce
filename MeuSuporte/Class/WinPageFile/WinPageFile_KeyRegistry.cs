@@ -23,14 +23,14 @@ namespace MeuSuporte
                 }
 
                 WinGlobal_UIService.Instance.Sucesso++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("PageFile.sys:  Limpesa altomatico: Ativado !", true);
+                await WinGlobal_UIService.Instance.AddMessage("PageFile.sys:  Limpesa altomatico: Ativado !");
                 await Task.Delay(500);
                 await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
             }
             catch (Exception e)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"PageFile.sys: Não foi possivel realizara a Alteração", true);
+                await WinGlobal_UIService.Instance.AddMessage($"PageFile.sys: Não foi possivel realizara a Alteração");
             }
         }
     }

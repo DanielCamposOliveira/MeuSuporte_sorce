@@ -28,13 +28,13 @@ namespace MeuSuporte
                         }
                         else
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Não foi possivel verificar se esta Habilitado Proteção do Sistema", true);
+                            await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Não foi possivel verificar se esta Habilitado Proteção do Sistema");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Não foi possivel verificar se esta Habilitado Proteção do Sistema", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Não foi possivel verificar se esta Habilitado Proteção do Sistema");
                 }
                 return ServicoHabilitado;
             });

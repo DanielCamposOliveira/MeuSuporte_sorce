@@ -28,6 +28,7 @@ namespace MeuSuporte
         private Label labelInfoDescricao;
         private CheckBox checkBox_UserUAC;
 
+        private WinApp_Log _WinApp_Log;
 
         // Inicialização (chame no MainForm no início)
         public static void Initialize(MainForm form, TextBox logTextBox, ProgressBar progressBar, Label _labelInfoTitulo, CheckBox _checkBox_UserUAC, Label _labelInfoDescricao, PictureBox _pictureBoxInfoDescricao, CancellationToken _token)
@@ -43,7 +44,8 @@ namespace MeuSuporte
                     checkBox_UserUAC = _checkBox_UserUAC,
                     labelInfoDescricao = _labelInfoDescricao,
                     pictureBoxInfoDescricao = _pictureBoxInfoDescricao,
-                    token = _token
+                    token = _token,
+                    _WinApp_Log = new WinApp_Log()
 
                 };
             }
@@ -81,53 +83,49 @@ namespace MeuSuporte
             }
         }
 
-        public async Task Log_MensagemAsync(string mensagem, bool pularLinha)
+        // Adiciona uma linha com texto
+        public async Task AddMessage(string mensagem)
         {
-            if (_logTextBox.InvokeRequired)
-            {
-                await Task.Run(() =>
-                {
-                    _logTextBox.Invoke(new Action(() =>
-                    {
-                        _logTextBox.AppendText(mensagem);
-                        if (pularLinha)
-                            _logTextBox.AppendText(Environment.NewLine);
-                    }));
-                });
-            }
-            else
-            {
-                _logTextBox.AppendText(mensagem);
-                if (pularLinha)
-                    _logTextBox.AppendText(Environment.NewLine);
-            }
+            // grava dados para variavel
+            _WinApp_Log.AdicionarLinha(mensagem);
+
+            _logTextBox.Text = string.Join(
+                Environment.NewLine,
+                _WinApp_Log.linhasRelatorio
+            );  
         }
 
-        public async Task Log_MensagemAsyncSobrescrever(string mensagem)
+        // atualiza a ultima linha
+        public async Task AddUpdatedMessage(string mensagem)
         {
-            if (_logTextBox.InvokeRequired)
-            {
-                await Task.Run(() =>
-                {
-                    _logTextBox.Invoke(new Action(() =>
-                    {
-                        string[] linhas = _logTextBox.Text.Split('\n');
-                        _logTextBox.Text = string.Join("\n", linhas.Take(linhas.Length - 1).Concat(new[] { mensagem }));
-                    }));
-                });
-            }
-            else
-            {
-                string[] linhas = _logTextBox.Text.Split('\n');
-                _logTextBox.Text = string.Join("\n", linhas.Take(linhas.Length - 1).Concat(new[] { mensagem }));
-            }
+            _WinApp_Log.AtualizarUltimaLinha(mensagem);
+
+            _logTextBox.Text = string.Join(
+                    Environment.NewLine,
+                    _WinApp_Log.linhasRelatorio
+                );
+        }
+
+        // limpa todo o texto
+        public async Task ClearMessage()
+        {
+            _WinApp_Log.Limpar();
+
+            _logTextBox.Text = string.Join(
+                Environment.NewLine,
+                _WinApp_Log.linhasRelatorio
+            );
+        }
+
+        public async Task SalvarPDF()
+        {
+            _WinApp_Log.SalvarPDF();
         }
 
         public async Task UpdateInfoUI(string _Log, CheckBox _CheckBox, Image _icon, string _description)
         {
-            await Log_MensagemAsync("\r\n", true);
-            await Log_MensagemAsync($"======= {_Log} =======", true);
-            await Log_MensagemAsync(" ", false);
+            await _WinApp_Log.AdicionarLinha("----- " + _Log + " -----");
+
            labelInfoTitulo.Text = _CheckBox.Text;
 
             // usar o negrito do checkBox_UserUAC para manter o padrão visual
@@ -150,31 +148,19 @@ namespace MeuSuporte
             {
                 if (executed == true)
                 {
-                    await Log_MensagemAsync($" • {_Porecesso}   {{executed}}", true);
+                    await AddMessage($" • {_Porecesso}   {{executed}}");
 
                     if (_Porecesso == CurrentProcess)
                     {
-                        await Log_MensagemAsync($" • {_Porecesso}   {{aborted}}", true);
+                        await AddMessage($" • {_Porecesso}   {{aborted}}");
                         executed = false;
                     }
                 }
                 else
                 {
-                    await Log_MensagemAsync($" • {_Porecesso}   {{canceled}}", true);
+                    await AddMessage($" • {_Porecesso}   {{canceled}}");
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

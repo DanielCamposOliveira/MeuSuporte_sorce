@@ -26,7 +26,7 @@ namespace MeuSuporte
                 // Cria o diretorio
                 if (DirectoryManange.Create(NameFolder) == false)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup BCD: Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Backup BCD: Ocorreu um erro ao tentar criar Pasta {NameFolder}");
                     return;
                 }
 
@@ -40,7 +40,7 @@ namespace MeuSuporte
                     process.Start();
                     await WaitForExitAsync(process);
                     await Task.Delay(500);                    
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup BCD: Criado com Sucesso", true);
+                    await WinGlobal_UIService.Instance.AddMessage("Backup BCD: Criado com Sucesso");
                 }
 
                 WinGlobal_UIService.Instance.Sucesso++;
@@ -49,7 +49,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup BCD: Erro - " + ex.Message, true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup BCD: Erro - " + ex.Message);
                 await Task.Delay(500);
             }
         }

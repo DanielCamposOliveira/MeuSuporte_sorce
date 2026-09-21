@@ -33,7 +33,7 @@ namespace MeuSuporte
                 // Salvar todos os Registros dos Usuarios
                 await RegistryBackup_All_Mananger.Mananger(WinGlobal_UIService.Instance.ValueUniProgressBar / 3);
 
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Registry concluído", true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup Registry concluído");
             }
             else
             {            
@@ -45,7 +45,7 @@ namespace MeuSuporte
                 RegistryKey RegistryCurrentUserRun = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
                 await RegistryBackup_Single_Mananger.Mananger(NameUserRun, RegistryCurrentUserRun, WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
 
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Registry concluído", true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup Registry concluído");
             }
         }
     }

@@ -24,21 +24,21 @@ namespace MeuSuporte
             if (!DirectoryManange.Check(Path))
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Report Error: Ocorreu um erro ao tentar acessa o diretório {TypeReport}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Backup Report Error: Ocorreu um erro ao tentar acessa o diretório {TypeReport}");
                 return;
             }
 
             // verifica se o diretorio dos relatorios esta vazio
             if (!DirectoryManange.GetFileListing(Path))
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Report Error: Não existe {TypeReport} para gera Backup", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Backup Report Error: Não existe {TypeReport} para gera Backup");
                 return;
             }
 
             // Cria o diretorio
             if (DirectoryManange.Create(NameFolder) == false)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Report Error: Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Backup Report Error: Ocorreu um erro ao tentar criar Pasta {NameFolder}");
                 return;
             }
             

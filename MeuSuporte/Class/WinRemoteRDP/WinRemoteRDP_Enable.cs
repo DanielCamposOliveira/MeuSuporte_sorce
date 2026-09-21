@@ -24,7 +24,7 @@ namespace MeuSuporte
 
                 //Habilita registro 
                 await RemoteRDP_Registry.Enable();
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Acesso Remoto Ativado", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Acesso Remoto Ativado");
                 await Task.Delay(200);
                                 
                 RemoteRDP_Service.ServiceEnable(); //Inicia o Serviço TermService
@@ -33,7 +33,7 @@ namespace MeuSuporte
             }
             catch (Exception ex)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro: " + ex.Message, true);
+                await WinGlobal_UIService.Instance.AddMessage($"Erro: " + ex.Message);
             }
         }
     }

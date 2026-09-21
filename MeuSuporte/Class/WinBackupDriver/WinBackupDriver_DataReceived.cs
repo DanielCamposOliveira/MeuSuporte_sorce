@@ -26,7 +26,7 @@ namespace MeuSuporte
                 if (!string.IsNullOrEmpty(e.Data))
                 {
                     WinGlobal_UIService.Instance.Erro++;
-                    Task task = WinGlobal_UIService.Instance.Log_MensagemAsync("Erro DISM: " + e.Data, true);
+                    Task task = WinGlobal_UIService.Instance.AddMessage("Erro DISM: " + e.Data);
                 }
             };
         }

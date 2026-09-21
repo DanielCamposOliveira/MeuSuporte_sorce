@@ -15,7 +15,7 @@ namespace MeuSuporte
             {
                 if (service.Status == ServiceControllerStatus.Running)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} - Stopping", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Serviço: {service.DisplayName} - Stopping");
                     await Task.Delay(500);
                     service.Stop(); // Envia o comando para parar
                     await Task.Delay(4000); // Espera 4 segundos
@@ -23,7 +23,7 @@ namespace MeuSuporte
             }
             catch (Exception ex)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} - Stop failed.", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Serviço: {service.DisplayName} - Stop failed.");
                 await Task.Delay(500);
                 WinGlobal_UIService.Instance.Erro++;
                 return false;
@@ -36,7 +36,7 @@ namespace MeuSuporte
                 service.Refresh(); // Atualiza o status do serviço                
             }
 
-            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} - {service.Status}.", true);
+            await WinGlobal_UIService.Instance.AddMessage($"Serviço: {service.DisplayName} - {service.Status}.");
             await Task.Delay(500);
 
             // atribui como true a variavel isServiceStopped se o resultado for Stopped   

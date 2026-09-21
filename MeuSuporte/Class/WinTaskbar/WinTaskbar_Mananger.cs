@@ -16,7 +16,7 @@ namespace MeuSuporte
             await Taskbar_Single_Mananger.Changes(State, WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
             await  Taskbar_All_Mananger.Mananger(State, WinGlobal_UIService.Instance.ValueUniProgressBar / 2);
 
-            await WinGlobal_UIService.Instance.Log_MensagemAsync("Optimiza Barra de Tarefas: Configurações Alteradas", true);
+            await WinGlobal_UIService.Instance.AddMessage("Optimiza Barra de Tarefas: Configurações Alteradas");
         }
     }
 }

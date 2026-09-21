@@ -24,7 +24,7 @@ namespace MeuSuporte
                 await CheckInstallation.Check(bloat); // Executa o a função Async em uma nova thread
                 loop++;
                 await Task.Delay(300);
-                await WinGlobal_UIService.Instance.Log_MensagemAsyncSobrescrever($"Removendo Bloatware {loop} / {Bloatware_Format.Count} ");
+                await WinGlobal_UIService.Instance.AddUpdatedMessage($"Removendo Bloatware {loop} / {Bloatware_Format.Count} ");
             } 
         }
 

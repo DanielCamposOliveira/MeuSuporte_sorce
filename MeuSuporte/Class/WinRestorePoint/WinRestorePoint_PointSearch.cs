@@ -55,12 +55,12 @@ namespace MeuSuporte
             if (await IsPointCreatedAsync(NamePoint))
             {
                 await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Ponto [{NamePoint}] validado com sucesso.", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Ponto [{NamePoint}] validado com sucesso.");
             }
             else
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Ponto [{NamePoint}] não validado.", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Ponto [{NamePoint}] não validado.");
             }
             return false;
         }

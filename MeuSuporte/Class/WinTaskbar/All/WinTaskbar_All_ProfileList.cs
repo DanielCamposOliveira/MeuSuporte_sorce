@@ -79,7 +79,7 @@ namespace MeuSuporte
                     }
                     catch (Exception ex)
                     {
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}", true);
+                        await WinGlobal_UIService.Instance.AddMessage($"Registro do Usuario - Ocorreu um Erro ao tentar acessar registro do  SID {sid}");
                         WinGlobal_UIService.Instance.Erro++;
                     }
                     finally

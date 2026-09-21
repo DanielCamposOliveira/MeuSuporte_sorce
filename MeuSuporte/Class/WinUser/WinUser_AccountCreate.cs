@@ -35,14 +35,14 @@ namespace MeuSuporte
 
                 await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar / 2);
                 WinGlobal_UIService.Instance.Sucesso++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Conta Criada com Sucesso", true);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Usuario: {NameUser}", true);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Senha: {PasswordUser}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Manutenção de usuario: Conta Criada com Sucesso");
+                await WinGlobal_UIService.Instance.AddMessage($"Usuario: {NameUser}");
+                await WinGlobal_UIService.Instance.AddMessage($"Senha: {PasswordUser}");
             }
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Manutenção de usuario: Ocorreu um Erro ao tentar Criar Usuario {NameUser}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Manutenção de usuario: Ocorreu um Erro ao tentar Criar Usuario {NameUser}");
             }
         }
     }

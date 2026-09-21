@@ -34,8 +34,10 @@ namespace MeuSuporte
                 return;
             }
 
-            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Clean Temp: limpando diretorio: {profilePath}", true);
+            await WinGlobal_UIService.Instance.AddMessage($"Clean Temp: limpando diretorio: {profilePath}");
+            await WinGlobal_UIService.Instance.AddMessage("");
             await Task.Delay(500);
+
 
             // funcao de apagar os arquivos
             await Directory_ListFiles.Remove(WinGlobal_UIService.Instance.ValueUniProgressBar, profilePath, "%Temp%");

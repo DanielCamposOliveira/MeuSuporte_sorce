@@ -66,7 +66,7 @@ namespace MeuSuporte
             {
                 if (outputError.Contains(erro.Key))
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"{AppTitulo} {{{AppComando}}} - uninstall failed \nCodigo Erro: {erro.Key} \nMensagem: {erro.Value}  ", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"{AppTitulo} {{{AppComando}}} - uninstall failed \nCodigo Erro: {erro.Key} \nMensagem: {erro.Value}  ");
                     break;
                 }
             }

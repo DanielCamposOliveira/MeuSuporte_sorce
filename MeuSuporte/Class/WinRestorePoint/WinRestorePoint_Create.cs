@@ -37,24 +37,24 @@ namespace MeuSuporte
                     case 0:
                         WinGlobal_UIService.Instance.Sucesso++;
                         WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Ponto de restauração [{description}] Criado com sucesso.", true);
+                        await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Ponto de restauração [{description}] Criado com sucesso.");
                         return true;
                         break;
 
                     case 5:
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync("Proteção do Sistema: A Proteção do Sistema está desativada no disco C: não sendo possivel de criar o Ponto de restauração.", true);
+                        await WinGlobal_UIService.Instance.AddMessage("Proteção do Sistema: A Proteção do Sistema está desativada no disco C: não sendo possivel de criar o Ponto de restauração.");
                         WinGlobal_UIService.Instance.Erro++;
                         return false;
                         break;
 
                     case 13:
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync("Proteção do Sistema: Já existe um ponto recente (menos de 24h).", true);
+                        await WinGlobal_UIService.Instance.AddMessage("Proteção do Sistema: Já existe um ponto recente (menos de 24h).");
                         WinGlobal_UIService.Instance.Erro++;
                         return false;
                         break;
 
                     default:
-                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Erro ao criar ponto de restauração.", true);
+                        await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Erro ao criar ponto de restauração.");
                         WinGlobal_UIService.Instance.Erro++;
                         return false;
                         break;
@@ -71,7 +71,7 @@ namespace MeuSuporte
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Proteção do Sistema: Ocorreu um Erro ao tentar criar ponto de restauração." + ex.Message, true);
+                await WinGlobal_UIService.Instance.AddMessage($"Proteção do Sistema: Ocorreu um Erro ao tentar criar ponto de restauração." + ex.Message);
                 return false;
             }     
         }

@@ -11,7 +11,7 @@ namespace MeuSuporte
         {
             try
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"ExportInventory: Colentando dados....", true);
+                await WinGlobal_UIService.Instance.AddMessage($"ExportInventory: Colentando dados....");
 
                 // 1. Instancia o acumulador de linhas
                 var inventario = new WinExportInventory_AdicionarLinha();
@@ -68,7 +68,7 @@ namespace MeuSuporte
                 var pdfWriter = new EscreverPdfNativo();
                await pdfWriter.Gerar(inventario);
 
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"ExportInventory: pdf gerado", true);
+                await WinGlobal_UIService.Instance.AddMessage($"ExportInventory: pdf gerado");
 
             }
             catch (Exception ex)

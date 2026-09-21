@@ -21,7 +21,7 @@ namespace MeuSuporte
 
             if (!isServiceStopped)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} não pode ser removido devido ainda está em execução.", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Serviço: {service.DisplayName} não pode ser removido devido ainda está em execução.");
                 return false;
             }
 
@@ -33,14 +33,14 @@ namespace MeuSuporte
                     serviceInstaller.ServiceName = service.ServiceName;
                     serviceInstaller.Uninstall(null);
 
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: {service.DisplayName} - Deleted", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Serviço: {service.DisplayName} - Deleted");
                     return true;
                 }
             }
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Serviço: Ocorreu um Erro ao tentar desinstalar o Serviço - {service.DisplayName}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Serviço: Ocorreu um Erro ao tentar desinstalar o Serviço - {service.DisplayName}");
                 return false;
             }
         }

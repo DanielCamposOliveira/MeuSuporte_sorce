@@ -33,7 +33,7 @@ namespace MeuSuporte
                 // Cria o diretorio
                 if (!DirectoryManange.Create("Inventario"))
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync("Ocorreu um erro ao tentar criar Pasta Inventario", true);
+                    await WinGlobal_UIService.Instance.AddMessage("Ocorreu um erro ao tentar criar Pasta Inventario");
                     return;
                 }
 
@@ -133,7 +133,7 @@ namespace MeuSuporte
             catch (Exception ex) 
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Ocorreu um erro ao ExportInventory: " + ex.Message, true);
+                await WinGlobal_UIService.Instance.AddMessage("Ocorreu um erro ao ExportInventory: " + ex.Message);
             }            
         }
 

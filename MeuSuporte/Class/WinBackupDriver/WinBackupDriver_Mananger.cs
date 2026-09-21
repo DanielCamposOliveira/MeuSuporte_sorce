@@ -22,7 +22,7 @@ namespace MeuSuporte
         {
             string NameFolder = "DriversBackup";
 
-            await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Driver: executando...", true);         
+            await WinGlobal_UIService.Instance.AddMessage("Backup Driver: executando...");         
 
             try
             {
@@ -31,7 +31,7 @@ namespace MeuSuporte
                 // Cria o diretorio
                 if (DirectoryManange.Create(NameFolder) == false)
                 {
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Backup Driver: Ocorreu um erro ao tentar criar Pasta {NameFolder}", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Backup Driver: Ocorreu um erro ao tentar criar Pasta {NameFolder}");
                     return;
                 }
                                 
@@ -51,12 +51,12 @@ namespace MeuSuporte
                 }
 
                 WinGlobal_UIService.Instance.Sucesso++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Driver: Criado com Sucesso", true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup Driver: Criado com Sucesso");
             }
             catch (Exception ex)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Driver: Erro - " + ex.Message, true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup Driver: Erro - " + ex.Message);
             }
         }
 

@@ -33,13 +33,13 @@ namespace MeuSuporte
 
 
                 //  rootFolder.DeleteTask(task.Name, 0); // deleta a tarefa
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Tarefa Desativada: {task.Name}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Tarefa Desativada: {task.Name}");
                 await Task.Delay(500);
             }
             catch (Exception e)
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Erro ao Desativar Tarefa: {task.Name} - {e.Message}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Erro ao Desativar Tarefa: {task.Name} - {e.Message}");
                 await Task.Delay(500);
             }
             await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);

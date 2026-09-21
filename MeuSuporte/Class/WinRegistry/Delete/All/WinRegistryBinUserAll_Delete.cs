@@ -44,14 +44,14 @@ namespace MeuSuporte
                         // verifica se existe exeçoes
                         if (RegistryBin_List.KeyDirectory.Any(caminhoBase => conteudoChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.AddMessage($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"");
                             continue;
                         }
 
                         // verifica se existe exeçoes
                         if (RegistryBin_List.KeyName.Any(caminhoBase => NomeChave.ToString().StartsWith(caminhoBase, StringComparison.OrdinalIgnoreCase)))
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.AddMessage($"Registro: User \"{Usuario}\" - Chave Preservada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"");
                             continue;
                         }
 
@@ -69,7 +69,7 @@ namespace MeuSuporte
 
                                 if (await CloudManager.GetGoogleDrive(tempPath) == true)
                                 {
-                                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada (App Conectado) - Nome chave: \"{NomeChave}\"", true);
+                                    await WinGlobal_UIService.Instance.AddMessage($"Registro: USER \"{Environment.UserName}\" - Chave Preservada (App Conectado) - Nome chave: \"{NomeChave}\"");
                                     continue;
                                 }
 
@@ -82,7 +82,7 @@ namespace MeuSuporte
                                 {
                                     if (await CloudManager.GetOneDrive(Chave) == true)
                                     {
-                                        await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: USER \"{Environment.UserName}\" - Chave Preservada (App Conectado) - Nome chave: \"{NomeChave}\"", true);
+                                        await WinGlobal_UIService.Instance.AddMessage($"Registro: USER \"{Environment.UserName}\" - Chave Preservada (App Conectado) - Nome chave: \"{NomeChave}\"");
                                         continue;
                                     }
                                 }               
@@ -96,12 +96,12 @@ namespace MeuSuporte
                             searchKey.DeleteValue(NomeChave);
 
                             await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.AddMessage($"Registro: User \"{Usuario}\" - Chave Apagada - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"");
                             WinGlobal_UIService.Instance.Sucesso++;
                         }
                         catch (Exception e)
                         {
-                            await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"", true);
+                            await WinGlobal_UIService.Instance.AddMessage($"Registro: User \"{Usuario}\" - Ocorreu um Erro ao tentar apagar Chave - Nome chave: \"{NomeChave}\" Valor: \"{caminhoRegistro}\" Tipo: \"{tipoChave}\"");
                             WinGlobal_UIService.Instance.Erro++;
                         }
                     }
@@ -109,7 +109,7 @@ namespace MeuSuporte
                 else
                 {
                     await WinGlobal_UIService.Instance.ProgressBarADD(ValueUniProgressBar);
-                    await WinGlobal_UIService.Instance.Log_MensagemAsync($"Registro: User \"{Usuario}\" - Sem registro.", true);
+                    await WinGlobal_UIService.Instance.AddMessage($"Registro: User \"{Usuario}\" - Sem registro.");
                 }
             }
         }

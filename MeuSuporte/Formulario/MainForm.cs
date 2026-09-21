@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -535,13 +536,14 @@ namespace MeuSuporte
 
         // Grava Log em um arquivo de Texto
         private async Task GravaLog()
-        {    
-            WinApp_Log class_Log = new WinApp_Log();
+        {            
+            //await WinGlobal_UIService.Instance.SalvarPDF();
+
             await Task.Run(async () =>
             {
                 if (txt_Log.Text != "")
                 {
-                    await class_Log.GravaAsync(txt_Log.Text);
+                    await WinGlobal_UIService.Instance.SalvarPDF();
                 }
             });
         }
@@ -581,8 +583,12 @@ namespace MeuSuporte
         //Processa opções marcadas pelo usuário
         private async Task ExecuteProcesses()
         {
+            // lima o log a cada vez que executa 
+         //   await WinGlobal_UIService.Instance.Limpar();
+
+
             // Dicionário associando CheckBox com métodos
-            Dictionary<CheckBox, Func<Task>> checkBoxActions = new Dictionary<CheckBox, Func<Task>>
+            Dictionary <CheckBox, Func<Task>> checkBoxActions = new Dictionary<CheckBox, Func<Task>>
             {
                 {checkBox_RestorePoint, WinApp_Mananger.Instance.CreateSystemPoint},
                 { checkBox_Taskbar,WinApp_Mananger.Instance.Taskbar},
@@ -631,6 +637,15 @@ namespace MeuSuporte
                     }
                 }
 
+                string BuildLocal = WinGlobal_UIService.Instance.InterfaceGUI.Text; //= Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0"; // Obtem a versão local
+
+                await WinGlobal_UIService.Instance.AddMessage("==================================================================");
+                await WinGlobal_UIService.Instance.AddMessage($"RELATÓRIO DE MANUTENÇÃO PREVENTIVA  - {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+                await WinGlobal_UIService.Instance.AddMessage($"Nome do Computador: {Environment.MachineName}");
+                await WinGlobal_UIService.Instance.AddMessage($"Versao App: {BuildLocal}");
+                await WinGlobal_UIService.Instance.AddMessage("==================================================================");
+                await WinGlobal_UIService.Instance.AddMessage("");
+
                 // executa todos os processo que estiver selecionados
                 foreach (var item in checkBoxActions)
                 {
@@ -645,6 +660,7 @@ namespace MeuSuporte
                     {
                         WinGlobal_UIService.Instance.CurrentProcess = item.Key.Text; // adiciona na variavel o processa que ira ser executado 
                         await item.Value();
+                        await WinGlobal_UIService.Instance.AddMessage("");
                     }
                 }
 
@@ -655,9 +671,11 @@ namespace MeuSuporte
             {
                 MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);// Mensagem informativa de canselamento
 
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"======= PROCESSO CANCELADO PELO USUÁRIO ! =======", false);
-                await WinGlobal_UIService.Instance.Log_MensagemAsync(" ", true);
+                await WinGlobal_UIService.Instance.AddMessage("");
+                await WinGlobal_UIService.Instance.AddMessage("==================================================================");
+                await WinGlobal_UIService.Instance.AddMessage("======== PROCESSO CANCELADO PELO USUÁRIO =========================");
+                await WinGlobal_UIService.Instance.AddMessage("==================================================================");
+                await WinGlobal_UIService.Instance.AddMessage("");
                 await WinGlobal_UIService.Instance.MensagemAbortedAsync(); // Exibe um log com todos os Processos que foram executadoes e os que foram canselado
                 await Task.Delay(300);
 
@@ -695,20 +713,6 @@ namespace MeuSuporte
                 }
             });
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

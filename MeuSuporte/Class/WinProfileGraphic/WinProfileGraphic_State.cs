@@ -91,12 +91,12 @@ namespace MeuSuporte.Class.WinProfileGraphic
             if (IsSuccess)
             {
                 WinGlobal_UIService.Instance.Sucesso++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Perfil Graphic: Ajustando para Obeter melhor {choice}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Perfil Graphic: Ajustando para Obeter melhor {choice}");
             }
             else
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"Perfil Graphic: Ocorreu um erro ao tentar ajustar para Obeter melhor {choice}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"Perfil Graphic: Ocorreu um erro ao tentar ajustar para Obeter melhor {choice}");
             }     
 
             await WinGlobal_UIService.Instance.ProgressBarADD(WinGlobal_UIService.Instance.ValueUniProgressBar);

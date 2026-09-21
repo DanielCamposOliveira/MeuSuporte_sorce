@@ -21,7 +21,7 @@ namespace MeuSuporte
             if (!DirectoryManange.Check(DirectoryFolder))
             {
                 WinGlobal_UIService.Instance.Erro++;    
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"{applicant}: Ocorreu um erro ao tentar acessa o diretório {_NameFolder}", true);
+                await WinGlobal_UIService.Instance.AddMessage($"{applicant}: Ocorreu um erro ao tentar acessa o diretório {_NameFolder}");
                 return;
             }       
 
@@ -29,14 +29,13 @@ namespace MeuSuporte
             if (!await AssignsPathPermission.AssignsPermission(DirectoryFolder))
             {
                 WinGlobal_UIService.Instance.Erro++;
-                await WinGlobal_UIService.Instance.Log_MensagemAsync($"{applicant}: Ocorreu um Erro ao tentar atribuir de Segurança nos Arquivos", true);
+                await WinGlobal_UIService.Instance.AddMessage($"{applicant}: Ocorreu um Erro ao tentar atribuir de Segurança nos Arquivos");
                 return;
             }       
 
             // funcao de apagar os arquivos
-            await ListFiles.Remove(ValueUniProgressBar, DirectoryFolder, _NameFolder);          
-            await WinGlobal_UIService.Instance.Log_MensagemAsync("\r\n", true);           
-            await WinGlobal_UIService.Instance.Log_MensagemAsync($"{applicant}: Limpeza da pasta {_NameFolder} : {ListFiles.countFoldersDeleted} Pasta(s) Apagada(s) e {ListFiles.countFileDeleted} Arquivo(s) Apagado(s)", false);          
+            await ListFiles.Remove(ValueUniProgressBar, DirectoryFolder, _NameFolder);  
+            await WinGlobal_UIService.Instance.AddUpdatedMessage($"{applicant}: Limpeza da pasta {_NameFolder} : {ListFiles.countFoldersDeleted} Pasta(s) Apagada(s) e {ListFiles.countFileDeleted} Arquivo(s) Apagado(s)");          
         }
     }
 }

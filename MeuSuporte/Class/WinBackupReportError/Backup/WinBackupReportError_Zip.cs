@@ -13,12 +13,12 @@ namespace MeuSuporte
                 ZipFile.CreateFromDirectory(OriginPath, DestinationPath, CompressionLevel.Optimal, false);
                 await Task.Delay(500);
 
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Report Error: Arquivos de Backup do Relatorio Criado.", true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup Report Error: Arquivos de Backup do Relatorio Criado.");
                 await Task.Delay(500);
             }
             catch (Exception)
             {
-                await WinGlobal_UIService.Instance.Log_MensagemAsync("Backup Report Error: Ocorreu um Erro ao tentar criar Backup do Relatorio", true);
+                await WinGlobal_UIService.Instance.AddMessage("Backup Report Error: Ocorreu um Erro ao tentar criar Backup do Relatorio");
                 await Task.Delay(500);
                 WinGlobal_UIService.Instance.Erro++;
             }
